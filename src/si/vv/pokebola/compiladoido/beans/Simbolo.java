@@ -1,65 +1,9 @@
-package si.vv.pokebola.compiladoido;
+package si.vv.pokebola.compiladoido.beans;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public enum Simbolo {
-
-	// palavras reservadas
-	AND,
-	ARRAY,
-	ASM,
-	BEGIN,
-	BREAK,
-	CASE,
-	CONST,
-	CONSTRUCTOR,
-	CONTINUE,
-	DESTRUCTOR,
-	DIV,
-	DO,
-	DOWNTO,
-	ELSE,
-	END,
-	FALSE,
-	FILE,
-	FOR,
-	FUNCTION,
-	GOTO,
-	IF,
-	IMPLEMENTATION,
-	IN,
-	INLINE,
-	INTERFACE,
-	LABEL,
-	MOD,
-	NIL,
-	NOT,
-	OBJECT,
-	OF,
-	ON,
-	OPERATOR,
-	OR,
-	PACKED,
-	PROCEDURE,
-	PROGRAM,
-	RECORD,
-	REPEAT,
-	SET,
-	SHL,
-	SHR,
-	STRING,
-	THEN,
-	TO,
-	TRUE,
-	TYPE,
-	UNIT,
-	UNTIL,
-	USES,
-	VAR,
-	WHILE,
-	WITH,
-	XOR,
+public enum Simbolo implements Symbol {
 	
 	// operadores 	
 	//# From http://www.freepascal.org/docs-html/ref/refse1.html#x9-80001.1,
@@ -148,6 +92,12 @@ public enum Simbolo {
 			return ":";
 		}
 	},
+	SEMICOLON {
+		@Override
+		public String toString() {
+			return ";";
+		}
+	},
 	
 	POINTER {
 		@Override
@@ -171,7 +121,7 @@ public enum Simbolo {
 			return CLOSE_CURLY_BRACKET;
 		}
 		@Override
-		public boolean isMultiLineComment() {
+		public boolean isMultiLine() {
 			return true;
 		}
 	},
@@ -292,7 +242,7 @@ public enum Simbolo {
 			return "(*";
 		}
 		@Override
-		public boolean isMultiLineComment(){
+		public boolean isMultiLine(){
 			return true;
 		}
 		@Override
@@ -336,7 +286,7 @@ public enum Simbolo {
 			return "//";
 		}
 		@Override
-		public boolean isLineComment() {
+		public boolean isLine() {
 			return true;
 		}
 	},
@@ -345,7 +295,7 @@ public enum Simbolo {
 
 	private static Map<String, Simbolo> map = null;
 
-	public static Map<String, Simbolo> allMap(){
+	public Map<String, Simbolo> allMap(){
 		if (map == null){
 			Simbolo[] values = values();
 			
@@ -357,11 +307,11 @@ public enum Simbolo {
 		return map;
 	}
 	
-	public boolean isLineComment(){
+	public boolean isLine(){
 		return false;
 	}
 	
-	public boolean isMultiLineComment(){
+	public boolean isMultiLine(){
 		return false;
 	}
 	

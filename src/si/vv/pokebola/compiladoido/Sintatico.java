@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import si.vv.pokebola.compiladoido.beans.Token;
+
 public class Sintatico {
 	
 	private final static String LOG_LEVEL_PROP = Sintatico.class.getCanonicalName()+".logLevel";

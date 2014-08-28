@@ -5,8 +5,14 @@ import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Map;
 import java.util.Scanner;
 import java.util.logging.Logger;
+
+import si.vv.pokebola.compiladoido.beans.Simbolo;
+import si.vv.pokebola.compiladoido.beans.Symbol;
+import si.vv.pokebola.compiladoido.beans.Token;
+import si.vv.pokebola.compiladoido.beans.WordSymbols;
 
 public class Lexico {
 
@@ -59,19 +65,23 @@ public class Lexico {
 	public Token getToken() {
 		logger.entering(Lexico.class.getName(), "getToken");
 		if (buffer.length() == 0 && !this.getTexto(buffer)) {
-			// EOF
-
+			return null;
 		}
 		String texto = this.consume(buffer);
-		Simbolo simbolo;
+		Symbol symbol;
 		
-		if (Simbolo.allMap().containsKey(texto.toUpperCase())){
-			simbolo = Simbolo.allMap().get(texto.toUpperCase()); 
-		} else {
-			simbolo = Simbolo.COMMENT;
+		Map<String, Simbolo> simboloAllMap = Simbolo.ADDRESS.allMap();
+		Map<String, WordSymbols> wordAllMap = WordSymbols.AND.allMap();
+		
+		symbol = simboloAllMap.get(texto.toUpperCase());
+		if (symbol == null){
+			symbol = wordAllMap.get(texto.toUpperCase());  
+		}
+		if (symbol == null){
+			symbol = Simbolo.ID;
 		}
 		
-		return new Token(simbolo, texto);
+		return new Token(symbol, texto);
 	}
 
 	enum Estado {
@@ -90,6 +100,7 @@ public class Lexico {
 
 		StringBuilder ret = new StringBuilder();
 		Simbolo simboloFechamento = null; 
+		Map<String, Simbolo> simboloAllMap = Simbolo.ADDRESS.allMap();
 
 		Estado estado;
 		estado = Estado.LER_VAZIO;
@@ -150,7 +161,8 @@ public class Lexico {
 
 			case OPERADOR:
 				// recupera os dois chars
-				char previous = ret.charAt(ret.length());
+				char previous = ' ';
+				previous = ret.charAt(ret.length() - 1);
 				StringBuilder s = new StringBuilder(2);
 				s.append(previous);
 				s.append(c);
@@ -158,16 +170,16 @@ public class Lexico {
 
 				// verifica se existe um simbolo do tipo
 				if (type == CharType.C_CHAR
-						&& Simbolo.allMap().containsKey(operador)) {
+						&& simboloAllMap.containsKey(operador)) {
 					estado = Estado.OPERADOR;
 					
 					ret.append(c);
 					buffer.deleteCharAt(0);
 					
-					Simbolo simbolo = Simbolo.allMap().get(operador);
-					if (simbolo.isLineComment())
+					Simbolo simbolo = simboloAllMap.get(operador);
+					if (simbolo.isLine())
 						estado = Estado.COMENTARIO_LINHA;
-					if (simbolo.isMultiLineComment())
+					if (simbolo.isMultiLine())
 						estado = Estado.COMENTARIO_LONGO;
 					simboloFechamento = simbolo.getMirror();
 					
@@ -192,9 +204,9 @@ public class Lexico {
 				s = new StringBuilder(2);
 				s.append(previous);
 				s.append(c);
-				operador = s.toString();
+				operador = s.toString().toUpperCase();
 				
-				Simbolo simbolo = Simbolo.allMap().get(operador);
+				Simbolo simbolo = simboloAllMap.get(operador);
 				
 				ret.append(c);
 				buffer.deleteCharAt(0);
@@ -227,8 +239,10 @@ public class Lexico {
 
 	private CharType classifieChar(char c) {
 		int type;
+		Map<String, Simbolo> simboloAllMap = Simbolo.ADDRESS.allMap();
+		
 		type = Character.getType(c);
-
+		
 		switch (type) {
 		case Character.LOWERCASE_LETTER:
 		case Character.UPPERCASE_LETTER:
@@ -242,7 +256,7 @@ public class Lexico {
 			return CharType.C_NONE;
 		default:
 			String cString = Character.toString(c);
-			if (Simbolo.allMap().containsKey(cString)) {
+			if (simboloAllMap.containsKey(cString)) {
 				return CharType.C_CHAR;
 			}
 			return CharType.C_NONE;
