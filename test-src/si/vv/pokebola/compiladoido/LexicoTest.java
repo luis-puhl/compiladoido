@@ -42,7 +42,7 @@ public class LexicoTest {
 		Symbol actualSimbolo;
 		Symbol expectedSimbolo;
 		
-		stringBuffer = new StringBuffer("program end.");
+		stringBuffer = new StringBuffer("  program  end. ");
 		lexico = new Lexico(stringBuffer);
 		
 		// program part
@@ -87,6 +87,8 @@ public class LexicoTest {
 		assertEquals(OperatorSymbols.ID, lexico.getToken().getSymbol());
 		assertEquals(OperatorSymbols.OPEN_PARENTHESIS, lexico.getToken().getSymbol());
 		assertEquals(OperatorSymbols.ID, lexico.getToken().getSymbol());
+		assertEquals(OperatorSymbols.OPEN_PARENTHESIS.getMirror(), 
+				lexico.getToken().getSymbol());
 		assertEquals(OperatorSymbols.COMMENT, lexico.getToken().getSymbol());
 		assertEquals(WordSymbols.END, lexico.getToken().getSymbol());
 		assertEquals(OperatorSymbols.POINT, lexico.getToken().getSymbol());

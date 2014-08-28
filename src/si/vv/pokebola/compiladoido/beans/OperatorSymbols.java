@@ -32,6 +32,12 @@ public enum OperatorSymbols implements Symbol {
 			return "/";
 		}
 	},
+	BACK_SLASH {
+		@Override
+		public String toString() {
+			return "\\";
+		}
+	},
 	EQUAL {
 		@Override
 		public String toString() {
@@ -79,11 +85,19 @@ public enum OperatorSymbols implements Symbol {
 		public String toString() {
 			return "(";
 		}
+		@Override
+		public OperatorSymbols getMirror() {
+			return CLOSE_PARENTHESIS;
+		}
 	},
 	CLOSE_PARENTHESIS {
 		@Override
 		public String toString() {
 			return ")";
+		}
+		@Override
+		public OperatorSymbols getMirror() {
+			return OPEN_PARENTHESIS;
 		}
 	},
 	COLON {
@@ -124,6 +138,10 @@ public enum OperatorSymbols implements Symbol {
 		public boolean isMultiLine() {
 			return true;
 		}
+		@Override
+		public boolean isComment(){
+			return true;
+		}
 	},
 	CLOSE_CURLY_BRACKET {
 		@Override
@@ -133,6 +151,10 @@ public enum OperatorSymbols implements Symbol {
 		@Override
 		public OperatorSymbols getMirror() {
 			return CLOSE_CURLY_BRACKET;
+		}
+		@Override
+		public boolean isComment(){
+			return true;
 		}
 	},
 	DOLLAR {
@@ -291,7 +313,13 @@ public enum OperatorSymbols implements Symbol {
 		}
 	},
 	COMMENT,
-	ID;
+	ID,
+	NONE {
+		@Override
+		public String toString() {
+			return "";
+		}
+	};
 
 	private static Map<String, OperatorSymbols> map = null;
 
@@ -322,10 +350,13 @@ public enum OperatorSymbols implements Symbol {
 	public String getName() {
 		return super.name();
 	}
-
-	@Override
+	
 	public int toInt() {
 		return super.ordinal();
+	}
+	
+	public boolean isComment(){
+		return false;
 	}
 	
 }

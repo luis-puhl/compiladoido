@@ -75,27 +75,23 @@ public enum WordSymbols implements Symbol {
 		return map;
 	}
 
-	@Override
-	public OperatorSymbols getMirror() {
+	
+	public Symbol getMirror() {
 		return null;
 	}
 
-	@Override
 	public boolean isLine() {
 		return false;
 	}
-
-	@Override
+	
 	public boolean isMultiLine() {
 		return false;
 	}
 	
-	@Override
 	public String getName() {
 		return super.name();
 	}
 	
-	@Override
 	public int toInt() {
 		return super.ordinal();
 	}

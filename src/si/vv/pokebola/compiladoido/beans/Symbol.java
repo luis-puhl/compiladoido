@@ -8,7 +8,7 @@ public interface Symbol {
 
 	public Map<String, ? extends Symbol> allMap();
 	
-	public OperatorSymbols getMirror();
+	public Symbol getMirror();
 	
 	public boolean isLine();
 	
