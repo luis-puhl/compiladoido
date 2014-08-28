@@ -106,7 +106,7 @@ public class Lexico {
 
 		StringBuilder ret = new StringBuilder();
 		Symbol simboloFechamento = null, symbol = OperatorSymbols.NONE;
-		Token token;
+		Token token = null;
 		
 		Estado estado;
 		estado = Estado.LER_VAZIO;
@@ -284,7 +284,9 @@ public class Lexico {
 		
 		String texto = ret.toString();
 		
-		token = new Token(OperatorSymbols.NONE, texto);
+		if (texto != null && texto.trim().length() > 0){
+			token = new Token(OperatorSymbols.NONE, texto);
+		}
 		
 		if (OperatorSymbols.NONE.equals(symbol) || symbol == null){
 			
@@ -302,7 +304,9 @@ public class Lexico {
 				symbol = OperatorSymbols.ID;
 			}
 		}
-		token.setSymbol(symbol);
+		if (token != null){
+			token.setSymbol(symbol);
+		}
 		
 		logger.exiting(Lexico.class.getName(), "consume", token);
 		return token;

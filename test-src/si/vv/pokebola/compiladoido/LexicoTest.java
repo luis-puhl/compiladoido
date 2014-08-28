@@ -11,13 +11,14 @@ import org.junit.Test;
 import si.vv.pokebola.compiladoido.beans.OperatorSymbols;
 import si.vv.pokebola.compiladoido.beans.Symbol;
 import si.vv.pokebola.compiladoido.beans.Token;
+import si.vv.pokebola.compiladoido.beans.TypeWordSymbols;
 import si.vv.pokebola.compiladoido.beans.WordSymbols;
 
 public class LexicoTest {
 
 	Compiladoido compiladoido;
 	private Logger logger;
-	
+
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 	}
@@ -26,10 +27,10 @@ public class LexicoTest {
 	public void setUp() throws Exception {
 		String[] args;
 		args = new String[0];
-		
+
 		Compiladoido compiladoido = Compiladoido.getInstance();
 		compiladoido.instanceMain(args);
-		
+
 		logger = compiladoido.getLogger(LexicoTest.class);
 		logger.config("End setUp()");
 	}
@@ -41,16 +42,16 @@ public class LexicoTest {
 		Token actualToken;
 		Symbol actualSimbolo;
 		Symbol expectedSimbolo;
-		
+
 		stringBuffer = new StringBuffer("  program  end. ");
 		lexico = new Lexico(stringBuffer);
-		
+
 		// program part
 		actualToken = lexico.getToken();
 		actualSimbolo = actualToken.getSymbol();
 		expectedSimbolo = WordSymbols.PROGRAM;
 		assertEquals(expectedSimbolo, actualSimbolo);
-		
+
 		// end part
 		actualToken = lexico.getToken();
 		actualSimbolo = actualToken.getSymbol();
@@ -62,14 +63,14 @@ public class LexicoTest {
 		actualSimbolo = actualToken.getSymbol();
 		expectedSimbolo = OperatorSymbols.POINT;
 		assertEquals(expectedSimbolo, actualSimbolo);
-		
+
 	}
-	
+
 	@Test
 	public void wikiProgram1Test() {
 		Lexico lexico;
 		StringBuffer stringBuffer;
-		
+
 		stringBuffer = new StringBuffer();
 		stringBuffer.append("Program HelloWorld;\n");
 		stringBuffer.append("Begin\n");
@@ -77,25 +78,99 @@ public class LexicoTest {
 		stringBuffer.append("{no \";\" is required after the last statement of a block -\n");
 		stringBuffer.append("adding one adds a \"null statement\" to the program}\n");
 		stringBuffer.append("End.");
-		
+
 		lexico = new Lexico(stringBuffer);
-		
+
 		assertEquals(WordSymbols.PROGRAM, lexico.getToken().getSymbol());
 		assertEquals(OperatorSymbols.ID, lexico.getToken().getSymbol());
+
 		assertEquals(OperatorSymbols.SEMICOLON, lexico.getToken().getSymbol());
+
 		assertEquals(WordSymbols.BEGIN, lexico.getToken().getSymbol());
+		
 		assertEquals(OperatorSymbols.ID, lexico.getToken().getSymbol());
 		assertEquals(OperatorSymbols.OPEN_PARENTHESIS, lexico.getToken().getSymbol());
 		assertEquals(OperatorSymbols.ID, lexico.getToken().getSymbol());
-		assertEquals(OperatorSymbols.OPEN_PARENTHESIS.getMirror(), 
-				lexico.getToken().getSymbol());
+		assertEquals(OperatorSymbols.OPEN_PARENTHESIS.getMirror(), lexico.getToken().getSymbol());
+		
 		assertEquals(OperatorSymbols.COMMENT, lexico.getToken().getSymbol());
+		
 		assertEquals(WordSymbols.END, lexico.getToken().getSymbol());
+		
 		assertEquals(OperatorSymbols.POINT, lexico.getToken().getSymbol());
-		
+
 		assertEquals(null, lexico.getToken());
-		
+
 	}
-	
+
+	@Test
+	public void wikiProgramProcedure() {
+		Lexico lexico;
+		StringBuffer stringBuffer;
+
+		stringBuffer = new StringBuffer();
+
+		stringBuffer.append("program Mine(output);\n");
+		stringBuffer.append("\n");
+		stringBuffer.append("var i : integer;\n");
+		stringBuffer.append("		 \n");
+		stringBuffer.append("procedure Print(var j : integer);\n");
+		stringBuffer.append("begin\n");
+		stringBuffer.append("end;\n");
+		stringBuffer.append("		 \n");
+		stringBuffer.append("begin\n");
+		stringBuffer.append("Print(i);\n");
+		stringBuffer.append("end.\n");
+
+		lexico = new Lexico(stringBuffer);
+
+		assertEquals(WordSymbols.PROGRAM, lexico.getToken().getSymbol());
+		assertEquals(OperatorSymbols.ID, lexico.getToken().getSymbol());
+
+		assertEquals(OperatorSymbols.OPEN_PARENTHESIS, lexico.getToken().getSymbol());
+		assertEquals(OperatorSymbols.ID, lexico.getToken().getSymbol());
+		assertEquals(OperatorSymbols.OPEN_PARENTHESIS.getMirror(), lexico.getToken().getSymbol());
+
+		assertEquals(OperatorSymbols.SEMICOLON, lexico.getToken().getSymbol());
+
+		assertEquals(WordSymbols.VAR, lexico.getToken().getSymbol());
+		assertEquals(OperatorSymbols.ID, lexico.getToken().getSymbol());
+		assertEquals(OperatorSymbols.COLON, lexico.getToken().getSymbol());
+		assertEquals(TypeWordSymbols.INTEGER, lexico.getToken().getSymbol());
+
+		assertEquals(OperatorSymbols.SEMICOLON, lexico.getToken().getSymbol());
+
+		assertEquals(WordSymbols.PROCEDURE, lexico.getToken().getSymbol());
+		assertEquals(OperatorSymbols.ID, lexico.getToken().getSymbol());
+		assertEquals(OperatorSymbols.OPEN_PARENTHESIS, lexico.getToken().getSymbol());
+		assertEquals(WordSymbols.VAR, lexico.getToken().getSymbol());
+		assertEquals(OperatorSymbols.ID, lexico.getToken().getSymbol());
+		assertEquals(OperatorSymbols.COLON, lexico.getToken().getSymbol());
+		assertEquals(TypeWordSymbols.INTEGER, lexico.getToken().getSymbol());
+		assertEquals(OperatorSymbols.OPEN_PARENTHESIS.getMirror(), lexico.getToken().getSymbol());
+		
+		assertEquals(OperatorSymbols.SEMICOLON, lexico.getToken().getSymbol());
+		
+		assertEquals(WordSymbols.BEGIN, lexico.getToken().getSymbol());
+		assertEquals(WordSymbols.END, lexico.getToken().getSymbol());
+		
+		assertEquals(OperatorSymbols.SEMICOLON, lexico.getToken().getSymbol());
+		
+		assertEquals(WordSymbols.BEGIN, lexico.getToken().getSymbol());
+		
+		assertEquals(OperatorSymbols.ID, lexico.getToken().getSymbol());
+		assertEquals(OperatorSymbols.OPEN_PARENTHESIS, lexico.getToken().getSymbol());
+		assertEquals(OperatorSymbols.ID, lexico.getToken().getSymbol());
+		assertEquals(OperatorSymbols.OPEN_PARENTHESIS.getMirror(), lexico.getToken().getSymbol());
+
+		assertEquals(OperatorSymbols.SEMICOLON, lexico.getToken().getSymbol());
+		
+		assertEquals(WordSymbols.END, lexico.getToken().getSymbol());
+		
+		assertEquals(OperatorSymbols.POINT, lexico.getToken().getSymbol());
+
+		assertEquals(null, lexico.getToken());
+
+	}
 
 }

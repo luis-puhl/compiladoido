@@ -21,7 +21,7 @@ public class LogFormatter extends Formatter {
 			String message;
 			message = "exiting " + record.getSourceClassName() + ": " + record.getSourceMethodName();
 			if (record.getParameters().length >= 1){
-				message += ". returning '" + record.getParameters()[0].toString() + "'";
+				message += ". returning '" + record.getParameters()[0] + "'";
 			}
 			record.setMessage(message);
 		}
