@@ -76,7 +76,7 @@ public enum WordSymbols implements Symbol {
 	}
 
 	@Override
-	public Simbolo getMirror() {
+	public OperatorSymbols getMirror() {
 		return null;
 	}
 
@@ -89,4 +89,16 @@ public enum WordSymbols implements Symbol {
 	public boolean isMultiLine() {
 		return false;
 	}
+	
+	@Override
+	public String getName() {
+		return super.name();
+	}
+	
+	@Override
+	public int toInt() {
+		return super.ordinal();
+	}
+	
 }
+

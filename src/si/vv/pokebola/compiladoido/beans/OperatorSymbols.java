@@ -3,7 +3,7 @@ package si.vv.pokebola.compiladoido.beans;
 import java.util.HashMap;
 import java.util.Map;
 
-public enum Simbolo implements Symbol {
+public enum OperatorSymbols implements Symbol {
 	
 	// operadores 	
 	//# From http://www.freepascal.org/docs-html/ref/refse1.html#x9-80001.1,
@@ -117,7 +117,7 @@ public enum Simbolo implements Symbol {
 			return "{";
 		}
 		@Override
-		public Simbolo getMirror() {
+		public OperatorSymbols getMirror() {
 			return CLOSE_CURLY_BRACKET;
 		}
 		@Override
@@ -131,7 +131,7 @@ public enum Simbolo implements Symbol {
 			return "}";
 		}
 		@Override
-		public Simbolo getMirror() {
+		public OperatorSymbols getMirror() {
 			return CLOSE_CURLY_BRACKET;
 		}
 	},
@@ -246,7 +246,7 @@ public enum Simbolo implements Symbol {
 			return true;
 		}
 		@Override
-		public Simbolo getMirror() {
+		public OperatorSymbols getMirror() {
 			return CLOSE_PARENTHESIS_STAR;
 		}
 	},
@@ -256,7 +256,7 @@ public enum Simbolo implements Symbol {
 			return "*)";
 		}
 		@Override
-		public Simbolo getMirror() {
+		public OperatorSymbols getMirror() {
 			return OPEN_PARENTHESIS_STAR;
 		}
 	},
@@ -266,7 +266,7 @@ public enum Simbolo implements Symbol {
 			return "(.";
 		}
 		@Override
-		public Simbolo getMirror() {
+		public OperatorSymbols getMirror() {
 			return CLOSE_PARENTHESIS_DOT;
 		}
 	},
@@ -276,7 +276,7 @@ public enum Simbolo implements Symbol {
 			return ".)";
 		}
 		@Override
-		public Simbolo getMirror() {
+		public OperatorSymbols getMirror() {
 			return OPEN_PARENTHESIS_DOT;
 		}
 	},
@@ -293,14 +293,14 @@ public enum Simbolo implements Symbol {
 	COMMENT,
 	ID;
 
-	private static Map<String, Simbolo> map = null;
+	private static Map<String, OperatorSymbols> map = null;
 
-	public Map<String, Simbolo> allMap(){
+	public Map<String, OperatorSymbols> allMap(){
 		if (map == null){
-			Simbolo[] values = values();
+			OperatorSymbols[] values = values();
 			
-			map = new HashMap<String, Simbolo>(values.length);
-			for (Simbolo simbolo: values) {
+			map = new HashMap<String, OperatorSymbols>(values.length);
+			for (OperatorSymbols simbolo: values) {
 				map.put(simbolo.toString(), simbolo);
 			}
 		}
@@ -315,8 +315,17 @@ public enum Simbolo implements Symbol {
 		return false;
 	}
 	
-	public Simbolo getMirror(){
+	public OperatorSymbols getMirror(){
 		return null;
+	}
+	
+	public String getName() {
+		return super.name();
+	}
+
+	@Override
+	public int toInt() {
+		return super.ordinal();
 	}
 	
 }

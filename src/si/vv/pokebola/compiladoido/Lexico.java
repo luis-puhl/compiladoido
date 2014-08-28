@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.logging.Logger;
 
-import si.vv.pokebola.compiladoido.beans.Simbolo;
+import si.vv.pokebola.compiladoido.beans.OperatorSymbols;
 import si.vv.pokebola.compiladoido.beans.Symbol;
 import si.vv.pokebola.compiladoido.beans.Token;
 import si.vv.pokebola.compiladoido.beans.WordSymbols;
@@ -24,6 +24,9 @@ public class Lexico {
 	private Logger logger;
 
 	private StringBuffer buffer;
+	
+	private Token rollbackToken = null;
+	private boolean rollbackFlag = false;
 
 	public Lexico(String filename) throws IOException {
 		initLogger();
@@ -64,13 +67,19 @@ public class Lexico {
 
 	public Token getToken() {
 		logger.entering(Lexico.class.getName(), "getToken");
+		
+		if (rollbackFlag){
+			rollbackFlag = false;
+			return rollbackToken;
+		}
+		
 		if (buffer.length() == 0 && !this.getTexto(buffer)) {
 			return null;
 		}
 		String texto = this.consume(buffer);
 		Symbol symbol;
 		
-		Map<String, Simbolo> simboloAllMap = Simbolo.ADDRESS.allMap();
+		Map<String, OperatorSymbols> simboloAllMap = OperatorSymbols.ADDRESS.allMap();
 		Map<String, WordSymbols> wordAllMap = WordSymbols.AND.allMap();
 		
 		symbol = simboloAllMap.get(texto.toUpperCase());
@@ -78,10 +87,11 @@ public class Lexico {
 			symbol = wordAllMap.get(texto.toUpperCase());  
 		}
 		if (symbol == null){
-			symbol = Simbolo.ID;
+			symbol = OperatorSymbols.ID;
 		}
 		
-		return new Token(symbol, texto);
+		rollbackToken = new Token(symbol, texto); 
+		return rollbackToken;
 	}
 
 	enum Estado {
@@ -99,8 +109,8 @@ public class Lexico {
 		logger.entering(Lexico.class.getName(), "consume");
 
 		StringBuilder ret = new StringBuilder();
-		Simbolo simboloFechamento = null; 
-		Map<String, Simbolo> simboloAllMap = Simbolo.ADDRESS.allMap();
+		OperatorSymbols simboloFechamento = null; 
+		Map<String, OperatorSymbols> simboloAllMap = OperatorSymbols.ADDRESS.allMap();
 
 		Estado estado;
 		estado = Estado.LER_VAZIO;
@@ -176,7 +186,7 @@ public class Lexico {
 					ret.append(c);
 					buffer.deleteCharAt(0);
 					
-					Simbolo simbolo = simboloAllMap.get(operador);
+					OperatorSymbols simbolo = simboloAllMap.get(operador);
 					if (simbolo.isLine())
 						estado = Estado.COMENTARIO_LINHA;
 					if (simbolo.isMultiLine())
@@ -206,7 +216,7 @@ public class Lexico {
 				s.append(c);
 				operador = s.toString().toUpperCase();
 				
-				Simbolo simbolo = simboloAllMap.get(operador);
+				OperatorSymbols simbolo = simboloAllMap.get(operador);
 				
 				ret.append(c);
 				buffer.deleteCharAt(0);
@@ -239,7 +249,7 @@ public class Lexico {
 
 	private CharType classifieChar(char c) {
 		int type;
-		Map<String, Simbolo> simboloAllMap = Simbolo.ADDRESS.allMap();
+		Map<String, OperatorSymbols> simboloAllMap = OperatorSymbols.ADDRESS.allMap();
 		
 		type = Character.getType(c);
 		
@@ -261,6 +271,10 @@ public class Lexico {
 			}
 			return CharType.C_NONE;
 		}
+	}
+
+	public void rollback() {
+		rollbackFlag = true;
 	}
 
 }

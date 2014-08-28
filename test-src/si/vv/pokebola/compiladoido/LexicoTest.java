@@ -8,7 +8,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import si.vv.pokebola.compiladoido.beans.Simbolo;
+import si.vv.pokebola.compiladoido.beans.OperatorSymbols;
 import si.vv.pokebola.compiladoido.beans.Symbol;
 import si.vv.pokebola.compiladoido.beans.Token;
 import si.vv.pokebola.compiladoido.beans.WordSymbols;
@@ -60,7 +60,7 @@ public class LexicoTest {
 		// . part
 		actualToken = lexico.getToken();
 		actualSimbolo = actualToken.getSymbol();
-		expectedSimbolo = Simbolo.POINT;
+		expectedSimbolo = OperatorSymbols.POINT;
 		assertEquals(expectedSimbolo, actualSimbolo);
 		
 	}
@@ -81,14 +81,17 @@ public class LexicoTest {
 		lexico = new Lexico(stringBuffer);
 		
 		assertEquals(WordSymbols.PROGRAM, lexico.getToken().getSymbol());
-		assertEquals(Simbolo.ID, lexico.getToken().getSymbol());
-		assertEquals(Simbolo.SEMICOLON, lexico.getToken().getSymbol());
+		assertEquals(OperatorSymbols.ID, lexico.getToken().getSymbol());
+		assertEquals(OperatorSymbols.SEMICOLON, lexico.getToken().getSymbol());
 		assertEquals(WordSymbols.BEGIN, lexico.getToken().getSymbol());
-		assertEquals(Simbolo.ID, lexico.getToken().getSymbol());
-		assertEquals(Simbolo.OPEN_PARENTHESIS, lexico.getToken().getSymbol());
-		assertEquals(Simbolo.QUOTE, lexico.getToken().getSymbol());
-		assertEquals(Simbolo.ID, lexico.getToken().getSymbol());
+		assertEquals(OperatorSymbols.ID, lexico.getToken().getSymbol());
+		assertEquals(OperatorSymbols.OPEN_PARENTHESIS, lexico.getToken().getSymbol());
+		assertEquals(OperatorSymbols.ID, lexico.getToken().getSymbol());
+		assertEquals(OperatorSymbols.COMMENT, lexico.getToken().getSymbol());
+		assertEquals(WordSymbols.END, lexico.getToken().getSymbol());
+		assertEquals(OperatorSymbols.POINT, lexico.getToken().getSymbol());
 		
+		assertEquals(null, lexico.getToken());
 		
 	}
 	

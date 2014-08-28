@@ -8,10 +8,14 @@ public interface Symbol {
 
 	public Map<String, ? extends Symbol> allMap();
 	
-	public Simbolo getMirror();
+	public OperatorSymbols getMirror();
 	
 	public boolean isLine();
 	
 	public boolean isMultiLine();
+	
+	public String getName();
+	
+	public int toInt();
 	
 }
