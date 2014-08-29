@@ -1,10 +1,8 @@
 package si.vv.pokebola.compiladoido;
 
-import java.io.IOException;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import si.vv.pokebola.compiladoido.beans.CommandWordSymbols;
@@ -21,19 +19,24 @@ public class Sintatico {
 	
 	private Lexico lexico;
 	
-	public Sintatico(Lexico lexico) throws IOException {
+	public Sintatico(Lexico lexico){
 		initLogger();
 		this.lexico = lexico;
 	}
 	
 	private void initLogger(){
-		logger = Logger.getLogger(Sintatico.class.getName());
-		String logLevel = Compiladoido.getInstance().getProperties().getProperty(LOG_LEVEL_PROP); 
-		logger.setLevel(Level.parse(logLevel));		
+		Compiladoido compiladoido = Compiladoido.getInstance();
+		
+		logger = compiladoido.getLogger(Lexico.class, LOG_LEVEL_PROP);	
 	}
 	
 	public void parse(){
-		
+		Automato automato = new Automato(lexico);
+		try {
+			automato.run();
+		} catch (AutomatoException e){
+			
+		}
 	}
 	
 	public List<Token> getExpression(){
@@ -87,6 +90,7 @@ public class Sintatico {
 			return symbol;
 		}
 		
+		/* ***************************************************************** */
 		
 		private void programa() throws AutomatoException{
 			expect(WordSymbols.PROGRAM);

@@ -16,9 +16,6 @@ import si.vv.pokebola.compiladoido.beans.WordSymbols;
 
 public class LexicoTest {
 
-	Compiladoido compiladoido;
-	private Logger logger;
-
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 	}
@@ -30,9 +27,6 @@ public class LexicoTest {
 
 		Compiladoido compiladoido = Compiladoido.getInstance();
 		compiladoido.instanceMain(args);
-
-		logger = compiladoido.getLogger(LexicoTest.class);
-		logger.config("End setUp()");
 	}
 
 	@Test
@@ -65,7 +59,18 @@ public class LexicoTest {
 		assertEquals(expectedSimbolo, actualSimbolo);
 
 	}
-
+	
+	@Test(expected = NullPointerException.class)
+	public void bufferForLexicoShouldNotBeNull() {
+		Lexico lexico;
+		StringBuffer stringBuffer;
+		
+		stringBuffer = null;
+		lexico = new Lexico(stringBuffer);
+		
+		assertEquals(WordSymbols.PROGRAM, lexico.getToken().getSymbol());
+	}
+	
 	@Test
 	public void wikiProgram1Test() {
 		Lexico lexico;
