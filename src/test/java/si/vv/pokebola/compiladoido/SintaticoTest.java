@@ -20,20 +20,26 @@ public class SintaticoTest {
 		StringBuffer stringBuffer;
 		Sintatico sintatico;
 		
-		stringBuffer = new StringBuffer("  program p; end. ");
+		stringBuffer = AllTests.getMinimalProg();
 		lexico = new Lexico(stringBuffer);
 		
 		sintatico = new Sintatico(lexico);
 		
 		sintatico.parse();
-
-		/*
-		assertEquals(WordSymbols.PROGRAM, lexico.getToken().getSymbol());
-		assertEquals(WordSymbols.END, lexico.getToken().getSymbol());
-		assertEquals(OperatorSymbols.POINT, lexico.getToken().getSymbol());
-		
-		assertEquals(null, lexico.getToken());
-		*/
 	}
 
+	@Test
+	public void testParseHelloWorld() {
+		Lexico lexico;
+		StringBuffer stringBuffer;
+		Sintatico sintatico;
+		
+		stringBuffer = AllTests.getHelloWorld();
+		lexico = new Lexico(stringBuffer);
+		
+		sintatico = new Sintatico(lexico);
+		
+		sintatico.parse();
+	}
+	
 }

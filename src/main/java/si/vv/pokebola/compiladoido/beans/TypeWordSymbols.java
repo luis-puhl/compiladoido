@@ -9,6 +9,7 @@ public enum TypeWordSymbols implements Symbol {
 	REAL,
 	INTEGER;
 	
+	
 	private static Map<String, TypeWordSymbols> map = null;
 
 	public Map<String, TypeWordSymbols> allMap(){

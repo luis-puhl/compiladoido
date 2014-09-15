@@ -311,8 +311,17 @@ public enum OperatorSymbols implements Symbol {
 		public boolean isLine() {
 			return true;
 		}
+		@Override
+		public boolean isComment() {
+			return true;
+		}
 	},
-	COMMENT,
+	COMMENT{
+		@Override
+		public boolean isComment() {
+			return true;
+		}
+	},
 	ID,
 	NONE {
 		@Override
