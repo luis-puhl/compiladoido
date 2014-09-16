@@ -36,6 +36,10 @@ public class AutomatoException extends Exception{
 			msg.append(" EXPECTED.");
 		}
 		
+		errorSource();
+	}
+	
+	private void errorSource(){
 		StackTraceElement cause = this.getStackTrace()[2];
 		msg.append("\n\t at ");
 		msg.append(cause.getClassName());
@@ -71,6 +75,12 @@ public class AutomatoException extends Exception{
 		this(logger, expected, false);
 	}
 	
+	public AutomatoException(Logger logger) {
+		this.initMessage(logger, false);
+		msg.append("Unimplemented feature");
+		this.errorSource();
+	}
+
 	public void log(){
 		logger.log(level, msg.toString());
 	}

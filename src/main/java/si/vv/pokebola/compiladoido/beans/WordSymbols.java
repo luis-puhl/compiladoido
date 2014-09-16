@@ -59,7 +59,17 @@ public enum WordSymbols implements Symbol {
 	VAR,
 	WHILE,
 	WITH,
-	XOR;
+	XOR,
+	DEPRECATED,
+	EXPERIMENTAL,
+	PLATAFORM,
+	UNIMPLEMENTED, 
+	ABSOLUTE, 
+	EXPORT, 
+	EXTERMAL, 
+	CVAR, 
+	NAME, 
+	FORWARD;
 	
 	private static Map<String, WordSymbols> map = null;
 

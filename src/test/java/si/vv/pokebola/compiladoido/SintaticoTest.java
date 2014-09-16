@@ -1,7 +1,13 @@
 package si.vv.pokebola.compiladoido;
 
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Before;
 import org.junit.Test;
+
+import si.vv.pokebola.compiladoido.beans.Symbol;
+import si.vv.pokebola.compiladoido.beans.SyntaticTreeNode;
+import si.vv.pokebola.compiladoido.beans.WordSymbols;
 
 public class SintaticoTest {
 	
@@ -25,7 +31,11 @@ public class SintaticoTest {
 		
 		sintatico = new Sintatico(lexico);
 		
-		sintatico.parse();
+		SyntaticTreeNode parsedTree = sintatico.parse();
+		
+		Symbol symbol = parsedTree.getToken().getSymbol();
+		assertEquals(WordSymbols, symbol);
+		
 	}
 
 	@Test

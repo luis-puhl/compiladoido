@@ -3,6 +3,7 @@ package si.vv.pokebola.compiladoido;
 import java.util.List;
 import java.util.logging.Logger;
 
+import si.vv.pokebola.compiladoido.beans.SyntaticTreeNode;
 import si.vv.pokebola.compiladoido.beans.Token;
 
 public class Sintatico {
@@ -11,6 +12,8 @@ public class Sintatico {
 	private Logger logger;
 	
 	private Lexico lexico;
+	
+	private SyntaticTreeNode treeRoot;
 	
 	public Sintatico(Lexico lexico){
 		initLogger();
@@ -23,15 +26,17 @@ public class Sintatico {
 		logger = compiladoido.getLogger(Lexico.class, LOG_LEVEL_PROP);	
 	}
 	
-	public void parse(){
+	public SyntaticTreeNode parse(){
 		AutomatoSintaticoPascal automato = new AutomatoSintaticoPascal(this, lexico);
 		try {
-			automato.run();
+			treeRoot = automato.run();
 		} catch (AutomatoException e){
 			e.log();
 			logger.severe("Automato didn't run fine :( ");
 			throw new RuntimeException(e);
 		}
+		
+		return treeRoot;
 	}
 	
 	public List<Token> getExpression(){

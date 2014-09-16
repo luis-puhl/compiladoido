@@ -100,12 +100,18 @@ public enum OperatorSymbols implements Symbol {
 			return OPEN_PARENTHESIS;
 		}
 	},
+	/**
+	 * is ':'
+	 */
 	COLON {
 		@Override
 		public String toString() {
 			return ":";
 		}
 	},
+	/**
+	 * is ';'
+	 */
 	SEMICOLON {
 		@Override
 		public String toString() {
@@ -328,7 +334,9 @@ public enum OperatorSymbols implements Symbol {
 		public String toString() {
 			return "";
 		}
-	};
+	},
+	STRING_CONSTANT
+	;
 
 	private static Map<String, OperatorSymbols> map = null;
 
