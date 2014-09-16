@@ -32,7 +32,8 @@ public class Sintatico {
 			treeRoot = automato.run();
 		} catch (AutomatoException e){
 			e.log();
-			logger.severe("Automato didn't run fine :( ");
+			logger.severe("Automato didn't run fine =( =( =( ");
+			logger.fine(automato.getRoot().printSubTree());
 			throw new RuntimeException(e);
 		}
 		

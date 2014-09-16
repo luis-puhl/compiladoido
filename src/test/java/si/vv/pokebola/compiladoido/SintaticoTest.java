@@ -1,17 +1,12 @@
 package si.vv.pokebola.compiladoido;
 
-import static org.junit.Assert.assertEquals;
-
-import java.util.List;
 import java.util.Properties;
 import java.util.logging.Level;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import si.vv.pokebola.compiladoido.beans.Symbol;
 import si.vv.pokebola.compiladoido.beans.SyntaticTreeNode;
-import si.vv.pokebola.compiladoido.beans.WordSymbols;
 
 public class SintaticoTest {
 	
@@ -40,11 +35,7 @@ public class SintaticoTest {
 		
 		SyntaticTreeNode parsedTree = sintatico.parse();
 		
-		List<SyntaticTreeNode> children = parsedTree.getChildren();
-		SyntaticTreeNode programNode = children.get(0);
-		Symbol symbol = programNode.getLexicToken().getSymbol();
-		assertEquals(WordSymbols.PROGRAM, symbol);
-		
+		sintatico.getLogger().fine(parsedTree.printSubTree());
 	}
 
 	@Test
@@ -58,7 +49,25 @@ public class SintaticoTest {
 		
 		sintatico = new Sintatico(lexico);
 		
-		sintatico.parse();
+		SyntaticTreeNode parsedTree = sintatico.parse();
+		
+		sintatico.getLogger().fine(parsedTree.printSubTree());
+	}
+	
+	@Test
+	public void testParseWikiProgramProcedure() {
+		Lexico lexico;
+		StringBuffer stringBuffer;
+		Sintatico sintatico;
+		
+		stringBuffer = AllTests.getWikiProgramProcedure();
+		lexico = new Lexico(stringBuffer);
+		
+		sintatico = new Sintatico(lexico);
+		
+		SyntaticTreeNode parsedTree = sintatico.parse();
+		
+		sintatico.getLogger().fine(parsedTree.printSubTree());
 	}
 	
 }

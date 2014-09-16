@@ -29,7 +29,7 @@ public class AllTests {
 	public static StringBuffer getWikiProgramProcedure() {
 		StringBuffer wikiProgramProcedure;
 		wikiProgramProcedure = new StringBuffer();
-		wikiProgramProcedure.append("program Mine(output);\n");
+		wikiProgramProcedure.append("program Mine();\n");
 		wikiProgramProcedure.append("\n");
 		wikiProgramProcedure.append("var i : integer;\n");
 		wikiProgramProcedure.append("		 \n");

@@ -28,6 +28,14 @@ public class AutomatoSintaticoPascal {
 		this.lexico = lexico;
 	}
 
+	public SyntaticTreeNode getRoot() {
+		return root;
+	}
+
+	public void setRoot(SyntaticTreeNode root) {
+		this.root = root;
+	}
+
 	public SyntaticTreeNode run() throws AutomatoException {
 		root = new SyntaticTreeNode(null, "run", null);
 		
