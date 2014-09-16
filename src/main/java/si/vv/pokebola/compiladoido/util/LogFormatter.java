@@ -8,7 +8,7 @@ public class LogFormatter extends Formatter {
 
 	@Override
 	public String format(LogRecord record) {
-		if (record.getLevel().intValue() >= Level.INFO.intValue()){
+		if (record.getLevel().intValue() > Level.INFO.intValue()){
 			return highFormat(record);
 		}
 		

@@ -118,7 +118,7 @@ public class Compiladoido {
 		logger.setLevel(Level.ALL);
 		try {
 			if (logLevelProp != null){
-				String logLevel = this.getProperties().getProperty(logLevelProp);
+				String logLevel = this.getProperties().get(logLevelProp).toString();
 				if (logLevel != null) {
 					logger.setLevel(Level.parse(logLevel));
 				}

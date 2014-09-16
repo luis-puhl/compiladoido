@@ -23,7 +23,7 @@ public class Sintatico {
 	private void initLogger(){
 		Compiladoido compiladoido = Compiladoido.getInstance();
 		
-		logger = compiladoido.getLogger(Lexico.class, LOG_LEVEL_PROP);	
+		logger = compiladoido.getLogger(this.getClass(), LOG_LEVEL_PROP);	
 	}
 	
 	public SyntaticTreeNode parse(){

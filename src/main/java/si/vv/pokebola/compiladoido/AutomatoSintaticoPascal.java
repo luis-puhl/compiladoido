@@ -29,7 +29,9 @@ public class AutomatoSintaticoPascal {
 	}
 
 	public SyntaticTreeNode run() throws AutomatoException {
-		root = program(new SyntaticTreeNode(null, "run", null));
+		root = new SyntaticTreeNode(null, "run", null);
+		
+		root.add(program(root));
 		return root;
 	}
 
@@ -76,7 +78,9 @@ public class AutomatoSintaticoPascal {
 	}
 
 	private Token expect(Symbol expected) throws AutomatoException {
-		return expect(expected, false);
+		Collection<Symbol> symbols = new ArrayList<Symbol>(1);
+		symbols.add(expected);
+		return expect(symbols, false);
 	}
 
 	/* ***************************************************************** */
@@ -100,7 +104,6 @@ public class AutomatoSintaticoPascal {
 		try {
 			node.add(usesClause(node));
 		} catch (AutomatoException e) {
-			e.log();
 			this.sintatico.getLogger().finer("No USES CLAUSE declaration");
 		}
 		// BLOCK
@@ -193,11 +196,9 @@ public class AutomatoSintaticoPascal {
 
 	private SyntaticTreeNode block(SyntaticTreeNode parent) throws AutomatoException {
 		SyntaticTreeNode node;
-		String method = "usesClause";
+		String method = "block";
 
-		node = new SyntaticTreeNode(parent, method, SyntaticSymbol.USE_CLAUSE);
-
-		node.add(new SyntaticTreeNode(node, method, null, expect(WordSymbols.USES, true)));
+		node = new SyntaticTreeNode(parent, method, SyntaticSymbol.BLOCK);
 
 		// DECLARATION PART
 		node.add(declarationPart(node));
@@ -719,40 +720,6 @@ public class AutomatoSintaticoPascal {
 
 		node.add(listaParametros(node));
 
-		return node;
-	}
-
-	private SyntaticTreeNode corpoProcedimento(SyntaticTreeNode parent) throws AutomatoException {
-		SyntaticTreeNode node;
-		String method = "corpoProcedimento";
-
-		node = new SyntaticTreeNode(parent, method, null);
-
-		node.add(declaracaoVariavel(node));
-		expect(WordSymbols.BEGIN);
-		node.add(comandos(node));
-		expect(WordSymbols.END);
-
-		return node;
-	}
-	
-	private SyntaticTreeNode declaracaoVariavel(SyntaticTreeNode parent) throws AutomatoException{
-		SyntaticTreeNode node;
-		String method = "corpoProcedimento";
-
-		node = new SyntaticTreeNode(parent, method, null);
-		
-		try {
-			expect(WordSymbols.VAR);
-		} catch (AutomatoException e){
-			return node;
-		}
-		node.add(variaveis(node));
-		expect(OperatorSymbols.COLON);
-		node.add(tipoVariavel(node));
-		expect(OperatorSymbols.SEMICOLON);
-		node.add(declaracaoVariavel(node));
-		
 		return node;
 	}
 

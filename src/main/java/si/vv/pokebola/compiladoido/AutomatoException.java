@@ -23,7 +23,7 @@ public class AutomatoException extends Exception{
 	
 	private void initMessage(Logger logger, boolean optional){
 		this.logger = logger;
-		this.level = Level.WARNING;
+		this.level = Level.INFO;
 		this.msg = new StringBuilder();
 		this.optional = optional;
 	}
