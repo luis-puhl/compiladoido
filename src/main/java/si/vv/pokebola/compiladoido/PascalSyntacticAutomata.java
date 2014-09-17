@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
 
+import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -32,10 +33,11 @@ public class PascalSyntacticAutomata {
 
 	private SyntaticTreeNode root;
 	
-	private static final Logger LOGGER = LogManager.getLogger();
+	private static Logger logger;
 
 	public PascalSyntacticAutomata(LexicalAutomata lexico) {
 		this.lexico = lexico;
+		logger = LogManager.getLogger();
 	}
 
 	public SyntaticTreeNode getRoot() {
@@ -59,15 +61,15 @@ public class PascalSyntacticAutomata {
 		token = lexico.getToken();
 		symbol = token.getSymbol();
 		if (symbol instanceof OperatorSymbols && ((OperatorSymbols) symbol).isComment()) {
-			LOGGER.info("Got a COMMENT");
+			logger.info("Got a COMMENT");
 			token = this.getTokenLexico();
 		}
-		LOGGER.info("\n\t" + token.toString());
+		logger.info("\n\t" + token.toString());
 		return token;
 	}
 
 	private void unimplemented() throws SyntacticAutomataException {
-		throw new SyntacticAutomataException(LOGGER);
+		throw new SyntacticAutomataException(logger);
 	}
 
 	// implementacao
@@ -79,7 +81,7 @@ public class PascalSyntacticAutomata {
 		symbol = token.getSymbol();
 		if (!expected.contains(symbol)) {
 			lexico.rollback();
-			throw new SyntacticAutomataException(LOGGER, expected, optional, symbol);
+			throw new SyntacticAutomataException(logger, expected, optional, symbol);
 		}
 
 		return token;
@@ -113,7 +115,7 @@ public class PascalSyntacticAutomata {
 		SyntaticTreeNode node;
 		String method = "program";
 
-		LOGGER.entry();
+		logger.entry();
 		node = new SyntaticTreeNode(parent, method, SyntaticSymbol.PROGRAM);
 		/** PROGRAM */
 		// PROGRAM HEADER
@@ -124,7 +126,8 @@ public class PascalSyntacticAutomata {
 		try {
 			node.add(usesClause(node));
 		} catch (SyntacticAutomataException e) {
-			LOGGER.info("No USES CLAUSE declaration");
+			logger.catching(Level.WARN, e);
+			logger.info("No USES CLAUSE declaration");
 		}
 		// BLOCK
 		node.add(block(node));
@@ -132,7 +135,7 @@ public class PascalSyntacticAutomata {
 		// PERIOD
 		node.add(new SyntaticTreeNode(node, method, null, expect(OperatorSymbols.POINT)));
 
-		LOGGER.exit();
+		logger.exit();
 		return node;
 	}
 
@@ -141,7 +144,7 @@ public class PascalSyntacticAutomata {
 		SyntaticTreeNode node;
 		String method = "programHeader";
 
-		LOGGER.entry();
+		logger.entry();
 		node = new SyntaticTreeNode(parent, method, SyntaticSymbol.PROGRAM_HEADER);
 
 		node.add(new SyntaticTreeNode(node, method, null, expect(WordSymbols.PROGRAM)));
@@ -158,10 +161,10 @@ public class PascalSyntacticAutomata {
 					expect(OperatorSymbols.CLOSE_PARENTHESIS)));
 		} catch (SyntacticAutomataException e) {
 			e.log();
-			LOGGER.info("No PROGRAM PARAMETERS declaration");
+			logger.info("No PROGRAM PARAMETERS declaration");
 		}
 
-		LOGGER.exit();
+		logger.exit();
 		return node;
 	}
 
@@ -183,7 +186,7 @@ public class PascalSyntacticAutomata {
 		SyntaticTreeNode node;
 		String method = "usesClause";
 
-		LOGGER.entry();
+		logger.entry();
 		node = new SyntaticTreeNode(parent, method, SyntaticSymbol.USE_CLAUSE);
 
 		node.add(new SyntaticTreeNode(node, method, null, expect(WordSymbols.USES, true)));
@@ -210,7 +213,7 @@ public class PascalSyntacticAutomata {
 		}
 		node.add(new SyntaticTreeNode(node, method, null, expect(OperatorSymbols.SEMICOLON)));
 
-		LOGGER.exit();
+		logger.exit();
 		return node;
 	}
 
@@ -225,7 +228,7 @@ public class PascalSyntacticAutomata {
 		SyntaticTreeNode node;
 		String method = "block";
 
-		LOGGER.entry();
+		logger.entry();
 		node = new SyntaticTreeNode(parent, method, SyntaticSymbol.BLOCK);
 
 		// DECLARATION PART
@@ -234,7 +237,7 @@ public class PascalSyntacticAutomata {
 		// STATEMENT PART
 		node.add(compoundStatement(node));
 
-		LOGGER.exit();
+		logger.exit();
 		return node;
 	}
 
@@ -243,7 +246,7 @@ public class PascalSyntacticAutomata {
 		SyntaticTreeNode node;
 		String method = "declarationPart";
 
-		LOGGER.entry();
+		logger.entry();
 		node = new SyntaticTreeNode(parent, method, SyntaticSymbol.DECLARATION_PART);
 
 		/**
@@ -257,7 +260,7 @@ public class PascalSyntacticAutomata {
 		node.add(threadVarDeclaration(node));
 		node.add(procedureFuncionDeclarationPart(node));
 
-		LOGGER.exit();
+		logger.exit();
 		return node;
 	}
 
@@ -286,7 +289,7 @@ public class PascalSyntacticAutomata {
 		SyntaticTreeNode node;
 		String method = "variableDeclarationPart";
 
-		LOGGER.entry();
+		logger.entry();
 		node = new SyntaticTreeNode(parent, method, SyntaticSymbol.VAR_DECLARATION_PART);
 
 		try {
@@ -299,7 +302,7 @@ public class PascalSyntacticAutomata {
 			try {
 				node.add(variableDeclaration(node));
 			} catch (SyntacticAutomataException e) {
-				LOGGER.exit();
+				logger.exit();
 				return node;
 			}
 		}
@@ -316,12 +319,12 @@ public class PascalSyntacticAutomata {
 		String method = "procedureFuncionDeclarationPart";
 		int errors = 0;
 
-		LOGGER.entry();
+		logger.entry();
 		node = new SyntaticTreeNode(parent, method,
 				SyntaticSymbol.PROCEDURE_FUNCTION_DECLARATION_PART);
 
 		while (errors < 4) {
-			LOGGER.info("Geting a procedure/function");
+			logger.info("Geting a procedure/function");
 			try {
 				node.add(procedureDeclaration(node));
 			} catch (SyntacticAutomataException e) {
@@ -344,7 +347,7 @@ public class PascalSyntacticAutomata {
 			}
 		}
 
-		LOGGER.exit();
+		logger.exit();
 		return node;
 	}
 
@@ -360,7 +363,7 @@ public class PascalSyntacticAutomata {
 		SyntaticTreeNode node;
 		String method = "variableDeclaration";
 
-		LOGGER.entry();
+		logger.entry();
 		node = new SyntaticTreeNode(parent, method, SyntaticSymbol.VAR_DECLARATION);
 
 		// id
@@ -392,7 +395,7 @@ public class PascalSyntacticAutomata {
 		// ;
 		node.add(new SyntaticTreeNode(node, method, null, expect(OperatorSymbols.SEMICOLON)));
 
-		LOGGER.exit();
+		logger.exit();
 		return node;
 	}
 
@@ -407,13 +410,13 @@ public class PascalSyntacticAutomata {
 		SyntaticTreeNode node;
 		String method = "type";
 
-		LOGGER.entry();
+		logger.entry();
 		node = new SyntaticTreeNode(parent, method, SyntaticSymbol.TYPE);
 
 		Collection<TypeWordSymbols> types = TypeWordSymbols.INTEGER.allMap().values();
 		node.add(new SyntaticTreeNode(node, method, null, expect(types)));
 
-		LOGGER.exit();
+		logger.exit();
 		return node;
 	}
 
@@ -422,7 +425,7 @@ public class PascalSyntacticAutomata {
 		SyntaticTreeNode node;
 		String method = "variableModifiers";
 
-		LOGGER.entry();
+		logger.entry();
 		node = new SyntaticTreeNode(parent, method, SyntaticSymbol.VAR_MODIFIERS);
 
 		/**
@@ -471,7 +474,7 @@ public class PascalSyntacticAutomata {
 		} catch (SyntacticAutomataException e) {
 		}
 
-		LOGGER.exit();
+		logger.exit();
 		return node;
 	}
 
@@ -487,7 +490,7 @@ public class PascalSyntacticAutomata {
 		SyntaticTreeNode node;
 		String method = "procedureDeclaration";
 
-		LOGGER.entry();
+		logger.entry();
 		node = new SyntaticTreeNode(parent, method, SyntaticSymbol.PROCEDURE_DECLARATION);
 
 		// PROCEDURE HEADER
@@ -508,7 +511,7 @@ public class PascalSyntacticAutomata {
 
 		node.add(new SyntaticTreeNode(node, method, null, expect(OperatorSymbols.SEMICOLON)));
 
-		LOGGER.exit();
+		logger.exit();
 		return node;
 	}
 
@@ -517,11 +520,11 @@ public class PascalSyntacticAutomata {
 		SyntaticTreeNode node;
 		String method = "subroutineBlock";
 
-		LOGGER.entry();
+		logger.entry();
 		node = new SyntaticTreeNode(parent, method, SyntaticSymbol.SUBROTINE_BLOCK);
 
 		try {
-			node.add(block(node));
+			node.add(compoundStatement(node));
 		} catch (SyntacticAutomataException eBlock) {
 			eBlock.log();
 
@@ -536,7 +539,7 @@ public class PascalSyntacticAutomata {
 			}
 		}
 
-		LOGGER.exit();
+		logger.exit();
 		return node;
 	}
 
@@ -562,7 +565,7 @@ public class PascalSyntacticAutomata {
 			resultTypes.add(type);
 		}
 
-		LOGGER.entry();
+		logger.entry();
 		node = new SyntaticTreeNode(parent, method, SyntaticSymbol.FUNCTION_DECLARATION);
 
 		// FUNCTION HEADER
@@ -585,7 +588,7 @@ public class PascalSyntacticAutomata {
 
 		node.add(new SyntaticTreeNode(node, method, null, expect(OperatorSymbols.SEMICOLON)));
 
-		LOGGER.exit();
+		logger.exit();
 		return node;
 	}
 
@@ -625,7 +628,7 @@ public class PascalSyntacticAutomata {
 		SyntaticTreeNode node;
 		String method = "formalParameterList";
 
-		LOGGER.entry();
+		logger.entry();
 		node = new SyntaticTreeNode(parent, method, SyntaticSymbol.FORMAL_PARAMETER_LIST);
 
 		node.add(new SyntaticTreeNode(node, method, null, expect(OperatorSymbols.OPEN_PARENTHESIS)));
@@ -641,7 +644,7 @@ public class PascalSyntacticAutomata {
 
 		node.add(new SyntaticTreeNode(node, method, null, expect(OperatorSymbols.CLOSE_PARENTHESIS)));
 
-		LOGGER.exit();
+		logger.exit();
 		return node;
 	}
 
@@ -650,7 +653,7 @@ public class PascalSyntacticAutomata {
 		SyntaticTreeNode node;
 		String method = "parameterDeclaration";
 
-		LOGGER.entry();
+		logger.entry();
 		node = new SyntaticTreeNode(parent, method, SyntaticSymbol.PARAMETER_DECLARATION);
 
 		try {
@@ -659,7 +662,7 @@ public class PascalSyntacticAutomata {
 			node.add(variableParameter(node));
 		}
 
-		LOGGER.exit();
+		logger.exit();
 		return node;
 	}
 
@@ -675,7 +678,7 @@ public class PascalSyntacticAutomata {
 		SyntaticTreeNode node;
 		String method = "valueParameter";
 
-		LOGGER.entry();
+		logger.entry();
 		node = new SyntaticTreeNode(parent, method, SyntaticSymbol.VALUE_PARAMETER);
 
 		try {
@@ -698,7 +701,7 @@ public class PascalSyntacticAutomata {
 					expect(OperatorSymbols.ID)));
 		}
 
-		LOGGER.exit();
+		logger.exit();
 		return node;
 	}
 
@@ -714,7 +717,7 @@ public class PascalSyntacticAutomata {
 		SyntaticTreeNode node;
 		String method = "variableParameter";
 
-		LOGGER.entry();
+		logger.entry();
 		node = new SyntaticTreeNode(parent, method, SyntaticSymbol.VARIABLE_PARAMETER);
 
 		node.add(new SyntaticTreeNode(node, method, null, expect(WordSymbols.VAR)));
@@ -732,7 +735,7 @@ public class PascalSyntacticAutomata {
 		} catch (SyntacticAutomataException eList) {
 		}
 
-		LOGGER.exit();
+		logger.exit();
 		return node;
 	}
 
@@ -741,7 +744,7 @@ public class PascalSyntacticAutomata {
 		SyntaticTreeNode node;
 		String method = "identifierList";
 
-		LOGGER.entry();
+		logger.entry();
 		node = new SyntaticTreeNode(parent, method, SyntaticSymbol.IDENTIFIER_LIST);
 
 		node.add(new SyntaticTreeNode(node, method, SyntaticSymbol.IDENTIFIER,
@@ -753,7 +756,7 @@ public class PascalSyntacticAutomata {
 		} catch (SyntacticAutomataException e) {
 		}
 
-		LOGGER.exit();
+		logger.exit();
 		return node;
 	}
 
@@ -765,7 +768,7 @@ public class PascalSyntacticAutomata {
 		String method = "hintDirective";
 		Collection<WordSymbols> hints = new LinkedList<WordSymbols>();
 
-		LOGGER.entry();
+		logger.entry();
 		node = new SyntaticTreeNode(parent, method, SyntaticSymbol.HINT_DIRECTIVE);
 
 		hints.add(WordSymbols.DEPRECATED);
@@ -787,7 +790,7 @@ public class PascalSyntacticAutomata {
 		} catch (SyntacticAutomataException e) {
 		}
 
-		LOGGER.exit();
+		logger.exit();
 		return node;
 	}
 
@@ -800,7 +803,7 @@ public class PascalSyntacticAutomata {
 		SyntaticTreeNode node;
 		String method = "compoundStatement";
 
-		LOGGER.entry();
+		logger.entry();
 		node = new SyntaticTreeNode(parent, method, SyntaticSymbol.COMPOUND_STATEMENT);
 
 		node.add(new SyntaticTreeNode(node, method, null, expect(WordSymbols.BEGIN)));
@@ -814,7 +817,7 @@ public class PascalSyntacticAutomata {
 		}
 		node.add(new SyntaticTreeNode(node, method, null, expect(WordSymbols.END)));
 
-		LOGGER.exit();
+		logger.exit();
 		return node;
 	}
 
@@ -830,7 +833,7 @@ public class PascalSyntacticAutomata {
 		SyntaticTreeNode node;
 		String method = "tipoVariavel";
 
-		LOGGER.entry();
+		logger.entry();
 		node = new SyntaticTreeNode(parent, method, null);
 
 		Collection<TypeWordSymbols> tipos = new LinkedList<TypeWordSymbols>();
@@ -840,7 +843,7 @@ public class PascalSyntacticAutomata {
 		Token lexicToken = expect(tipos);
 		node.add(new SyntaticTreeNode(node, method, null, lexicToken));
 
-		LOGGER.exit();
+		logger.exit();
 		return node;
 	}
 
@@ -849,7 +852,7 @@ public class PascalSyntacticAutomata {
 		SyntaticTreeNode node;
 		String method = "listaParametros";
 
-		LOGGER.entry();
+		logger.entry();
 		node = new SyntaticTreeNode(parent, method, null);
 
 		node.add(identifierList(node));
@@ -859,7 +862,7 @@ public class PascalSyntacticAutomata {
 		node.add(tipoVariavel(node));
 		node.add(maisParametros(node));
 
-		LOGGER.exit();
+		logger.exit();
 		return node;
 	}
 
@@ -868,7 +871,7 @@ public class PascalSyntacticAutomata {
 		SyntaticTreeNode node;
 		String method = "maisParametros";
 
-		LOGGER.entry();
+		logger.entry();
 		node = new SyntaticTreeNode(parent, method, null);
 
 		try {
@@ -879,7 +882,7 @@ public class PascalSyntacticAutomata {
 
 		node.add(listaParametros(node));
 
-		LOGGER.exit();
+		logger.exit();
 		return node;
 	}
 
@@ -887,14 +890,14 @@ public class PascalSyntacticAutomata {
 		SyntaticTreeNode node;
 		String method = "lista_arg";
 
-		LOGGER.entry();
+		logger.entry();
 		node = new SyntaticTreeNode(parent, method, null);
 
 		expect(OperatorSymbols.OPEN_PARENTHESIS);
 		node.add(argumentos(node));
 		expect(OperatorSymbols.CLOSE_PARENTHESIS);
 
-		LOGGER.exit();
+		logger.exit();
 		return node;
 	}
 
@@ -902,13 +905,13 @@ public class PascalSyntacticAutomata {
 		SyntaticTreeNode node;
 		String method = "argumentos";
 
-		LOGGER.entry();
+		logger.entry();
 		node = new SyntaticTreeNode(parent, method, null);
 
 		expect(OperatorSymbols.ID);
 		node.add(maisIDs(node));
 
-		LOGGER.exit();
+		logger.exit();
 		return node;
 	}
 
@@ -916,19 +919,19 @@ public class PascalSyntacticAutomata {
 		SyntaticTreeNode node;
 		String method = "maisIDs";
 
-		LOGGER.entry();
+		logger.entry();
 		node = new SyntaticTreeNode(parent, method, null);
 
 		try {
 			expect(OperatorSymbols.SEMICOLON);
 		} catch (SyntacticAutomataException e) {
-			LOGGER.exit();
+			logger.exit();
 			return node;
 		}
 
 		node.add(argumentos(node));
 
-		LOGGER.exit();
+		logger.exit();
 		return node;
 	}
 
@@ -936,18 +939,18 @@ public class PascalSyntacticAutomata {
 		SyntaticTreeNode node;
 		String method = "pfalsa";
 
-		LOGGER.entry();
+		logger.entry();
 		node = new SyntaticTreeNode(parent, method, null);
 
 		try {
 			expect(WordSymbols.ELSE);
 		} catch (SyntacticAutomataException e) {
-			LOGGER.exit();
+			logger.exit();
 			return node;
 		}
 		node.add(cmd(node));
 
-		LOGGER.exit();
+		logger.exit();
 		return node;
 	}
 
@@ -955,7 +958,7 @@ public class PascalSyntacticAutomata {
 		SyntaticTreeNode node;
 		String method = "comandos";
 
-		LOGGER.entry();
+		logger.entry();
 		node = new SyntaticTreeNode(parent, method, null);
 
 		node.add(cmd(node));
@@ -964,7 +967,7 @@ public class PascalSyntacticAutomata {
 		} catch (SyntacticAutomataException e) {
 		}
 
-		LOGGER.exit();
+		logger.exit();
 		return node;
 	}
 
@@ -972,7 +975,7 @@ public class PascalSyntacticAutomata {
 		SyntaticTreeNode node;
 		String method = "cmd";
 
-		LOGGER.entry();
+		logger.entry();
 		node = new SyntaticTreeNode(parent, method, null);
 
 		Collection<Symbol> comandosPossiveis = new LinkedList<Symbol>();
@@ -997,7 +1000,7 @@ public class PascalSyntacticAutomata {
 				expect(OperatorSymbols.OPEN_PARENTHESIS.getMirror());
 				break;
 			default:
-				LOGGER.error("UNKNOWN COMMAND " + command.getName());
+				logger.error("UNKNOWN COMMAND " + command.getName());
 				break;
 			}
 		} else if (symbol instanceof WordSymbols) {
@@ -1024,7 +1027,7 @@ public class PascalSyntacticAutomata {
 				expect(WordSymbols.END);
 				break;
 			default:
-				LOGGER.error("UNKNOWN or MISPLACED WORD " + word.getName());
+				logger.error("UNKNOWN or MISPLACED WORD " + word.getName());
 				break;
 			}
 		} else if (symbol instanceof OperatorSymbols) {
@@ -1039,12 +1042,12 @@ public class PascalSyntacticAutomata {
 				}
 				break;
 			default:
-				LOGGER.error("UNKNOWN or MISPLACED OPERATOR " + operator.getName());
+				logger.error("UNKNOWN or MISPLACED OPERATOR " + operator.getName());
 				break;
 			}
 		}
 
-		LOGGER.exit();
+		logger.exit();
 		return node;
 	}
 
@@ -1052,14 +1055,14 @@ public class PascalSyntacticAutomata {
 		SyntaticTreeNode node;
 		String method = "condicao";
 
-		LOGGER.entry();
+		logger.entry();
 		node = new SyntaticTreeNode(parent, method, null);
 
 		node.add(expressao(node));
 		node.add(relacao(node));
 		node.add(expressao(node));
 
-		LOGGER.exit();
+		logger.exit();
 		return node;
 	}
 
@@ -1067,7 +1070,7 @@ public class PascalSyntacticAutomata {
 		SyntaticTreeNode node;
 		String method = "relacao";
 
-		LOGGER.entry();
+		logger.entry();
 		node = new SyntaticTreeNode(parent, method, null);
 
 		Collection<Symbol> relacoesPossiveis = new LinkedList<Symbol>();
@@ -1080,7 +1083,7 @@ public class PascalSyntacticAutomata {
 
 		expect(relacoesPossiveis);
 
-		LOGGER.exit();
+		logger.exit();
 		return node;
 	}
 
@@ -1088,13 +1091,13 @@ public class PascalSyntacticAutomata {
 		SyntaticTreeNode node;
 		String method = "expressao";
 
-		LOGGER.entry();
+		logger.entry();
 		node = new SyntaticTreeNode(parent, method, null);
 
 		node.add(termo(node));
 		node.add(outrosTermos(node));
 
-		LOGGER.exit();
+		logger.exit();
 		return node;
 	}
 
@@ -1103,20 +1106,20 @@ public class PascalSyntacticAutomata {
 		SyntaticTreeNode node;
 		String method = "outrosTermos";
 
-		LOGGER.entry();
+		logger.entry();
 		node = new SyntaticTreeNode(parent, method, null);
 
 		try {
 			node.add(operadorUnario(node));
 		} catch (SyntacticAutomataException e) {
-			LOGGER.exit();
+			logger.exit();
 			return node;
 
 		}
 		node.add(termo(node));
 		node.add(outrosTermos(node));
 
-		LOGGER.exit();
+		logger.exit();
 		return node;
 	}
 
@@ -1124,20 +1127,20 @@ public class PascalSyntacticAutomata {
 		SyntaticTreeNode node;
 		String method = "termo";
 
-		LOGGER.entry();
+		logger.entry();
 		node = new SyntaticTreeNode(parent, method, null);
 
 		try {
 			node.add(operadorBinario(node));
 		} catch (SyntacticAutomataException e) {
-			LOGGER.exit();
+			logger.exit();
 			return node;
 		}
 
 		node.add(fator(node));
 		node.add(maisFatores(node));
 
-		LOGGER.exit();
+		logger.exit();
 		return node;
 	}
 
@@ -1145,13 +1148,13 @@ public class PascalSyntacticAutomata {
 		SyntaticTreeNode node;
 		String method = "maisFatores";
 
-		LOGGER.entry();
+		logger.entry();
 		node = new SyntaticTreeNode(parent, method, null);
 
 		node.add(operadorBinario(node));
 		node.add(fator(node));
 
-		LOGGER.exit();
+		logger.exit();
 		return node;
 	}
 
@@ -1160,7 +1163,7 @@ public class PascalSyntacticAutomata {
 		SyntaticTreeNode node;
 		String method = "operadorBinario";
 
-		LOGGER.entry();
+		logger.entry();
 		node = new SyntaticTreeNode(parent, method, null);
 
 		Collection<Symbol> operadoresPossiveis = new LinkedList<Symbol>();
@@ -1169,7 +1172,7 @@ public class PascalSyntacticAutomata {
 
 		expect(operadoresPossiveis);
 
-		LOGGER.exit();
+		logger.exit();
 		return node;
 	}
 
@@ -1178,7 +1181,7 @@ public class PascalSyntacticAutomata {
 		SyntaticTreeNode node;
 		String method = "operadorUnario";
 
-		LOGGER.entry();
+		logger.entry();
 		node = new SyntaticTreeNode(parent, method, null);
 
 		Collection<Symbol> operadoresPossiveis = new LinkedList<Symbol>();
@@ -1187,7 +1190,7 @@ public class PascalSyntacticAutomata {
 
 		expect(operadoresPossiveis);
 
-		LOGGER.exit();
+		logger.exit();
 		return node;
 	}
 
@@ -1195,7 +1198,7 @@ public class PascalSyntacticAutomata {
 		SyntaticTreeNode node;
 		String method = "fator";
 
-		LOGGER.entry();
+		logger.entry();
 		node = new SyntaticTreeNode(parent, method, null);
 
 		Collection<Symbol> fatoresPossiveis = new LinkedList<Symbol>();
@@ -1214,12 +1217,12 @@ public class PascalSyntacticAutomata {
 				expect(OperatorSymbols.OPEN_PARENTHESIS.getMirror());
 				break;
 			default:
-				LOGGER.error("UNKNOWN FACTOR " + fator.getName());
+				logger.error("UNKNOWN FACTOR " + fator.getName());
 				break;
 			}
 		}
 
-		LOGGER.exit();
+		logger.exit();
 		return node;
 	}
 }

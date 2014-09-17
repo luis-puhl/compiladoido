@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Configuration status="ALL"
-	strict="true" 
-    name="TestingAttributes"  
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-    xsi:noNamespaceSchemaLocation="Log4j-config.xsd">
-    
+<Configuration status="ALL" name="TestingAttributes"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="Log4j-config.xsd">
+
+	<Properties>
+		<Property name="filename">${sys:log4j.copileErrorsFile}</Property>
+	</Properties>
+
 	<Appenders>
 		<Console name="Console" target="SYSTEM_OUT">
 			<!-- Flow tracing is most useful with a pattern that shows location. Below 
@@ -16,23 +18,26 @@
 			<PatternLayout
 				pattern="%d{HH:mm:ss.SSS} %-5level %class{36} %L %M - %msg%xEx%n" />
 		</Console>
-		
-		<File name="ErrorFile" fileName="compiladoido.log">
+
+		<File name="ErrorFile" fileName="${filename}">
 			<PatternLayout
 				pattern="%d{HH:mm:ss.SSS} %-5level %class{36} %L %M - %msg%xEx%n" />
 		</File>
 	</Appenders>
-	
+
 	<Loggers>
 		<!-- Class specific -->
 		<Logger name="si.vv.pokebola.compiladoido.LexicalAutomata"
 			level="WARN" additivity="false">
-			<AppenderRef ref="Console" />
+			<AppenderRef ref="ErrorFile" />
 		</Logger>
 
 		<!-- Project specific -->
-		<Logger name="si.vv.pokebola" level="ALL" additivity="false">
+		<Logger name="si.vv.pokebola" level="ALL">
 			<AppenderRef ref="Console" />
+		</Logger>
+		<Logger name="si.vv.pokebola" level="ALL">
+			<AppenderRef ref="ErrorFile" />
 		</Logger>
 
 		<!-- All others -->

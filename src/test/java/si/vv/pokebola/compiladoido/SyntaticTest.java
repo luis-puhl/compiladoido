@@ -9,12 +9,13 @@ import si.vv.pokebola.compiladoido.beans.SyntaticTreeNode;
 
 public class SyntaticTest {
 	
-	private static final Logger LOGGER = LogManager.getLogger();
+	private static Logger LOGGER;
 	
 	@Before
 	public void setUp() throws Exception {
 		Compiladoido.getInstance();
-		LOGGER.info("Testing Lexico");
+		LOGGER = LogManager.getLogger();
+		LOGGER.info("Testing SyntacticWarper");
 	}
 	
 	@Test
@@ -54,6 +55,11 @@ public class SyntaticTest {
 		LexicalAutomata lexico;
 		StringBuffer stringBuffer;
 		SyntacticWarper sintatico;
+		
+		try {
+			setUp();
+		} catch (Exception e) {
+		}
 		
 		stringBuffer = CompiladoidoTests.getWikiProgramProcedure();
 		lexico = new LexicalAutomata(stringBuffer);

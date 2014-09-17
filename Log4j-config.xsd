@@ -71,13 +71,14 @@
 		<xs:attribute name="fileName" type="xs:string" use="optional" />
 	</xs:complexType>
 	<xs:complexType name="FileType">
-		<xs:sequence>
+		<xs:choice minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="Layout" type="LayoutType" minOccurs="0" />
 			<xs:element name="PatternLayout" type="PatternLayoutType" minOccurs="0" />
 			<xs:choice minOccurs="0" maxOccurs="1">
 				<xs:element name="Filters" type="FiltersType" />
 				<xs:element name="Filter" type="FilterType" />
 			</xs:choice>
-		</xs:sequence>
+		</xs:choice>
 		<xs:attribute name="target" type="xs:string" use="optional" />
 		<xs:attribute name="name" type="xs:string" use="required" />
 		<xs:attribute name="fileName" type="xs:string" use="required" />
@@ -155,8 +156,8 @@
 		<xs:sequence>
 			<xs:element name="Pattern" type="xs:string" minOccurs="0" />
 		</xs:sequence>
-		<xs:attribute name="Type" type="xs:string" use="required" />
-		<xs:attribute name="Pattern" type="xs:string" use="optional" />
+		<xs:attribute name="type" type="xs:string" use="required" />
+		<xs:attribute name="pattern" type="xs:string" use="optional" />
 	</xs:complexType>
 	<xs:complexType name="PatternLayoutType">
 		<xs:sequence>

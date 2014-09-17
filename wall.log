@@ -1,0 +1,915 @@
+18:39:01.824 DEBUG si.vv.pokebola.compiladoido.Compiladoido 101 <init> - Logger created
+18:39:01.828 INFO  si.vv.pokebola.compiladoido.SyntaticTest 18 setUp - Testing SyntacticWarper
+18:39:01.830 INFO  si.vv.pokebola.compiladoido.SyntaticTest 18 setUp - Testing SyntacticWarper
+18:39:01.865 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 117 program - entry
+18:39:01.866 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 145 programHeader - entry
+18:39:01.869 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=PROGRAM, texto=program]
+18:39:01.870 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=ID, texto=Mine]
+18:39:01.871 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=(, texto=(]
+18:39:01.871 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=), texto=)]
+18:39:01.871 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 165 programHeader - exit
+18:39:01.871 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=;, texto=;]
+18:39:01.872 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 187 usesClause - entry
+18:39:01.872 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=VAR, texto=var]
+18:39:01.873 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 128 program - No USES CLAUSE declaration
+18:39:01.873 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 229 block - entry
+18:39:01.873 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 247 declarationPart - entry
+18:39:01.874 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 290 variableDeclarationPart - entry
+18:39:01.874 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=VAR, texto=var]
+18:39:01.874 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 364 variableDeclaration - entry
+18:39:01.874 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=ID, texto=i]
+18:39:01.875 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=:, texto=:]
+18:39:01.875 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 411 type - entry
+18:39:01.875 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=INTEGER, texto=integer]
+18:39:01.876 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 417 type - exit
+18:39:01.876 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=;, texto=;]
+18:39:01.877 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 426 variableModifiers - entry
+18:39:01.877 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=;, texto=;]
+18:39:01.877 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=;, texto=;]
+18:39:01.877 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=PROCEDURE, texto=procedure]
+18:39:01.878 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=PROCEDURE, texto=procedure]
+18:39:01.878 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=PROCEDURE, texto=procedure]
+18:39:01.879 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=PROCEDURE, texto=procedure]
+18:39:01.879 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 475 variableModifiers - exit
+18:39:01.879 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 769 hintDirective - entry
+18:39:01.879 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=PROCEDURE, texto=procedure]
+18:39:01.880 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 791 hintDirective - exit
+18:39:01.880 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=PROCEDURE, texto=procedure]
+18:39:01.880 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 303 variableDeclarationPart - exit
+18:39:01.881 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 320 procedureFuncionDeclarationPart - entry
+18:39:01.881 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 325 procedureFuncionDeclarationPart - Geting a procedure/function
+18:39:01.881 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 491 procedureDeclaration - entry
+18:39:01.881 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=PROCEDURE, texto=procedure]
+18:39:01.882 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=ID, texto=Print]
+18:39:01.882 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 629 formalParameterList - entry
+18:39:01.882 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=(, texto=(]
+18:39:01.882 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 654 parameterDeclaration - entry
+18:39:01.883 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 679 valueParameter - entry
+18:39:01.883 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 745 identifierList - entry
+18:39:01.883 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=VAR, texto=var]
+18:39:01.884 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=VAR, texto=var]
+18:39:01.884 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 718 variableParameter - entry
+18:39:01.884 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=VAR, texto=var]
+18:39:01.884 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 745 identifierList - entry
+18:39:01.885 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=ID, texto=j]
+18:39:01.886 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=:, texto=:]
+18:39:01.887 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 757 identifierList - exit
+18:39:01.887 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=:, texto=:]
+18:39:01.887 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=INTEGER, texto=integer]
+18:39:01.887 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 411 type - entry
+18:39:01.888 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=INTEGER, texto=integer]
+18:39:01.888 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 417 type - exit
+18:39:01.888 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 736 variableParameter - exit
+18:39:01.888 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 663 parameterDeclaration - exit
+18:39:01.889 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=), texto=)]
+18:39:01.889 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=), texto=)]
+18:39:01.890 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 645 formalParameterList - exit
+18:39:01.890 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 769 hintDirective - entry
+18:39:01.890 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=;, texto=;]
+18:39:01.891 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 791 hintDirective - exit
+18:39:01.891 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=;, texto=;]
+18:39:01.891 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 521 subroutineBlock - entry
+18:39:01.891 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 229 block - entry
+18:39:01.892 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 247 declarationPart - entry
+18:39:01.892 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 290 variableDeclarationPart - entry
+18:39:01.892 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=BEGIN, texto=begin]
+18:39:01.893 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 320 procedureFuncionDeclarationPart - entry
+18:39:01.894 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 325 procedureFuncionDeclarationPart - Geting a procedure/function
+18:39:01.894 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 491 procedureDeclaration - entry
+18:39:01.894 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=BEGIN, texto=begin]
+18:39:01.894 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 566 functionDeclaration - entry
+18:39:01.895 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=BEGIN, texto=begin]
+18:39:01.895 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 348 procedureFuncionDeclarationPart - exit
+18:39:01.895 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 261 declarationPart - exit
+18:39:01.896 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 804 compoundStatement - entry
+18:39:01.896 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=BEGIN, texto=begin]
+18:39:01.896 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 976 cmd - entry
+18:39:01.897 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=END, texto=end]
+18:39:01.897 INFO  si.vv.pokebola.compiladoido.SyntacticAutomataException 95 log - READ, WRITE, WHILE, REPEAT, IF, ID, SEMICOLON, BEGIN,  Expected.Got END
+	 at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.cmd(PascalSyntacticAutomata.java:989)
+18:39:01.897 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=END, texto=end]
+18:39:01.898 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 566 functionDeclaration - entry
+18:39:01.898 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=END, texto=end]
+18:39:01.898 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 348 procedureFuncionDeclarationPart - exit
+18:39:01.899 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 261 declarationPart - exit
+18:39:01.899 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 804 compoundStatement - entry
+18:39:01.899 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=END, texto=end]
+18:39:01.899 INFO  si.vv.pokebola.compiladoido.SyntacticAutomataException 95 log - BEGIN,  Expected.Got END
+	 at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.compoundStatement(PascalSyntacticAutomata.java:807)
+18:39:01.899 FATAL si.vv.pokebola.compiladoido.SyntacticWarper 29 parse - Automato didn't run fine =( =( =( 
+18:41:39.985 DEBUG si.vv.pokebola.compiladoido.Compiladoido 101 <init> - Logger created
+18:41:39.988 INFO  si.vv.pokebola.compiladoido.SyntaticTest 18 setUp - Testing SyntacticWarper
+18:41:39.990 INFO  si.vv.pokebola.compiladoido.SyntaticTest 18 setUp - Testing SyntacticWarper
+18:41:40.030 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 117 program - entry
+18:41:40.032 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 145 programHeader - entry
+18:41:40.035 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=PROGRAM, texto=program]
+18:41:40.036 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=ID, texto=Mine]
+18:41:40.036 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=(, texto=(]
+18:41:40.036 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=), texto=)]
+18:41:40.037 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 165 programHeader - exit
+18:41:40.037 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=;, texto=;]
+18:41:40.037 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 187 usesClause - entry
+18:41:40.038 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=VAR, texto=var]
+18:41:40.039 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 128 program - No USES CLAUSE declaration
+18:41:40.039 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 229 block - entry
+18:41:40.039 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 247 declarationPart - entry
+18:41:40.039 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 290 variableDeclarationPart - entry
+18:41:40.040 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=VAR, texto=var]
+18:41:40.040 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 364 variableDeclaration - entry
+18:41:40.040 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=ID, texto=i]
+18:41:40.040 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=:, texto=:]
+18:41:40.041 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 411 type - entry
+18:41:40.041 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=INTEGER, texto=integer]
+18:41:40.042 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 417 type - exit
+18:41:40.042 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=;, texto=;]
+18:41:40.042 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 426 variableModifiers - entry
+18:41:40.043 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=;, texto=;]
+18:41:40.043 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=;, texto=;]
+18:41:40.044 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=PROCEDURE, texto=procedure]
+18:41:40.044 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=PROCEDURE, texto=procedure]
+18:41:40.044 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=PROCEDURE, texto=procedure]
+18:41:40.045 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=PROCEDURE, texto=procedure]
+18:41:40.045 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 475 variableModifiers - exit
+18:41:40.045 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 769 hintDirective - entry
+18:41:40.046 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=PROCEDURE, texto=procedure]
+18:41:40.046 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 791 hintDirective - exit
+18:41:40.046 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=PROCEDURE, texto=procedure]
+18:41:40.047 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 303 variableDeclarationPart - exit
+18:41:40.047 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 320 procedureFuncionDeclarationPart - entry
+18:41:40.047 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 325 procedureFuncionDeclarationPart - Geting a procedure/function
+18:41:40.047 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 491 procedureDeclaration - entry
+18:41:40.047 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=PROCEDURE, texto=procedure]
+18:41:40.048 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=ID, texto=Print]
+18:41:40.048 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 629 formalParameterList - entry
+18:41:40.048 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=(, texto=(]
+18:41:40.049 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 654 parameterDeclaration - entry
+18:41:40.049 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 679 valueParameter - entry
+18:41:40.049 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 745 identifierList - entry
+18:41:40.049 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=VAR, texto=var]
+18:41:40.050 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=VAR, texto=var]
+18:41:40.050 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 718 variableParameter - entry
+18:41:40.050 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=VAR, texto=var]
+18:41:40.051 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 745 identifierList - entry
+18:41:40.051 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=ID, texto=j]
+18:41:40.051 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=:, texto=:]
+18:41:40.052 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 757 identifierList - exit
+18:41:40.052 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=:, texto=:]
+18:41:40.053 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=INTEGER, texto=integer]
+18:41:40.053 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 411 type - entry
+18:41:40.053 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=INTEGER, texto=integer]
+18:41:40.054 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 417 type - exit
+18:41:40.054 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 736 variableParameter - exit
+18:41:40.054 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 663 parameterDeclaration - exit
+18:41:40.055 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=), texto=)]
+18:41:40.055 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=), texto=)]
+18:41:40.056 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 645 formalParameterList - exit
+18:41:40.056 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 769 hintDirective - entry
+18:41:40.056 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=;, texto=;]
+18:41:40.057 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 791 hintDirective - exit
+18:41:40.057 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=;, texto=;]
+18:41:40.057 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 521 subroutineBlock - entry
+18:41:40.057 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 229 block - entry
+18:41:40.057 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 247 declarationPart - entry
+18:41:40.058 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 290 variableDeclarationPart - entry
+18:41:40.058 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=BEGIN, texto=begin]
+18:41:40.058 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 320 procedureFuncionDeclarationPart - entry
+18:41:40.058 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 325 procedureFuncionDeclarationPart - Geting a procedure/function
+18:41:40.059 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 491 procedureDeclaration - entry
+18:41:40.059 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=BEGIN, texto=begin]
+18:41:40.059 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 566 functionDeclaration - entry
+18:41:40.059 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=BEGIN, texto=begin]
+18:41:40.060 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 348 procedureFuncionDeclarationPart - exit
+18:41:40.060 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 261 declarationPart - exit
+18:41:40.060 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 804 compoundStatement - entry
+18:41:40.061 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=BEGIN, texto=begin]
+18:41:40.061 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 976 cmd - entry
+18:41:40.061 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=END, texto=end]
+18:41:40.062 INFO  si.vv.pokebola.compiladoido.SyntacticAutomataException 95 log - READ, WRITE, WHILE, REPEAT, IF, ID, SEMICOLON, BEGIN,  Expected.Got END
+	 at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.cmd(PascalSyntacticAutomata.java:989)
+18:41:40.063 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=END, texto=end]
+18:41:40.063 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 566 functionDeclaration - entry
+18:41:40.063 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=END, texto=end]
+18:41:40.064 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 348 procedureFuncionDeclarationPart - exit
+18:41:40.064 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 261 declarationPart - exit
+18:41:40.064 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 804 compoundStatement - entry
+18:41:40.064 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=END, texto=end]
+18:41:40.065 INFO  si.vv.pokebola.compiladoido.SyntacticAutomataException 95 log - BEGIN,  Expected.Got END
+	 at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.compoundStatement(PascalSyntacticAutomata.java:807)
+18:41:40.065 FATAL si.vv.pokebola.compiladoido.SyntacticWarper 29 parse - Automato didn't run fine =( =( =( 
+18:56:52.120 DEBUG si.vv.pokebola.compiladoido.Compiladoido 101 <init> - Logger created
+18:56:52.125 INFO  si.vv.pokebola.compiladoido.SyntaticTest 18 setUp - Testing SyntacticWarper
+18:56:52.127 INFO  si.vv.pokebola.compiladoido.SyntaticTest 18 setUp - Testing SyntacticWarper
+18:56:52.167 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 117 program - entry
+18:56:52.169 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 145 programHeader - entry
+18:56:52.175 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=PROGRAM, texto=program]
+18:56:52.176 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=ID, texto=Mine]
+18:56:52.177 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=(, texto=(]
+18:56:52.178 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=), texto=)]
+18:56:52.178 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 165 programHeader - exit
+18:56:52.179 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=;, texto=;]
+18:56:52.180 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 187 usesClause - entry
+18:56:52.181 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=VAR, texto=var]
+18:56:52.182 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 128 program - No USES CLAUSE declaration
+18:56:52.183 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 229 block - entry
+18:56:52.191 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 247 declarationPart - entry
+18:56:52.191 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 290 variableDeclarationPart - entry
+18:56:52.192 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=VAR, texto=var]
+18:56:52.193 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 364 variableDeclaration - entry
+18:56:52.193 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=ID, texto=i]
+18:56:52.194 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=:, texto=:]
+18:56:52.194 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 411 type - entry
+18:56:52.195 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=INTEGER, texto=integer]
+18:56:52.197 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 417 type - exit
+18:56:52.197 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=;, texto=;]
+18:56:52.198 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 426 variableModifiers - entry
+18:56:52.198 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=;, texto=;]
+18:56:52.199 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=;, texto=;]
+18:56:52.199 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=PROCEDURE, texto=procedure]
+18:56:52.200 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=PROCEDURE, texto=procedure]
+18:56:52.202 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=PROCEDURE, texto=procedure]
+18:56:52.202 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=PROCEDURE, texto=procedure]
+18:56:52.203 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 475 variableModifiers - exit
+18:56:52.204 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 769 hintDirective - entry
+18:56:52.205 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=PROCEDURE, texto=procedure]
+18:56:52.205 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 791 hintDirective - exit
+18:56:52.206 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=PROCEDURE, texto=procedure]
+18:56:52.206 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 303 variableDeclarationPart - exit
+18:56:52.207 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 320 procedureFuncionDeclarationPart - entry
+18:56:52.207 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 325 procedureFuncionDeclarationPart - Geting a procedure/function
+18:56:52.208 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 491 procedureDeclaration - entry
+18:56:52.208 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=PROCEDURE, texto=procedure]
+18:56:52.209 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=ID, texto=Print]
+18:56:52.209 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 629 formalParameterList - entry
+18:56:52.210 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=(, texto=(]
+18:56:52.210 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 654 parameterDeclaration - entry
+18:56:52.211 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 679 valueParameter - entry
+18:56:52.212 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 745 identifierList - entry
+18:56:52.213 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=VAR, texto=var]
+18:56:52.214 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=VAR, texto=var]
+18:56:52.214 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 718 variableParameter - entry
+18:56:52.215 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=VAR, texto=var]
+18:56:52.215 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 745 identifierList - entry
+18:56:52.216 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=ID, texto=j]
+18:56:52.216 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=:, texto=:]
+18:56:52.217 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 757 identifierList - exit
+18:56:52.217 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=:, texto=:]
+18:56:52.218 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=INTEGER, texto=integer]
+18:56:52.219 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 411 type - entry
+18:56:52.219 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=INTEGER, texto=integer]
+18:56:52.221 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 417 type - exit
+18:56:52.221 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 736 variableParameter - exit
+18:56:52.222 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 663 parameterDeclaration - exit
+18:56:52.222 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=), texto=)]
+18:56:52.223 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=), texto=)]
+18:56:52.223 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 645 formalParameterList - exit
+18:56:52.224 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 769 hintDirective - entry
+18:56:52.224 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=;, texto=;]
+18:56:52.225 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 791 hintDirective - exit
+18:56:52.225 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=;, texto=;]
+18:56:52.226 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 521 subroutineBlock - entry
+18:56:52.226 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 229 block - entry
+18:56:52.227 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 247 declarationPart - entry
+18:56:52.228 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 290 variableDeclarationPart - entry
+18:56:52.229 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=BEGIN, texto=begin]
+18:56:52.230 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 320 procedureFuncionDeclarationPart - entry
+18:56:52.230 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 325 procedureFuncionDeclarationPart - Geting a procedure/function
+18:56:52.230 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 491 procedureDeclaration - entry
+18:56:52.231 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=BEGIN, texto=begin]
+18:56:52.231 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 566 functionDeclaration - entry
+18:56:52.232 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=BEGIN, texto=begin]
+18:56:52.233 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 348 procedureFuncionDeclarationPart - exit
+18:56:52.233 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 261 declarationPart - exit
+18:56:52.233 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 804 compoundStatement - entry
+18:56:52.234 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=BEGIN, texto=begin]
+18:56:52.234 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 976 cmd - entry
+18:56:52.235 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=END, texto=end]
+18:56:52.237 INFO  si.vv.pokebola.compiladoido.SyntacticAutomataException 95 log - READ, WRITE, WHILE, REPEAT, IF, ID, SEMICOLON, BEGIN,  Expected.Got END
+	 at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.cmd(PascalSyntacticAutomata.java:989)
+18:56:52.238 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=END, texto=end]
+18:56:52.238 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 566 functionDeclaration - entry
+18:56:52.239 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=END, texto=end]
+18:56:52.239 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 348 procedureFuncionDeclarationPart - exit
+18:56:52.240 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 261 declarationPart - exit
+18:56:52.240 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 804 compoundStatement - entry
+18:56:52.241 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=END, texto=end]
+18:56:52.241 INFO  si.vv.pokebola.compiladoido.SyntacticAutomataException 95 log - BEGIN,  Expected.Got END
+	 at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.compoundStatement(PascalSyntacticAutomata.java:807)
+18:56:52.242 FATAL si.vv.pokebola.compiladoido.SyntacticWarper 29 parse - Automato didn't run fine =( =( =( 
+18:57:18.194 DEBUG si.vv.pokebola.compiladoido.Compiladoido 101 <init> - Logger created
+18:57:18.198 INFO  si.vv.pokebola.compiladoido.SyntaticTest 18 setUp - Testing SyntacticWarper
+18:57:18.200 INFO  si.vv.pokebola.compiladoido.SyntaticTest 18 setUp - Testing SyntacticWarper
+18:57:18.251 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 117 program - entry
+18:57:18.253 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 145 programHeader - entry
+18:57:18.257 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=PROGRAM, texto=program]
+18:57:18.258 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=ID, texto=Mine]
+18:57:18.259 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=(, texto=(]
+18:57:18.259 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=), texto=)]
+18:57:18.260 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 165 programHeader - exit
+18:57:18.260 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=;, texto=;]
+18:57:18.261 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 187 usesClause - entry
+18:57:18.261 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=VAR, texto=var]
+18:57:18.262 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 128 program - No USES CLAUSE declaration
+18:57:18.263 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 229 block - entry
+18:57:18.263 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 247 declarationPart - entry
+18:57:18.264 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 290 variableDeclarationPart - entry
+18:57:18.264 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=VAR, texto=var]
+18:57:18.265 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 364 variableDeclaration - entry
+18:57:18.265 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=ID, texto=i]
+18:57:18.266 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=:, texto=:]
+18:57:18.266 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 411 type - entry
+18:57:18.267 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=INTEGER, texto=integer]
+18:57:18.267 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 417 type - exit
+18:57:18.268 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=;, texto=;]
+18:57:18.269 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 426 variableModifiers - entry
+18:57:18.269 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=;, texto=;]
+18:57:18.270 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=;, texto=;]
+18:57:18.270 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=PROCEDURE, texto=procedure]
+18:57:18.273 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=PROCEDURE, texto=procedure]
+18:57:18.274 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=PROCEDURE, texto=procedure]
+18:57:18.274 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=PROCEDURE, texto=procedure]
+18:57:18.275 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 475 variableModifiers - exit
+18:57:18.275 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 769 hintDirective - entry
+18:57:18.276 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=PROCEDURE, texto=procedure]
+18:57:18.276 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 791 hintDirective - exit
+18:57:18.277 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=PROCEDURE, texto=procedure]
+18:57:18.277 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 303 variableDeclarationPart - exit
+18:57:18.278 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 320 procedureFuncionDeclarationPart - entry
+18:57:18.278 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 325 procedureFuncionDeclarationPart - Geting a procedure/function
+18:57:18.278 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 491 procedureDeclaration - entry
+18:57:18.279 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=PROCEDURE, texto=procedure]
+18:57:18.279 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=ID, texto=Print]
+18:57:18.280 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 629 formalParameterList - entry
+18:57:18.280 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=(, texto=(]
+18:57:18.281 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 654 parameterDeclaration - entry
+18:57:18.281 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 679 valueParameter - entry
+18:57:18.281 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 745 identifierList - entry
+18:57:18.282 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=VAR, texto=var]
+18:57:18.282 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=VAR, texto=var]
+18:57:18.283 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 718 variableParameter - entry
+18:57:18.283 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=VAR, texto=var]
+18:57:18.283 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 745 identifierList - entry
+18:57:18.284 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=ID, texto=j]
+18:57:18.284 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=:, texto=:]
+18:57:18.285 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 757 identifierList - exit
+18:57:18.285 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=:, texto=:]
+18:57:18.286 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=INTEGER, texto=integer]
+18:57:18.286 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 411 type - entry
+18:57:18.287 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=INTEGER, texto=integer]
+18:57:18.287 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 417 type - exit
+18:57:18.288 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 736 variableParameter - exit
+18:57:18.288 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 663 parameterDeclaration - exit
+18:57:18.289 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=), texto=)]
+18:57:18.289 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=), texto=)]
+18:57:18.290 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 645 formalParameterList - exit
+18:57:18.290 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 769 hintDirective - entry
+18:57:18.290 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=;, texto=;]
+18:57:18.291 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 791 hintDirective - exit
+18:57:18.291 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=;, texto=;]
+18:57:18.291 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 521 subroutineBlock - entry
+18:57:18.292 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 229 block - entry
+18:57:18.292 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 247 declarationPart - entry
+18:57:18.292 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 290 variableDeclarationPart - entry
+18:57:18.293 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=BEGIN, texto=begin]
+18:57:18.293 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 320 procedureFuncionDeclarationPart - entry
+18:57:18.294 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 325 procedureFuncionDeclarationPart - Geting a procedure/function
+18:57:18.294 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 491 procedureDeclaration - entry
+18:57:18.294 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=BEGIN, texto=begin]
+18:57:18.295 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 566 functionDeclaration - entry
+18:57:18.295 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=BEGIN, texto=begin]
+18:57:18.296 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 348 procedureFuncionDeclarationPart - exit
+18:57:18.296 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 261 declarationPart - exit
+18:57:18.297 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 804 compoundStatement - entry
+18:57:18.297 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=BEGIN, texto=begin]
+18:57:18.297 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 976 cmd - entry
+18:57:18.298 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=END, texto=end]
+18:57:18.299 INFO  si.vv.pokebola.compiladoido.SyntacticAutomataException 95 log - READ, WRITE, WHILE, REPEAT, IF, ID, SEMICOLON, BEGIN,  Expected.Got END
+	 at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.cmd(PascalSyntacticAutomata.java:989)
+18:57:18.299 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=END, texto=end]
+18:57:18.300 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 566 functionDeclaration - entry
+18:57:18.300 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=END, texto=end]
+18:57:18.301 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 348 procedureFuncionDeclarationPart - exit
+18:57:18.301 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 261 declarationPart - exit
+18:57:18.301 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 804 compoundStatement - entry
+18:57:18.302 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=END, texto=end]
+18:57:18.302 INFO  si.vv.pokebola.compiladoido.SyntacticAutomataException 95 log - BEGIN,  Expected.Got END
+	 at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.compoundStatement(PascalSyntacticAutomata.java:807)
+18:57:18.303 FATAL si.vv.pokebola.compiladoido.SyntacticWarper 29 parse - Automato didn't run fine =( =( =( 
+18:57:51.222 DEBUG si.vv.pokebola.compiladoido.Compiladoido 101 <init> - Logger created
+18:57:51.228 INFO  si.vv.pokebola.compiladoido.SyntaticTest 18 setUp - Testing SyntacticWarper
+18:57:51.230 INFO  si.vv.pokebola.compiladoido.SyntaticTest 18 setUp - Testing SyntacticWarper
+18:57:55.123 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 117 program - entry
+18:57:57.880 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 145 programHeader - entry
+18:57:57.911 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=PROGRAM, texto=program]
+18:57:57.919 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=ID, texto=Mine]
+18:57:57.925 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=(, texto=(]
+18:57:57.931 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=), texto=)]
+18:57:57.936 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 165 programHeader - exit
+18:58:02.081 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=;, texto=;]
+18:58:03.412 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 187 usesClause - entry
+18:58:03.415 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 66 getTokenLexico - 
+	Token [symbol=VAR, texto=var]
+18:58:03.991 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 128 program - No USES CLAUSE declaration
+18:58:45.395 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 118 program - entry
+18:58:45.742 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 147 programHeader - entry
+18:58:45.743 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 67 getTokenLexico - 
+	Token [symbol=VAR, texto=var]
+18:58:46.268 INFO  si.vv.pokebola.compiladoido.SyntacticAutomataException 95 log - PROGRAM,  Expected.Got VAR
+	 at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.programHeader(PascalSyntacticAutomata.java:150)
+18:58:47.989 FATAL si.vv.pokebola.compiladoido.SyntacticWarper 29 parse - Automato didn't run fine =( =( =( 
+18:58:53.695 DEBUG si.vv.pokebola.compiladoido.Compiladoido 101 <init> - Logger created
+18:58:53.699 INFO  si.vv.pokebola.compiladoido.SyntaticTest 18 setUp - Testing SyntacticWarper
+18:58:53.702 INFO  si.vv.pokebola.compiladoido.SyntaticTest 18 setUp - Testing SyntacticWarper
+18:58:55.225 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 118 program - entry
+18:58:55.841 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 147 programHeader - entry
+18:58:55.869 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 67 getTokenLexico - 
+	Token [symbol=PROGRAM, texto=program]
+18:58:55.876 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 67 getTokenLexico - 
+	Token [symbol=ID, texto=Mine]
+18:58:55.882 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 67 getTokenLexico - 
+	Token [symbol=(, texto=(]
+18:58:55.888 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 67 getTokenLexico - 
+	Token [symbol=), texto=)]
+18:58:55.891 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 167 programHeader - exit
+18:58:56.037 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 67 getTokenLexico - 
+	Token [symbol=;, texto=;]
+18:58:56.248 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 189 usesClause - entry
+18:58:56.256 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 67 getTokenLexico - 
+	Token [symbol=VAR, texto=var]
+18:58:56.617 WARN  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 129 program - catching si.vv.pokebola.compiladoido.SyntacticAutomataException
+	at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.expect(PascalSyntacticAutomata.java:84) ~[classes/:?]
+	at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.expect(PascalSyntacticAutomata.java:98) ~[classes/:?]
+	at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.usesClause(PascalSyntacticAutomata.java:192) ~[classes/:?]
+	at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.program(PascalSyntacticAutomata.java:127) [classes/:?]
+	at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.run(PascalSyntacticAutomata.java:54) [classes/:?]
+	at si.vv.pokebola.compiladoido.SyntacticWarper.parse(SyntacticWarper.java:26) [classes/:?]
+	at si.vv.pokebola.compiladoido.SyntaticTest.testParseWikiProgramProcedure(SyntaticTest.java:69) [test-classes/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_20]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_20]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_20]
+	at java.lang.reflect.Method.invoke(Method.java:483) ~[?:1.8.0_20]
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47) [junit-4.11.jar:?]
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12) [junit-4.11.jar:?]
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44) [junit-4.11.jar:?]
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17) [junit-4.11.jar:?]
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:271) [junit-4.11.jar:?]
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:70) [junit-4.11.jar:?]
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:309) [junit-4.11.jar:?]
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:50) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:675) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192) [.cp/:?]
+
+18:58:57.072 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 130 program - No USES CLAUSE declaration
+18:59:05.261 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 231 block - entry
+18:59:18.913 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 249 declarationPart - entry
+18:59:21.912 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 292 variableDeclarationPart - entry
+18:59:21.919 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 67 getTokenLexico - 
+	Token [symbol=VAR, texto=var]
+18:59:21.926 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 366 variableDeclaration - entry
+18:59:21.932 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 67 getTokenLexico - 
+	Token [symbol=ID, texto=i]
+18:59:21.940 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 67 getTokenLexico - 
+	Token [symbol=:, texto=:]
+18:59:21.945 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 413 type - entry
+18:59:21.953 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 67 getTokenLexico - 
+	Token [symbol=INTEGER, texto=integer]
+18:59:21.958 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 419 type - exit
+18:59:21.963 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 67 getTokenLexico - 
+	Token [symbol=;, texto=;]
+18:59:21.970 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 428 variableModifiers - entry
+18:59:21.975 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 67 getTokenLexico - 
+	Token [symbol=;, texto=;]
+18:59:21.981 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 67 getTokenLexico - 
+	Token [symbol=;, texto=;]
+18:59:21.988 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 67 getTokenLexico - 
+	Token [symbol=PROCEDURE, texto=procedure]
+18:59:21.990 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 67 getTokenLexico - 
+	Token [symbol=PROCEDURE, texto=procedure]
+18:59:21.993 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 67 getTokenLexico - 
+	Token [symbol=PROCEDURE, texto=procedure]
+18:59:21.995 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 67 getTokenLexico - 
+	Token [symbol=PROCEDURE, texto=procedure]
+18:59:21.998 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 477 variableModifiers - exit
+18:59:22.000 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 771 hintDirective - entry
+18:59:22.002 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 67 getTokenLexico - 
+	Token [symbol=PROCEDURE, texto=procedure]
+18:59:22.004 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 793 hintDirective - exit
+18:59:22.006 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 67 getTokenLexico - 
+	Token [symbol=PROCEDURE, texto=procedure]
+18:59:22.009 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 305 variableDeclarationPart - exit
+19:00:33.062 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 322 procedureFuncionDeclarationPart - entry
+19:00:39.340 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 327 procedureFuncionDeclarationPart - Geting a procedure/function
+19:00:51.300 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 493 procedureDeclaration - entry
+19:01:00.121 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 67 getTokenLexico - 
+	Token [symbol=PROCEDURE, texto=procedure]
+19:01:14.850 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 67 getTokenLexico - 
+	Token [symbol=ID, texto=Print]
+19:01:26.757 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 631 formalParameterList - entry
+19:01:30.498 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 67 getTokenLexico - 
+	Token [symbol=(, texto=(]
+19:01:46.872 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 656 parameterDeclaration - entry
+19:01:50.144 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 681 valueParameter - entry
+19:01:50.154 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 747 identifierList - entry
+19:01:50.174 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 67 getTokenLexico - 
+	Token [symbol=VAR, texto=var]
+19:01:50.188 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 67 getTokenLexico - 
+	Token [symbol=VAR, texto=var]
+19:01:58.096 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 720 variableParameter - entry
+19:02:03.934 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 67 getTokenLexico - 
+	Token [symbol=VAR, texto=var]
+19:02:10.516 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 747 identifierList - entry
+19:02:13.137 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 67 getTokenLexico - 
+	Token [symbol=ID, texto=j]
+19:02:19.785 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 67 getTokenLexico - 
+	Token [symbol=:, texto=:]
+19:02:28.436 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 759 identifierList - exit
+19:02:36.245 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 67 getTokenLexico - 
+	Token [symbol=:, texto=:]
+19:02:42.557 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 67 getTokenLexico - 
+	Token [symbol=INTEGER, texto=integer]
+19:03:00.413 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 413 type - entry
+19:03:18.992 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 67 getTokenLexico - 
+	Token [symbol=INTEGER, texto=integer]
+19:03:36.352 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 419 type - exit
+19:03:48.687 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 738 variableParameter - exit
+19:03:55.512 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 665 parameterDeclaration - exit
+19:04:05.102 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 67 getTokenLexico - 
+	Token [symbol=), texto=)]
+19:04:10.801 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 67 getTokenLexico - 
+	Token [symbol=), texto=)]
+19:04:12.775 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 647 formalParameterList - exit
+19:04:54.039 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 771 hintDirective - entry
+19:05:08.808 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 67 getTokenLexico - 
+	Token [symbol=;, texto=;]
+19:05:13.129 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 793 hintDirective - exit
+19:05:29.120 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 67 getTokenLexico - 
+	Token [symbol=;, texto=;]
+19:05:46.983 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 523 subroutineBlock - entry
+19:05:49.735 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 231 block - entry
+19:05:49.741 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 249 declarationPart - entry
+19:05:49.746 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 292 variableDeclarationPart - entry
+19:05:49.752 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 67 getTokenLexico - 
+	Token [symbol=BEGIN, texto=begin]
+19:06:50.885 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 523 subroutineBlock - entry
+19:06:50.890 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 806 compoundStatement - entry
+19:06:50.902 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 67 getTokenLexico - 
+	Token [symbol=BEGIN, texto=begin]
+19:06:50.909 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 978 cmd - entry
+19:06:50.917 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 67 getTokenLexico - 
+	Token [symbol=END, texto=end]
+19:06:50.919 INFO  si.vv.pokebola.compiladoido.SyntacticAutomataException 95 log - READ, WRITE, WHILE, REPEAT, IF, ID, SEMICOLON, BEGIN,  Expected.Got END
+	 at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.cmd(PascalSyntacticAutomata.java:991)
+19:06:50.926 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 67 getTokenLexico - 
+	Token [symbol=END, texto=end]
+19:06:50.933 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 568 functionDeclaration - entry
+19:06:50.951 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 67 getTokenLexico - 
+	Token [symbol=END, texto=end]
+19:06:50.954 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 350 procedureFuncionDeclarationPart - exit
+19:06:50.956 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 263 declarationPart - exit
+19:06:50.958 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 806 compoundStatement - entry
+19:06:50.964 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 67 getTokenLexico - 
+	Token [symbol=END, texto=end]
+19:06:50.967 INFO  si.vv.pokebola.compiladoido.SyntacticAutomataException 95 log - BEGIN,  Expected.Got END
+	 at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.compoundStatement(PascalSyntacticAutomata.java:809)
+19:06:50.968 FATAL si.vv.pokebola.compiladoido.SyntacticWarper 29 parse - Automato didn't run fine =( =( =( 
+19:07:07.057 DEBUG si.vv.pokebola.compiladoido.Compiladoido 101 <init> - Logger created
+19:07:07.062 INFO  si.vv.pokebola.compiladoido.SyntaticTest 18 setUp - Testing SyntacticWarper
+19:07:07.064 INFO  si.vv.pokebola.compiladoido.SyntaticTest 18 setUp - Testing SyntacticWarper
+19:07:10.387 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 118 program - entry
+19:07:10.392 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 147 programHeader - entry
+19:07:10.405 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 67 getTokenLexico - 
+	Token [symbol=PROGRAM, texto=program]
+19:07:10.406 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 67 getTokenLexico - 
+	Token [symbol=ID, texto=Mine]
+19:07:10.407 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 67 getTokenLexico - 
+	Token [symbol=(, texto=(]
+19:07:10.408 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 67 getTokenLexico - 
+	Token [symbol=), texto=)]
+19:07:10.409 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 167 programHeader - exit
+19:07:10.411 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 67 getTokenLexico - 
+	Token [symbol=;, texto=;]
+19:07:10.412 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 189 usesClause - entry
+19:07:10.413 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 67 getTokenLexico - 
+	Token [symbol=VAR, texto=var]
+19:07:10.415 WARN  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 129 program - catching si.vv.pokebola.compiladoido.SyntacticAutomataException
+	at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.expect(PascalSyntacticAutomata.java:84) ~[classes/:?]
+	at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.expect(PascalSyntacticAutomata.java:98) ~[classes/:?]
+	at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.usesClause(PascalSyntacticAutomata.java:192) ~[classes/:?]
+	at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.program(PascalSyntacticAutomata.java:127) [classes/:?]
+	at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.run(PascalSyntacticAutomata.java:54) [classes/:?]
+	at si.vv.pokebola.compiladoido.SyntacticWarper.parse(SyntacticWarper.java:26) [classes/:?]
+	at si.vv.pokebola.compiladoido.SyntaticTest.testParseWikiProgramProcedure(SyntaticTest.java:69) [test-classes/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_20]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_20]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_20]
+	at java.lang.reflect.Method.invoke(Method.java:483) ~[?:1.8.0_20]
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47) [junit-4.11.jar:?]
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12) [junit-4.11.jar:?]
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44) [junit-4.11.jar:?]
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17) [junit-4.11.jar:?]
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:271) [junit-4.11.jar:?]
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:70) [junit-4.11.jar:?]
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:309) [junit-4.11.jar:?]
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:50) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:675) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192) [.cp/:?]
+
+19:07:10.442 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 130 program - No USES CLAUSE declaration
+19:07:10.446 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 231 block - entry
+19:07:10.449 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 249 declarationPart - entry
+19:07:10.450 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 292 variableDeclarationPart - entry
+19:07:10.450 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 67 getTokenLexico - 
+	Token [symbol=VAR, texto=var]
+19:07:10.451 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 366 variableDeclaration - entry
+19:07:10.453 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 67 getTokenLexico - 
+	Token [symbol=ID, texto=i]
+19:07:10.454 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 67 getTokenLexico - 
+	Token [symbol=:, texto=:]
+19:07:10.455 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 413 type - entry
+19:07:10.457 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 67 getTokenLexico - 
+	Token [symbol=INTEGER, texto=integer]
+19:07:10.458 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 419 type - exit
+19:07:10.459 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 67 getTokenLexico - 
+	Token [symbol=;, texto=;]
+19:07:10.461 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 428 variableModifiers - entry
+19:07:10.465 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 67 getTokenLexico - 
+	Token [symbol=;, texto=;]
+19:07:10.467 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 67 getTokenLexico - 
+	Token [symbol=;, texto=;]
+19:07:10.471 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 67 getTokenLexico - 
+	Token [symbol=PROCEDURE, texto=procedure]
+19:07:10.472 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 67 getTokenLexico - 
+	Token [symbol=PROCEDURE, texto=procedure]
+19:07:10.473 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 67 getTokenLexico - 
+	Token [symbol=PROCEDURE, texto=procedure]
+19:07:10.476 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 67 getTokenLexico - 
+	Token [symbol=PROCEDURE, texto=procedure]
+19:07:10.479 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 477 variableModifiers - exit
+19:07:10.481 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 771 hintDirective - entry
+19:07:10.482 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 67 getTokenLexico - 
+	Token [symbol=PROCEDURE, texto=procedure]
+19:07:10.483 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 793 hintDirective - exit
+19:07:10.486 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 67 getTokenLexico - 
+	Token [symbol=PROCEDURE, texto=procedure]
+19:07:10.486 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 305 variableDeclarationPart - exit
+19:07:15.251 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 322 procedureFuncionDeclarationPart - entry
+19:07:15.252 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 327 procedureFuncionDeclarationPart - Geting a procedure/function
+19:07:18.781 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 493 procedureDeclaration - entry
+19:07:18.782 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 67 getTokenLexico - 
+	Token [symbol=PROCEDURE, texto=procedure]
+19:07:18.786 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 67 getTokenLexico - 
+	Token [symbol=ID, texto=Print]
+19:07:22.899 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 631 formalParameterList - entry
+19:07:22.900 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 67 getTokenLexico - 
+	Token [symbol=(, texto=(]
+19:07:24.845 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 656 parameterDeclaration - entry
+19:07:24.847 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 681 valueParameter - entry
+19:07:24.849 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 747 identifierList - entry
+19:07:24.852 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 67 getTokenLexico - 
+	Token [symbol=VAR, texto=var]
+19:07:24.863 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 67 getTokenLexico - 
+	Token [symbol=VAR, texto=var]
+19:07:26.645 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 720 variableParameter - entry
+19:07:26.646 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 67 getTokenLexico - 
+	Token [symbol=VAR, texto=var]
+19:07:26.647 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 747 identifierList - entry
+19:07:26.650 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 67 getTokenLexico - 
+	Token [symbol=ID, texto=j]
+19:07:26.652 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 67 getTokenLexico - 
+	Token [symbol=:, texto=:]
+19:07:26.654 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 759 identifierList - exit
+19:07:26.656 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 67 getTokenLexico - 
+	Token [symbol=:, texto=:]
+19:07:26.664 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 67 getTokenLexico - 
+	Token [symbol=INTEGER, texto=integer]
+19:07:26.666 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 413 type - entry
+19:07:26.670 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 67 getTokenLexico - 
+	Token [symbol=INTEGER, texto=integer]
+19:07:26.674 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 419 type - exit
+19:07:26.689 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 738 variableParameter - exit
+19:07:26.690 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 665 parameterDeclaration - exit
+19:07:26.695 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 67 getTokenLexico - 
+	Token [symbol=), texto=)]
+19:07:26.699 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 67 getTokenLexico - 
+	Token [symbol=), texto=)]
+19:07:26.708 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 647 formalParameterList - exit
+19:07:26.710 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 771 hintDirective - entry
+19:07:26.711 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 67 getTokenLexico - 
+	Token [symbol=;, texto=;]
+19:07:26.723 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 793 hintDirective - exit
+19:07:26.724 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 67 getTokenLexico - 
+	Token [symbol=;, texto=;]
+19:07:31.960 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 523 subroutineBlock - entry
+19:07:32.728 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 806 compoundStatement - entry
+19:07:32.734 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 67 getTokenLexico - 
+	Token [symbol=BEGIN, texto=begin]
+19:07:32.740 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 978 cmd - entry
+19:07:32.751 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 67 getTokenLexico - 
+	Token [symbol=END, texto=end]
+19:07:35.897 INFO  si.vv.pokebola.compiladoido.SyntacticAutomataException 95 log - READ, WRITE, WHILE, REPEAT, IF, ID, SEMICOLON, BEGIN,  Expected.Got END
+	 at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.cmd(PascalSyntacticAutomata.java:991)
+19:07:46.193 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 67 getTokenLexico - 
+	Token [symbol=END, texto=end]
+19:07:48.000 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 568 functionDeclaration - entry
+19:07:48.006 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 67 getTokenLexico - 
+	Token [symbol=END, texto=end]
+19:07:52.783 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 350 procedureFuncionDeclarationPart - exit
+19:08:01.072 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 263 declarationPart - exit
+19:08:51.976 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 806 compoundStatement - entry
+19:08:51.982 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 67 getTokenLexico - 
+	Token [symbol=END, texto=end]
+19:08:57.485 INFO  si.vv.pokebola.compiladoido.SyntacticAutomataException 95 log - BEGIN,  Expected.Got END
+	 at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.compoundStatement(PascalSyntacticAutomata.java:809)
+19:08:57.486 FATAL si.vv.pokebola.compiladoido.SyntacticWarper 29 parse - Automato didn't run fine =( =( =( 
