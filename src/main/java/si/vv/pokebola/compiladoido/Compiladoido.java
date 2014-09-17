@@ -4,7 +4,10 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Map.Entry;
 import java.util.Properties;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -27,16 +30,24 @@ public class Compiladoido {
 		this(null);
 	}
 
+	private void logConfigPhase(String phaseName){
+		System.out.println("\t <<<<" + phaseName);
+		System.out.flush();
+	}
+	private void logEndConfigPhase(String phaseName){
+		System.out.println("\t >>>> " + phaseName + "\n");
+	}
+	
 	public Compiladoido(String[] args) {
-		System.out.println("args");
+		
+		logConfigPhase("args");
 		if (args != null) {
 			for (int i = 0; i < args.length; i++) {
 				System.out.println(args[i]);
 			}
 		}
-		System.out.println(">>>args");
-
-		System.out.println("geting config");
+		logEndConfigPhase("args");
+		
 		try {
 			InputStream inStream;
 			File propsFile;
@@ -46,33 +57,49 @@ public class Compiladoido {
 
 			Properties configProperties = new Properties();
 			configProperties.load(inStream);
-			// / implementação de EL para properties
-			/*
-			for (Entry<Object, Object> prop : configProperties.entrySet()) {
-				if (prop.getValue().toString().matches(".*\\Q${\\E.*\\}.*")) {
 
+			// / implementação de EL para properties
+			Pattern pattern = Pattern.compile("(?i)\\$\\{(.+?)\\}");
+
+			for (Entry<Object, Object> prop : configProperties.entrySet()) {
+				String propString = prop.getValue().toString();
+
+				Matcher matcher = pattern.matcher(propString);
+				while (matcher.find()) {
+					// Extract the text between the two title elements
+					String keyString = matcher.group(1);
+
+					propString = (String) System.getProperties().get(keyString.trim());
+
+					propString = prop.getValue().toString()
+							.replaceAll("\\$\\{" + keyString + "\\}", propString);
+					prop.setValue(propString);
 				}
+				
+				configProperties.put(prop.getKey(), propString);
 			}
-			*/
 
 			properties = new Properties(System.getProperties());
 			properties.putAll(configProperties);
 
 			System.setProperties(properties);
-
-			// display new properties
-			System.getProperties().list(System.out);
 			
-		}catch (IOException ioException) {
+			// display new properties
+			
+			logConfigPhase("System.properties");
+			System.getProperties().list(System.out);
+			logEndConfigPhase("System.properties");
+
+		} catch (IOException ioException) {
 			System.err.println("config not read");
 		}
 
 		sourceFileName = properties.getProperty(SOURCE_FILE_PROP);
 
-		System.out.println("testing logger");
+		logConfigPhase("logger setup");
 		logger = LogManager.getLogger();
 		logger.debug("Logger created");
-		System.out.println("end logger setup");
+		logEndConfigPhase("logger setup");
 	}
 
 	public static void main(String[] args) {

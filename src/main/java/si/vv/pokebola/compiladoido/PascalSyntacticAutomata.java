@@ -114,7 +114,6 @@ public class PascalSyntacticAutomata {
 		String method = "program";
 
 		LOGGER.entry();
-		LOGGER.entry();
 		node = new SyntaticTreeNode(parent, method, SyntaticSymbol.PROGRAM);
 		/** PROGRAM */
 		// PROGRAM HEADER

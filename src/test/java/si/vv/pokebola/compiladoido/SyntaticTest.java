@@ -14,6 +14,7 @@ public class SyntaticTest {
 	@Before
 	public void setUp() throws Exception {
 		Compiladoido.getInstance();
+		LOGGER.info("Testing Lexico");
 	}
 	
 	@Test
