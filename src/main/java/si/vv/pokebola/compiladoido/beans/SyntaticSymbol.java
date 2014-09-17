@@ -26,7 +26,10 @@ public enum SyntaticSymbol implements Symbol {
 	SUBROTINE_BLOCK, 
 	FORMAL_PARAMETER_LIST,
 	PARAMETER_DECLARATION,
-	COMPOUND_STATEMENT
+	COMPOUND_STATEMENT, 
+	VALUE_PARAMETER,
+	VARIABLE_PARAMETER, 
+	IDENTIFIER_LIST
 	;
 
 	public Map<String, ? extends Symbol> allMap() {

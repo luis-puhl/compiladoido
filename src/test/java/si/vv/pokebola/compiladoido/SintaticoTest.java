@@ -19,7 +19,7 @@ public class SintaticoTest {
 		compiladoido.instanceMain(args);
 		Properties properties = compiladoido.getProperties();
 		properties.remove(Lexico.LOG_LEVEL_PROP);
-		properties.put(Lexico.LOG_LEVEL_PROP, Level.CONFIG);
+		properties.put(Lexico.LOG_LEVEL_PROP, Level.OFF);
 	}
 	
 	@Test

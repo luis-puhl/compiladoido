@@ -6,11 +6,11 @@ import java.util.logging.Logger;
 
 import si.vv.pokebola.compiladoido.beans.Symbol;
 
-public class AutomatoException extends Exception{
+public class AutomatoException extends Exception {
 	/**
 	 * 
 	 */
-	private  Logger logger;
+	private Logger logger;
 
 	/**
 	 * 
@@ -19,27 +19,14 @@ public class AutomatoException extends Exception{
 
 	private Level level;
 	private StringBuilder msg;
-	private boolean optional;
-	
-	private void initMessage(Logger logger, boolean optional){
+
+	private void initMessage(Logger logger) {
 		this.logger = logger;
 		this.level = Level.INFO;
 		this.msg = new StringBuilder();
-		this.optional = optional;
 	}
-	
-	private void finalizeMessage(){
-		if (optional){
-			level = Level.FINE;
-			msg.append(" was not used."); 
-		} else {
-			msg.append(" EXPECTED.");
-		}
-		
-		errorSource();
-	}
-	
-	private void errorSource(){
+
+	private void errorSource() {
 		StackTraceElement cause = this.getStackTrace()[2];
 		msg.append("\n\t at ");
 		msg.append(cause.getClassName());
@@ -51,38 +38,60 @@ public class AutomatoException extends Exception{
 		msg.append(cause.getLineNumber());
 		msg.append(")");
 	}
-	
-	public AutomatoException( Logger logger, Symbol expected, boolean optional) {
-		this.initMessage(logger, optional);
+
+	public AutomatoException(Logger logger, Symbol expected, boolean optional, Symbol got ) {
+		this.initMessage(logger);
 		this.msg.append(expected.getName());
-		this.finalizeMessage();
+		if (optional) {
+			level = Level.FINE;
+			msg.append(" was not used.");
+		} else {
+			msg.append(" EXPECTED.");
+		}
+
+		msg.append("Got ");
+		msg.append(got.toString());
+
+		errorSource();
 	}
-	
-	public AutomatoException( Logger logger, Collection<? extends Symbol> expected, boolean optional) {
-		this.initMessage(logger, optional);
+
+	public AutomatoException(Logger logger, Collection<? extends Symbol> expected,
+			boolean optional, Symbol got) {
+		this.initMessage(logger);
 		for (Symbol symbol : expected) {
 			msg.append(symbol.getName());
 			msg.append(", ");
 		}
-		this.finalizeMessage();
-	}
-	
-	public AutomatoException( Logger logger, Symbol expected) {
-		this(logger, expected, false);
+
+		if (optional) {
+			level = Level.FINE;
+			msg.append(" was not used.");
+		} else {
+			msg.append(" EXPECTED.");
+		}
+
+		msg.append("Got ");
+		msg.append(got.toString());
+
+		errorSource();
 	}
 
-	public AutomatoException( Logger logger, Collection<? extends Symbol> expected) {
-		this(logger, expected, false);
+	public AutomatoException(Logger logger, Symbol expected, Symbol got) {
+		this(logger, expected, false, got);
 	}
-	
+
+	public AutomatoException(Logger logger, Collection<? extends Symbol> expected, Symbol got) {
+		this(logger, expected, false, got);
+	}
+
 	public AutomatoException(Logger logger) {
-		this.initMessage(logger, false);
+		this.initMessage(logger);
 		msg.append("Unimplemented feature");
 		this.errorSource();
 	}
 
-	public void log(){
+	public void log() {
 		logger.log(level, msg.toString());
 	}
-	
+
 }

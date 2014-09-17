@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 import java.util.logging.ConsoleHandler;
+import java.util.logging.FileHandler;
 import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -18,6 +19,11 @@ public class Compiladoido {
 
 	private static final String CONFIG_FILE_PATH = "config.properties";
 	private static final String SOURCE_FILE_PROP = "source_file";
+	
+	private static final String ERRORS_DIR_PROP = "errors_dir";
+	private static String errorsDirPath;
+	
+	private FileHandler errorFileHandler;
 
 	private Logger logger;
 	private Properties properties;
@@ -31,7 +37,7 @@ public class Compiladoido {
 		System.out.println("Init logger");
 		logger = Logger.getLogger(Compiladoido.class.getName());
 		logger.setLevel(Level.ALL);
-
+		
 		Handler[] handlers = logger.getHandlers();
 		System.out.println("setting " + handlers.length + " logger handlers");
 		if (handlers.length == 0) {
@@ -75,8 +81,29 @@ public class Compiladoido {
 		}
 
 		sourceFileName = properties.getProperty(SOURCE_FILE_PROP);
-
+		errorsDirPath = properties.getProperty(ERRORS_DIR_PROP);
+		
 		logger.fine("ending");
+	}
+	
+	private FileHandler getErrorFileHandler() {
+		if (errorFileHandler == null){
+			try {
+				// This block configure the logger with handler and formatter
+				final File file = new File(errorsDirPath + File.separator + "compiladoido.log");
+				if (file.exists()) {
+					file.delete();
+				}
+	
+				errorFileHandler = new FileHandler(file.getPath(), true);
+				errorFileHandler.setFormatter(new LogFormatter());
+			} catch (final SecurityException e) {
+				e.printStackTrace();
+			} catch (final IOException e) {
+				e.printStackTrace();
+			}
+		}
+		return errorFileHandler;
 	}
 
 	public static void main(String[] args) {
@@ -125,19 +152,19 @@ public class Compiladoido {
 			}
 		} catch (Exception exception) {
 		}
+		
+		logger.addHandler(getErrorFileHandler());
+		Handler handler = new LogHandler();
+		handler.setFormatter(new LogFormatter());
+		logger.addHandler(handler);
 
 		Handler[] handlers = logger.getHandlers();
-		if (handlers.length == 0) {
-			Handler handler = new LogHandler();
-			handler.setFormatter(new LogFormatter());
-			logger.addHandler(handler);
-		} else {
-			for (Handler handler : handlers) {
-				if (handler instanceof ConsoleHandler) {
-					handler.setFormatter(new LogFormatter());
-				}
+		for (Handler handler1 : handlers) {
+			if (handler1 instanceof ConsoleHandler) {
+				handler1.setFormatter(new LogFormatter());
 			}
 		}
+		
 		return logger;
 	}
 

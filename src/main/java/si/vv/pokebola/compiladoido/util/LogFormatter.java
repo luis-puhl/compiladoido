@@ -8,33 +8,33 @@ public class LogFormatter extends Formatter {
 
 	@Override
 	public String format(LogRecord record) {
-		if (record.getLevel().intValue() > Level.INFO.intValue()){
+		if (record.getLevel().intValue() > Level.INFO.intValue()) {
 			return highFormat(record);
 		}
-		
-		if (record.getMessage().equals("ENTRY")){
+
+		if (record.getMessage().equals("ENTRY")) {
 			String message;
-			message = "entring " + record.getSourceClassName() + ": " + record.getSourceMethodName();
+			message = "entring "
+					+ record.getSourceMethodName();
 			record.setMessage(message);
 		}
-		if (record.getMessage().startsWith("RETURN")){
+		if (record.getMessage().startsWith("RETURN")) {
 			String message;
-			message = "exiting " + record.getSourceClassName() + ": " + record.getSourceMethodName();
-			if (record.getParameters().length >= 1){
+			message = "exiting " 
+					+ record.getSourceMethodName();
+			if (record.getParameters() != null && record.getParameters().length >= 1) {
 				message += ". returning '" + record.getParameters()[0] + "'";
 			}
 			record.setMessage(message);
 		}
-		
-		return "[" + record.getLoggerName() + "]" +
-				record.getLevel() + ": " + record.getMessage()
+
+		return "[" + record.getLoggerName() + "]" + record.getLevel() + ": " + record.getMessage()
 				+ "\n";
 	}
-	
-	private String highFormat(LogRecord record){
-		return "[" + record.getLoggerName() + "]" +
-				record.getLevel() + ": " + record.getMessage() +
-				" (" + record.getSourceClassName() + " " + record.getSourceMethodName() + ")"
+
+	private String highFormat(LogRecord record) {
+		return "[" + record.getLoggerName() + "]" + record.getLevel() + ": " + record.getMessage()
+				+ " (" + record.getSourceClassName() + " " + record.getSourceMethodName() + ")"
 				+ "\n";
 	}
 
