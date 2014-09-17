@@ -1,0 +1,143 @@
+[si.vv.pokebola.compiladoido.Sintatico]FINER: entring program
+[si.vv.pokebola.compiladoido.Sintatico]FINER: entring program
+[si.vv.pokebola.compiladoido.Sintatico]FINER: entring programHeader
+[si.vv.pokebola.compiladoido.Sintatico]FINE: 
+	Token [symbol=PROGRAM, texto=program]
+[si.vv.pokebola.compiladoido.Sintatico]FINE: 
+	Token [symbol=ID, texto=Mine]
+[si.vv.pokebola.compiladoido.Sintatico]FINE: 
+	Token [symbol=(, texto=(]
+[si.vv.pokebola.compiladoido.Sintatico]FINE: 
+	Token [symbol=), texto=)]
+[si.vv.pokebola.compiladoido.Sintatico]FINER: exiting programHeader
+[si.vv.pokebola.compiladoido.Sintatico]FINE: 
+	Token [symbol=;, texto=;]
+[si.vv.pokebola.compiladoido.Sintatico]FINER: entring usesClause
+[si.vv.pokebola.compiladoido.Sintatico]FINE: 
+	Token [symbol=VAR, texto=var]
+[si.vv.pokebola.compiladoido.Sintatico]FINER: No USES CLAUSE declaration
+[si.vv.pokebola.compiladoido.Sintatico]FINER: entring block
+[si.vv.pokebola.compiladoido.Sintatico]FINER: entring declarationPart
+[si.vv.pokebola.compiladoido.Sintatico]FINER: entring variableDeclarationPart
+[si.vv.pokebola.compiladoido.Sintatico]FINE: 
+	Token [symbol=VAR, texto=var]
+[si.vv.pokebola.compiladoido.Sintatico]FINER: entring variableDeclaration
+[si.vv.pokebola.compiladoido.Sintatico]FINE: 
+	Token [symbol=ID, texto=i]
+[si.vv.pokebola.compiladoido.Sintatico]FINE: 
+	Token [symbol=:, texto=:]
+[si.vv.pokebola.compiladoido.Sintatico]FINER: entring type
+[si.vv.pokebola.compiladoido.Sintatico]FINE: 
+	Token [symbol=INTEGER, texto=integer]
+[si.vv.pokebola.compiladoido.Sintatico]FINER: exiting type
+[si.vv.pokebola.compiladoido.Sintatico]FINE: 
+	Token [symbol=;, texto=;]
+[si.vv.pokebola.compiladoido.Sintatico]FINER: entring variableModifiers
+[si.vv.pokebola.compiladoido.Sintatico]FINE: 
+	Token [symbol=;, texto=;]
+[si.vv.pokebola.compiladoido.Sintatico]FINE: 
+	Token [symbol=;, texto=;]
+[si.vv.pokebola.compiladoido.Sintatico]FINE: 
+	Token [symbol=PROCEDURE, texto=procedure]
+[si.vv.pokebola.compiladoido.Sintatico]FINE: 
+	Token [symbol=PROCEDURE, texto=procedure]
+[si.vv.pokebola.compiladoido.Sintatico]FINE: 
+	Token [symbol=PROCEDURE, texto=procedure]
+[si.vv.pokebola.compiladoido.Sintatico]FINE: 
+	Token [symbol=PROCEDURE, texto=procedure]
+[si.vv.pokebola.compiladoido.Sintatico]FINER: exiting variableModifiers
+[si.vv.pokebola.compiladoido.Sintatico]FINER: entring hintDirective
+[si.vv.pokebola.compiladoido.Sintatico]FINE: 
+	Token [symbol=PROCEDURE, texto=procedure]
+[si.vv.pokebola.compiladoido.Sintatico]FINER: exiting hintDirective
+[si.vv.pokebola.compiladoido.Sintatico]FINE: 
+	Token [symbol=PROCEDURE, texto=procedure]
+[si.vv.pokebola.compiladoido.Sintatico]FINER: exiting variableDeclarationPart
+[si.vv.pokebola.compiladoido.Sintatico]FINER: entring procedureFuncionDeclarationPart
+[si.vv.pokebola.compiladoido.Sintatico]FINE: Geting a procedure/function
+[si.vv.pokebola.compiladoido.Sintatico]FINER: entring procedureDeclaration
+[si.vv.pokebola.compiladoido.Sintatico]FINE: 
+	Token [symbol=PROCEDURE, texto=procedure]
+[si.vv.pokebola.compiladoido.Sintatico]FINE: 
+	Token [symbol=ID, texto=Print]
+[si.vv.pokebola.compiladoido.Sintatico]FINER: entring formalParameterList
+[si.vv.pokebola.compiladoido.Sintatico]FINE: 
+	Token [symbol=(, texto=(]
+[si.vv.pokebola.compiladoido.Sintatico]FINER: entring parameterDeclaration
+[si.vv.pokebola.compiladoido.Sintatico]FINER: entring valueParameter
+[si.vv.pokebola.compiladoido.Sintatico]FINER: entring identifierList
+[si.vv.pokebola.compiladoido.Sintatico]FINE: 
+	Token [symbol=VAR, texto=var]
+[si.vv.pokebola.compiladoido.Sintatico]FINE: 
+	Token [symbol=VAR, texto=var]
+[si.vv.pokebola.compiladoido.Sintatico]FINER: entring variableParameter
+[si.vv.pokebola.compiladoido.Sintatico]FINE: 
+	Token [symbol=VAR, texto=var]
+[si.vv.pokebola.compiladoido.Sintatico]FINER: entring identifierList
+[si.vv.pokebola.compiladoido.Sintatico]FINE: 
+	Token [symbol=ID, texto=j]
+[si.vv.pokebola.compiladoido.Sintatico]FINE: 
+	Token [symbol=:, texto=:]
+[si.vv.pokebola.compiladoido.Sintatico]FINER: exiting identifierList
+[si.vv.pokebola.compiladoido.Sintatico]FINE: 
+	Token [symbol=:, texto=:]
+[si.vv.pokebola.compiladoido.Sintatico]FINE: 
+	Token [symbol=INTEGER, texto=integer]
+[si.vv.pokebola.compiladoido.Sintatico]FINER: entring type
+[si.vv.pokebola.compiladoido.Sintatico]FINE: 
+	Token [symbol=INTEGER, texto=integer]
+[si.vv.pokebola.compiladoido.Sintatico]FINER: exiting type
+[si.vv.pokebola.compiladoido.Sintatico]FINER: exiting variableParameter
+[si.vv.pokebola.compiladoido.Sintatico]FINER: exiting parameterDeclaration
+[si.vv.pokebola.compiladoido.Sintatico]FINE: 
+	Token [symbol=), texto=)]
+[si.vv.pokebola.compiladoido.Sintatico]FINE: 
+	Token [symbol=), texto=)]
+[si.vv.pokebola.compiladoido.Sintatico]FINER: exiting formalParameterList
+[si.vv.pokebola.compiladoido.Sintatico]FINER: entring hintDirective
+[si.vv.pokebola.compiladoido.Sintatico]FINE: 
+	Token [symbol=;, texto=;]
+[si.vv.pokebola.compiladoido.Sintatico]FINER: exiting hintDirective
+[si.vv.pokebola.compiladoido.Sintatico]FINE: 
+	Token [symbol=;, texto=;]
+[si.vv.pokebola.compiladoido.Sintatico]FINER: entring subroutineBlock
+[si.vv.pokebola.compiladoido.Sintatico]FINER: entring block
+[si.vv.pokebola.compiladoido.Sintatico]FINER: entring declarationPart
+[si.vv.pokebola.compiladoido.Sintatico]FINER: entring variableDeclarationPart
+[si.vv.pokebola.compiladoido.Sintatico]FINE: 
+	Token [symbol=BEGIN, texto=begin]
+[si.vv.pokebola.compiladoido.Sintatico]FINER: entring procedureFuncionDeclarationPart
+[si.vv.pokebola.compiladoido.Sintatico]FINE: Geting a procedure/function
+[si.vv.pokebola.compiladoido.Sintatico]FINER: entring procedureDeclaration
+[si.vv.pokebola.compiladoido.Sintatico]FINE: 
+	Token [symbol=BEGIN, texto=begin]
+[si.vv.pokebola.compiladoido.Sintatico]FINER: entring functionDeclaration
+[si.vv.pokebola.compiladoido.Sintatico]FINE: 
+	Token [symbol=BEGIN, texto=begin]
+[si.vv.pokebola.compiladoido.Sintatico]FINER: exiting procedureFuncionDeclarationPart
+[si.vv.pokebola.compiladoido.Sintatico]FINER: exiting declarationPart
+[si.vv.pokebola.compiladoido.Sintatico]FINER: entring compoundStatement
+[si.vv.pokebola.compiladoido.Sintatico]FINE: 
+	Token [symbol=BEGIN, texto=begin]
+[si.vv.pokebola.compiladoido.Sintatico]FINER: entring cmd
+[si.vv.pokebola.compiladoido.Sintatico]FINE: 
+	Token [symbol=END, texto=end]
+[si.vv.pokebola.compiladoido.Sintatico]INFO: READ, WRITE, WHILE, REPEAT, IF, ID, SEMICOLON, BEGIN,  EXPECTED.Got END
+	 at si.vv.pokebola.compiladoido.AutomatoSintaticoPascal.cmd(AutomatoSintaticoPascal.java:969)
+[si.vv.pokebola.compiladoido.Sintatico]FINE: 
+	Token [symbol=END, texto=end]
+[si.vv.pokebola.compiladoido.Sintatico]FINER: entring functionDeclaration
+[si.vv.pokebola.compiladoido.Sintatico]FINE: 
+	Token [symbol=END, texto=end]
+[si.vv.pokebola.compiladoido.Sintatico]FINER: exiting procedureFuncionDeclarationPart
+[si.vv.pokebola.compiladoido.Sintatico]FINER: exiting declarationPart
+[si.vv.pokebola.compiladoido.Sintatico]FINER: entring compoundStatement
+[si.vv.pokebola.compiladoido.Sintatico]FINE: 
+	Token [symbol=END, texto=end]
+[si.vv.pokebola.compiladoido.Sintatico]INFO: BEGIN,  EXPECTED.Got END
+	 at si.vv.pokebola.compiladoido.AutomatoSintaticoPascal.compoundStatement(AutomatoSintaticoPascal.java:790)
+[si.vv.pokebola.compiladoido.Sintatico]SEVERE: Automato didn't run fine =( =( =(  (si.vv.pokebola.compiladoido.Sintatico parse)
+[si.vv.pokebola.compiladoido.Sintatico]FINE: SyntaticTreeNode [id=0, parent=null, lexicToken=null, syntaticSymbol=null, creatorMethodName=run, childrens=0]
+
+0.run()^-1
+
