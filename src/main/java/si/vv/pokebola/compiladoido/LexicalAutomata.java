@@ -7,8 +7,9 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Map;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import si.vv.pokebola.compiladoido.beans.CommandWordSymbols;
 import si.vv.pokebola.compiladoido.beans.OperatorSymbols;
@@ -17,14 +18,17 @@ import si.vv.pokebola.compiladoido.beans.Token;
 import si.vv.pokebola.compiladoido.beans.TypeWordSymbols;
 import si.vv.pokebola.compiladoido.beans.WordSymbols;
 
-public class Lexico {
+/**
+ * Finite state Automata
+ * @author luispuhl
+ *
+ */
+public class LexicalAutomata {
 
 	private Scanner inputScanner;
 	private final static Charset ENCODING = StandardCharsets.UTF_8;
 
-	public final static String LOG_LEVEL_PROP = Lexico.class
-			.getCanonicalName() + ".logLevel";
-	private Logger logger;
+	private static final Logger LOGGER = LogManager.getLogger();
 
 	private StringBuffer buffer;
 	
@@ -36,30 +40,18 @@ public class Lexico {
 	Map<String, CommandWordSymbols> commandsMap = CommandWordSymbols.READ.allMap();
 	Map<String, TypeWordSymbols> typesMap = TypeWordSymbols.INTEGER.allMap();
 
-	public Lexico(String filename) throws IOException {
-		getLogger().info("geting scanner");
+	public LexicalAutomata(String filename) throws IOException {
+		LOGGER.info("geting scanner");
 		try {
 			Path path = Paths.get(filename);
 			inputScanner = new Scanner(path, ENCODING.name());
 		} catch (IOException ioException) {
-			getLogger().warning("can't get scanner");
+			LOGGER.warn("can't get scanner");
 		}
 	}
 	
-	public Lexico(StringBuffer buffer){
+	public LexicalAutomata(StringBuffer buffer){
 		this.buffer = buffer;
-	}
-
-	public Logger getLogger() {
-		if (logger == null){
-			Compiladoido compiladoido = Compiladoido.getInstance();
-			logger = compiladoido.getLogger(Lexico.class, LOG_LEVEL_PROP);	
-		}
-		return logger;
-	}
-
-	public void setLogger(Logger logger) {
-		this.logger = logger;
 	}
 
 	public StringBuffer getBuffer(){
@@ -67,7 +59,7 @@ public class Lexico {
 	}
 
 	private boolean getTexto(StringBuffer buffer) {
-		getLogger().entering(Lexico.class.getName(), "getTexto");
+		LOGGER.entry();
 		if (inputScanner != null && inputScanner.hasNext()) {
 			buffer.append(inputScanner.next());
 			return true;
@@ -76,7 +68,7 @@ public class Lexico {
 	}
 
 	public Token getToken() {
-		getLogger().entering(Lexico.class.getName(), "getToken");
+		LOGGER.entry();
 		
 		if (rollbackFlag){
 			rollbackFlag = false;
@@ -89,6 +81,7 @@ public class Lexico {
 		
 		rollbackToken = this.consume(buffer);
 		
+		LOGGER.exit();
 		return rollbackToken;
 	}
 
@@ -105,7 +98,7 @@ public class Lexico {
 	 * @return
 	 */
 	private Token consume(StringBuffer buffer) {
-		getLogger().entering(Lexico.class.getName(), "consume");
+		LOGGER.entry();
 
 		StringBuilder ret = new StringBuilder();
 		Symbol simboloFechamento = null, symbol = OperatorSymbols.NONE;
@@ -121,7 +114,7 @@ public class Lexico {
 			c = buffer.charAt(0);
 			type = classifieChar(c);
 
-			getLogger().entering("consume", estado.name());
+			LOGGER.entry(estado.name());
 			// logger.info("buffer length is " + buffer.length());
 			
 			switch (estado) {
@@ -280,7 +273,7 @@ public class Lexico {
 				break;
 			case TERMINADO:
 			default:
-				getLogger().warning("Estado inválido");
+				LOGGER.warn("Estado inválido");
 				break;
 			}
 		}
@@ -311,8 +304,7 @@ public class Lexico {
 			token.setSymbol(symbol);
 		}
 		
-		getLogger().exiting(Lexico.class.getName(), "consume", token);
-		getLogger().logp(Level.INFO, Lexico.class.getName(), "consume", "RETURN {0}", token);
+		LOGGER.exit(token);
 		return token;
 	}
 

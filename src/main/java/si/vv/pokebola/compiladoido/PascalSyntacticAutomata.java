@@ -3,7 +3,9 @@ package si.vv.pokebola.compiladoido;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
-import java.util.logging.Logger;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import si.vv.pokebola.compiladoido.beans.CommandWordSymbols;
 import si.vv.pokebola.compiladoido.beans.OperatorSymbols;
@@ -14,18 +16,25 @@ import si.vv.pokebola.compiladoido.beans.Token;
 import si.vv.pokebola.compiladoido.beans.TypeWordSymbols;
 import si.vv.pokebola.compiladoido.beans.WordSymbols;
 
-public class AutomatoSintaticoPascal {
+/**
+ * Pushdown automaton warper.
+ * 
+ * 
+ * @author luispuhl
+ *
+ */
+public class PascalSyntacticAutomata {
 
 	/**
 	 * 
 	 */
-	private final Sintatico sintatico;
-	private Lexico lexico;
+	private LexicalAutomata lexico;
 
 	private SyntaticTreeNode root;
+	
+	private static final Logger LOGGER = LogManager.getLogger();
 
-	public AutomatoSintaticoPascal(Sintatico sintatico, Lexico lexico) {
-		this.sintatico = sintatico;
+	public PascalSyntacticAutomata(LexicalAutomata lexico) {
 		this.lexico = lexico;
 	}
 
@@ -37,19 +46,7 @@ public class AutomatoSintaticoPascal {
 		this.root = root;
 	}
 
-	private Logger getLogger() {
-		return this.sintatico.getLogger();
-	}
-
-	private void entering(String method) {
-		getLogger().entering(getClass().getName(), method);
-	}
-
-	private void exiting(String method) {
-		getLogger().exiting(getClass().getName(), method);
-	}
-
-	public SyntaticTreeNode run() throws AutomatoException {
+	public SyntaticTreeNode run() throws SyntacticAutomataException {
 		root = new SyntaticTreeNode(null, "run", null);
 
 		root.add(program(root));
@@ -62,44 +59,44 @@ public class AutomatoSintaticoPascal {
 		token = lexico.getToken();
 		symbol = token.getSymbol();
 		if (symbol instanceof OperatorSymbols && ((OperatorSymbols) symbol).isComment()) {
-			getLogger().fine("Got a COMMENT");
+			LOGGER.info("Got a COMMENT");
 			token = this.getTokenLexico();
 		}
-		getLogger().fine("\n\t" + token.toString());
+		LOGGER.info("\n\t" + token.toString());
 		return token;
 	}
 
-	private void unimplemented() throws AutomatoException {
-		throw new AutomatoException(getLogger());
+	private void unimplemented() throws SyntacticAutomataException {
+		throw new SyntacticAutomataException(LOGGER);
 	}
 
 	// implementacao
 	private Token expect(Collection<? extends Symbol> expected, boolean optional)
-			throws AutomatoException {
+			throws SyntacticAutomataException {
 		Symbol symbol;
 		Token token;
 		token = this.getTokenLexico();
 		symbol = token.getSymbol();
 		if (!expected.contains(symbol)) {
 			lexico.rollback();
-			throw new AutomatoException(getLogger(), expected, optional, symbol);
+			throw new SyntacticAutomataException(LOGGER, expected, optional, symbol);
 		}
 
 		return token;
 	}
 
 	// referencias
-	private Token expect(Collection<? extends Symbol> expected) throws AutomatoException {
+	private Token expect(Collection<? extends Symbol> expected) throws SyntacticAutomataException {
 		return this.expect(expected, false);
 	}
 
-	private Token expect(Symbol expected, boolean optional) throws AutomatoException {
+	private Token expect(Symbol expected, boolean optional) throws SyntacticAutomataException {
 		Collection<Symbol> symbols = new ArrayList<Symbol>(1);
 		symbols.add(expected);
 		return this.expect(symbols, optional);
 	}
 
-	private Token expect(Symbol expected) throws AutomatoException {
+	private Token expect(Symbol expected) throws SyntacticAutomataException {
 		Collection<Symbol> symbols = new ArrayList<Symbol>(1);
 		symbols.add(expected);
 		return expect(symbols, false);
@@ -112,12 +109,12 @@ public class AutomatoSintaticoPascal {
 	 * http://www.freepascal.org/docs-html/ref/refse95.html#x201-21100016.1
 	 */
 
-	private SyntaticTreeNode program(SyntaticTreeNode parent) throws AutomatoException {
+	private SyntaticTreeNode program(SyntaticTreeNode parent) throws SyntacticAutomataException {
 		SyntaticTreeNode node;
 		String method = "program";
 
-		entering(method);
-		entering(method);
+		LOGGER.entry();
+		LOGGER.entry();
 		node = new SyntaticTreeNode(parent, method, SyntaticSymbol.PROGRAM);
 		/** PROGRAM */
 		// PROGRAM HEADER
@@ -127,8 +124,8 @@ public class AutomatoSintaticoPascal {
 		// op USES CLAUSE
 		try {
 			node.add(usesClause(node));
-		} catch (AutomatoException e) {
-			getLogger().finer("No USES CLAUSE declaration");
+		} catch (SyntacticAutomataException e) {
+			LOGGER.info("No USES CLAUSE declaration");
 		}
 		// BLOCK
 		node.add(block(node));
@@ -136,15 +133,16 @@ public class AutomatoSintaticoPascal {
 		// PERIOD
 		node.add(new SyntaticTreeNode(node, method, null, expect(OperatorSymbols.POINT)));
 
-		exiting(method);
+		LOGGER.exit();
 		return node;
 	}
 
-	private SyntaticTreeNode programHeader(SyntaticTreeNode parent) throws AutomatoException {
+	private SyntaticTreeNode programHeader(SyntaticTreeNode parent)
+			throws SyntacticAutomataException {
 		SyntaticTreeNode node;
 		String method = "programHeader";
 
-		entering(method);
+		LOGGER.entry();
 		node = new SyntaticTreeNode(parent, method, SyntaticSymbol.PROGRAM_HEADER);
 
 		node.add(new SyntaticTreeNode(node, method, null, expect(WordSymbols.PROGRAM)));
@@ -159,12 +157,12 @@ public class AutomatoSintaticoPascal {
 			node.add(programParameters(node));
 			node.add(new SyntaticTreeNode(node, method, null,
 					expect(OperatorSymbols.CLOSE_PARENTHESIS)));
-		} catch (AutomatoException e) {
+		} catch (SyntacticAutomataException e) {
 			e.log();
-			getLogger().finer("No PROGRAM PARAMETERS declaration");
+			LOGGER.info("No PROGRAM PARAMETERS declaration");
 		}
 
-		exiting(method);
+		LOGGER.exit();
 		return node;
 	}
 
@@ -174,18 +172,19 @@ public class AutomatoSintaticoPascal {
 	 * 
 	 * @param parent
 	 * @return
-	 * @throws AutomatoException
+	 * @throws SyntacticAutomataException
 	 */
-	private SyntaticTreeNode programParameters(SyntaticTreeNode parent) throws AutomatoException {
+	private SyntaticTreeNode programParameters(SyntaticTreeNode parent)
+			throws SyntacticAutomataException {
 		// return indentifierList(parent);
 		return null;
 	}
 
-	private SyntaticTreeNode usesClause(SyntaticTreeNode parent) throws AutomatoException {
+	private SyntaticTreeNode usesClause(SyntaticTreeNode parent) throws SyntacticAutomataException {
 		SyntaticTreeNode node;
 		String method = "usesClause";
 
-		entering(method);
+		LOGGER.entry();
 		node = new SyntaticTreeNode(parent, method, SyntaticSymbol.USE_CLAUSE);
 
 		node.add(new SyntaticTreeNode(node, method, null, expect(WordSymbols.USES, true)));
@@ -201,18 +200,18 @@ public class AutomatoSintaticoPascal {
 			node.add(new SyntaticTreeNode(node, method, SyntaticSymbol.STRING_LITERAL,
 					expect(OperatorSymbols.ID)));
 
-		} catch (AutomatoException e) {
+		} catch (SyntacticAutomataException e) {
 		}
 		// op MORE USES
 		try {
 			node.add(new SyntaticTreeNode(node, method, null, expect(OperatorSymbols.COMMA)));
 
 			node.add(usesClause(node));
-		} catch (AutomatoException e) {
+		} catch (SyntacticAutomataException e) {
 		}
 		node.add(new SyntaticTreeNode(node, method, null, expect(OperatorSymbols.SEMICOLON)));
 
-		exiting(method);
+		LOGGER.exit();
 		return node;
 	}
 
@@ -223,11 +222,11 @@ public class AutomatoSintaticoPascal {
 	 * http://www.freepascal.org/docs-html/ref/refse98.html#x204-21400016.4
 	 */
 
-	private SyntaticTreeNode block(SyntaticTreeNode parent) throws AutomatoException {
+	private SyntaticTreeNode block(SyntaticTreeNode parent) throws SyntacticAutomataException {
 		SyntaticTreeNode node;
 		String method = "block";
 
-		entering(method);
+		LOGGER.entry();
 		node = new SyntaticTreeNode(parent, method, SyntaticSymbol.BLOCK);
 
 		// DECLARATION PART
@@ -236,15 +235,16 @@ public class AutomatoSintaticoPascal {
 		// STATEMENT PART
 		node.add(compoundStatement(node));
 
-		exiting(method);
+		LOGGER.exit();
 		return node;
 	}
 
-	private SyntaticTreeNode declarationPart(SyntaticTreeNode parent) throws AutomatoException {
+	private SyntaticTreeNode declarationPart(SyntaticTreeNode parent)
+			throws SyntacticAutomataException {
 		SyntaticTreeNode node;
 		String method = "declarationPart";
 
-		entering(method);
+		LOGGER.entry();
 		node = new SyntaticTreeNode(parent, method, SyntaticSymbol.DECLARATION_PART);
 
 		/**
@@ -258,90 +258,94 @@ public class AutomatoSintaticoPascal {
 		node.add(threadVarDeclaration(node));
 		node.add(procedureFuncionDeclarationPart(node));
 
-		exiting(method);
+		LOGGER.exit();
 		return node;
 	}
 
-	private SyntaticTreeNode labelDeclaration(SyntaticTreeNode parent) throws AutomatoException {
+	private SyntaticTreeNode labelDeclaration(SyntaticTreeNode parent)
+			throws SyntacticAutomataException {
 		return null;
 	}
 
-	private SyntaticTreeNode constantDeclaration(SyntaticTreeNode parent) throws AutomatoException {
+	private SyntaticTreeNode constantDeclaration(SyntaticTreeNode parent)
+			throws SyntacticAutomataException {
 		return null;
 	}
 
 	private SyntaticTreeNode resourceStringDeclaration(SyntaticTreeNode parent)
-			throws AutomatoException {
+			throws SyntacticAutomataException {
 		return null;
 	}
 
-	private SyntaticTreeNode typeDeclaration(SyntaticTreeNode parent) throws AutomatoException {
+	private SyntaticTreeNode typeDeclaration(SyntaticTreeNode parent)
+			throws SyntacticAutomataException {
 		return null;
 	}
 
 	private SyntaticTreeNode variableDeclarationPart(SyntaticTreeNode parent)
-			throws AutomatoException {
+			throws SyntacticAutomataException {
 		SyntaticTreeNode node;
 		String method = "variableDeclarationPart";
 
-		entering(method);
+		LOGGER.entry();
 		node = new SyntaticTreeNode(parent, method, SyntaticSymbol.VAR_DECLARATION_PART);
 
 		try {
 			node.add(new SyntaticTreeNode(node, method, null, expect(WordSymbols.VAR)));
-		} catch (AutomatoException e) {
+		} catch (SyntacticAutomataException e) {
 			return node;
 		}
 
 		while (true) {
 			try {
 				node.add(variableDeclaration(node));
-			} catch (AutomatoException e) {
-				exiting(method);
+			} catch (SyntacticAutomataException e) {
+				LOGGER.exit();
 				return node;
 			}
 		}
 	}
 
-	private SyntaticTreeNode threadVarDeclaration(SyntaticTreeNode parent) throws AutomatoException {
+	private SyntaticTreeNode threadVarDeclaration(SyntaticTreeNode parent)
+			throws SyntacticAutomataException {
 		return null;
 	}
 
 	private SyntaticTreeNode procedureFuncionDeclarationPart(SyntaticTreeNode parent)
-			throws AutomatoException {
+			throws SyntacticAutomataException {
 		SyntaticTreeNode node;
 		String method = "procedureFuncionDeclarationPart";
 		int errors = 0;
 
-		entering(method);
+		LOGGER.entry();
 		node = new SyntaticTreeNode(parent, method,
 				SyntaticSymbol.PROCEDURE_FUNCTION_DECLARATION_PART);
 
 		while (errors < 4) {
-			getLogger().fine("Geting a procedure/function");
+			LOGGER.info("Geting a procedure/function");
 			try {
 				node.add(procedureDeclaration(node));
-			} catch (AutomatoException e) {
+			} catch (SyntacticAutomataException e) {
 				errors++;
 			}
 			try {
 				node.add(functionDeclaration(node));
-			} catch (AutomatoException e) {
+			} catch (SyntacticAutomataException e) {
 				errors++;
 			}
 			try {
 				node.add(constructorDeclaration(node));
-			} catch (AutomatoException e) {
+			} catch (SyntacticAutomataException e) {
 				errors++;
 			}
 			try {
 				node.add(destructorDeclaration(node));
-			} catch (AutomatoException e) {
+			} catch (SyntacticAutomataException e) {
 				errors++;
 			}
 		}
 
-		exiting(method);
+		LOGGER.exit();
 		return node;
 	}
 
@@ -352,11 +356,12 @@ public class AutomatoSintaticoPascal {
 	 * http://www.freepascal.org/docs-html/ref/refse21.html#x56-630004.2
 	 */
 
-	private SyntaticTreeNode variableDeclaration(SyntaticTreeNode parent) throws AutomatoException {
+	private SyntaticTreeNode variableDeclaration(SyntaticTreeNode parent)
+			throws SyntacticAutomataException {
 		SyntaticTreeNode node;
 		String method = "variableDeclaration";
 
-		entering(method);
+		LOGGER.entry();
 		node = new SyntaticTreeNode(parent, method, SyntaticSymbol.VAR_DECLARATION);
 
 		// id
@@ -373,13 +378,13 @@ public class AutomatoSintaticoPascal {
 		try {
 			node.add(new SyntaticTreeNode(node, method, null, expect(OperatorSymbols.EQUAL)));
 			node.add(expression(node));
-		} catch (AutomatoException e) {
+		} catch (SyntacticAutomataException e) {
 		}
 
 		// op variable modifiers
 		try {
 			node.add(variableModifiers(node));
-		} catch (AutomatoException e) {
+		} catch (SyntacticAutomataException e) {
 		}
 
 		// hint directive
@@ -388,7 +393,7 @@ public class AutomatoSintaticoPascal {
 		// ;
 		node.add(new SyntaticTreeNode(node, method, null, expect(OperatorSymbols.SEMICOLON)));
 
-		exiting(method);
+		LOGGER.exit();
 		return node;
 	}
 
@@ -397,27 +402,28 @@ public class AutomatoSintaticoPascal {
 	 * 
 	 * @param parent
 	 * @return
-	 * @throws AutomatoException
+	 * @throws SyntacticAutomataException
 	 */
-	private SyntaticTreeNode type(SyntaticTreeNode parent) throws AutomatoException {
+	private SyntaticTreeNode type(SyntaticTreeNode parent) throws SyntacticAutomataException {
 		SyntaticTreeNode node;
 		String method = "type";
 
-		entering(method);
+		LOGGER.entry();
 		node = new SyntaticTreeNode(parent, method, SyntaticSymbol.TYPE);
 
 		Collection<TypeWordSymbols> types = TypeWordSymbols.INTEGER.allMap().values();
 		node.add(new SyntaticTreeNode(node, method, null, expect(types)));
 
-		exiting(method);
+		LOGGER.exit();
 		return node;
 	}
 
-	private SyntaticTreeNode variableModifiers(SyntaticTreeNode parent) throws AutomatoException {
+	private SyntaticTreeNode variableModifiers(SyntaticTreeNode parent)
+			throws SyntacticAutomataException {
 		SyntaticTreeNode node;
 		String method = "variableModifiers";
 
-		entering(method);
+		LOGGER.entry();
 		node = new SyntaticTreeNode(parent, method, SyntaticSymbol.VAR_MODIFIERS);
 
 		/**
@@ -429,19 +435,19 @@ public class AutomatoSintaticoPascal {
 			// integer expression or id, I go for id only
 			node.add(new SyntaticTreeNode(node, method, SyntaticSymbol.IDENTIFIER,
 					expect(OperatorSymbols.ID)));
-		} catch (AutomatoException e) {
+		} catch (SyntacticAutomataException e) {
 		}
 
 		try {
 			node.add(new SyntaticTreeNode(node, method, null, expect(OperatorSymbols.SEMICOLON)));
 			node.add(new SyntaticTreeNode(node, method, null, expect(WordSymbols.EXPORT)));
-		} catch (AutomatoException e) {
+		} catch (SyntacticAutomataException e) {
 		}
 
 		try {
 			node.add(new SyntaticTreeNode(node, method, null, expect(OperatorSymbols.SEMICOLON)));
 			node.add(new SyntaticTreeNode(node, method, null, expect(WordSymbols.CVAR)));
-		} catch (AutomatoException e) {
+		} catch (SyntacticAutomataException e) {
 		}
 
 		try {
@@ -450,23 +456,23 @@ public class AutomatoSintaticoPascal {
 			try {
 				node.add(new SyntaticTreeNode(node, method, null,
 						expect(OperatorSymbols.STRING_CONSTANT)));
-			} catch (AutomatoException e) {
+			} catch (SyntacticAutomataException e) {
 			}
 			try {
 				node.add(new SyntaticTreeNode(node, method, null, expect(WordSymbols.NAME)));
 				node.add(new SyntaticTreeNode(node, method, null,
 						expect(OperatorSymbols.STRING_CONSTANT)));
-			} catch (AutomatoException e) {
+			} catch (SyntacticAutomataException e) {
 			}
-		} catch (AutomatoException e) {
+		} catch (SyntacticAutomataException e) {
 		}
 
 		try {
 			node.add(new SyntaticTreeNode(node, method, null, expect(WordSymbols.NAME)));
-		} catch (AutomatoException e) {
+		} catch (SyntacticAutomataException e) {
 		}
 
-		exiting(method);
+		LOGGER.exit();
 		return node;
 	}
 
@@ -477,11 +483,12 @@ public class AutomatoSintaticoPascal {
 	 * http://www.freepascal.org/docs-html/ref/refse21.html#x56-630004.2
 	 */
 
-	private SyntaticTreeNode procedureDeclaration(SyntaticTreeNode parent) throws AutomatoException {
+	private SyntaticTreeNode procedureDeclaration(SyntaticTreeNode parent)
+			throws SyntacticAutomataException {
 		SyntaticTreeNode node;
 		String method = "procedureDeclaration";
 
-		entering(method);
+		LOGGER.entry();
 		node = new SyntaticTreeNode(parent, method, SyntaticSymbol.PROCEDURE_DECLARATION);
 
 		// PROCEDURE HEADER
@@ -491,7 +498,7 @@ public class AutomatoSintaticoPascal {
 		node.add(formalParameterList(node));
 		try {
 			node.add(functionProcedureModifiers(node));
-		} catch (AutomatoException e) {
+		} catch (SyntacticAutomataException e) {
 		}
 		node.add(hintDirective(node));
 
@@ -502,50 +509,53 @@ public class AutomatoSintaticoPascal {
 
 		node.add(new SyntaticTreeNode(node, method, null, expect(OperatorSymbols.SEMICOLON)));
 
-		exiting(method);
+		LOGGER.exit();
 		return node;
 	}
 
-	private SyntaticTreeNode subroutineBlock(SyntaticTreeNode parent) throws AutomatoException {
+	private SyntaticTreeNode subroutineBlock(SyntaticTreeNode parent)
+			throws SyntacticAutomataException {
 		SyntaticTreeNode node;
 		String method = "subroutineBlock";
 
-		entering(method);
+		LOGGER.entry();
 		node = new SyntaticTreeNode(parent, method, SyntaticSymbol.SUBROTINE_BLOCK);
 
 		try {
 			node.add(block(node));
-		} catch (AutomatoException eBlock) {
+		} catch (SyntacticAutomataException eBlock) {
 			eBlock.log();
 
 			try {
 				node.add(externalDirective(node));
-			} catch (AutomatoException eExternalDirective) {
+			} catch (SyntacticAutomataException eExternalDirective) {
 				try {
 					node.add(asmBlock(node));
-				} catch (AutomatoException eAsmBlock) {
+				} catch (SyntacticAutomataException eAsmBlock) {
 					node.add(new SyntaticTreeNode(node, method, null, expect(WordSymbols.FORWARD)));
 				}
 			}
 		}
 
-		exiting(method);
+		LOGGER.exit();
 		return node;
 	}
 
-	private SyntaticTreeNode externalDirective(SyntaticTreeNode parent) throws AutomatoException {
+	private SyntaticTreeNode externalDirective(SyntaticTreeNode parent)
+			throws SyntacticAutomataException {
 		unimplemented();
 		return null;
 	}
 
-	private SyntaticTreeNode asmBlock(SyntaticTreeNode parent) throws AutomatoException {
+	private SyntaticTreeNode asmBlock(SyntaticTreeNode parent) throws SyntacticAutomataException {
 		unimplemented();
 		return null;
 	}
 
 	/* END procedure delcaration */
 
-	private SyntaticTreeNode functionDeclaration(SyntaticTreeNode parent) throws AutomatoException {
+	private SyntaticTreeNode functionDeclaration(SyntaticTreeNode parent)
+			throws SyntacticAutomataException {
 		SyntaticTreeNode node;
 		String method = "functionDeclaration";
 		Collection<TypeWordSymbols> resultTypes = new LinkedList<TypeWordSymbols>();
@@ -553,7 +563,7 @@ public class AutomatoSintaticoPascal {
 			resultTypes.add(type);
 		}
 
-		entering(method);
+		LOGGER.entry();
 		node = new SyntaticTreeNode(parent, method, SyntaticSymbol.FUNCTION_DECLARATION);
 
 		// FUNCTION HEADER
@@ -565,7 +575,7 @@ public class AutomatoSintaticoPascal {
 		node.add(new SyntaticTreeNode(node, method, SyntaticSymbol.TYPE, expect(resultTypes)));
 		try {
 			node.add(functionProcedureModifiers(node));
-		} catch (AutomatoException e) {
+		} catch (SyntacticAutomataException e) {
 		}
 		node.add(hintDirective(node));
 
@@ -576,7 +586,7 @@ public class AutomatoSintaticoPascal {
 
 		node.add(new SyntaticTreeNode(node, method, null, expect(OperatorSymbols.SEMICOLON)));
 
-		exiting(method);
+		LOGGER.exit();
 		return node;
 	}
 
@@ -587,21 +597,21 @@ public class AutomatoSintaticoPascal {
 	 * 
 	 * @param parent
 	 * @return
-	 * @throws AutomatoException
+	 * @throws SyntacticAutomataException
 	 */
 	private SyntaticTreeNode functionProcedureModifiers(SyntaticTreeNode parent)
-			throws AutomatoException {
+			throws SyntacticAutomataException {
 		return null;
 	}
 
 	private SyntaticTreeNode constructorDeclaration(SyntaticTreeNode parent)
-			throws AutomatoException {
+			throws SyntacticAutomataException {
 		unimplemented();
 		return null;
 	}
 
 	private SyntaticTreeNode destructorDeclaration(SyntaticTreeNode parent)
-			throws AutomatoException {
+			throws SyntacticAutomataException {
 		unimplemented();
 		return null;
 	}
@@ -611,11 +621,12 @@ public class AutomatoSintaticoPascal {
 	 * http://www.freepascal.org/docs-html/ref/refse82.html#x162-17200014.4
 	 */
 
-	private SyntaticTreeNode formalParameterList(SyntaticTreeNode parent) throws AutomatoException {
+	private SyntaticTreeNode formalParameterList(SyntaticTreeNode parent)
+			throws SyntacticAutomataException {
 		SyntaticTreeNode node;
 		String method = "formalParameterList";
 
-		entering(method);
+		LOGGER.entry();
 		node = new SyntaticTreeNode(parent, method, SyntaticSymbol.FORMAL_PARAMETER_LIST);
 
 		node.add(new SyntaticTreeNode(node, method, null, expect(OperatorSymbols.OPEN_PARENTHESIS)));
@@ -626,29 +637,30 @@ public class AutomatoSintaticoPascal {
 				node.add(new SyntaticTreeNode(node, method, null, expect(OperatorSymbols.SEMICOLON)));
 				node.add(parameterDeclaration(node));
 			}
-		} catch (AutomatoException e) {
+		} catch (SyntacticAutomataException e) {
 		}
 
 		node.add(new SyntaticTreeNode(node, method, null, expect(OperatorSymbols.CLOSE_PARENTHESIS)));
 
-		exiting(method);
+		LOGGER.exit();
 		return node;
 	}
 
-	private SyntaticTreeNode parameterDeclaration(SyntaticTreeNode parent) throws AutomatoException {
+	private SyntaticTreeNode parameterDeclaration(SyntaticTreeNode parent)
+			throws SyntacticAutomataException {
 		SyntaticTreeNode node;
 		String method = "parameterDeclaration";
 
-		entering(method);
+		LOGGER.entry();
 		node = new SyntaticTreeNode(parent, method, SyntaticSymbol.PARAMETER_DECLARATION);
 
 		try {
 			node.add(valueParameter(node));
-		} catch (AutomatoException e) {
+		} catch (SyntacticAutomataException e) {
 			node.add(variableParameter(node));
 		}
 
-		exiting(method);
+		LOGGER.exit();
 		return node;
 	}
 
@@ -657,13 +669,14 @@ public class AutomatoSintaticoPascal {
 	 * 
 	 * @param parent
 	 * @return
-	 * @throws AutomatoException
+	 * @throws SyntacticAutomataException
 	 */
-	private SyntaticTreeNode valueParameter(SyntaticTreeNode parent) throws AutomatoException {
+	private SyntaticTreeNode valueParameter(SyntaticTreeNode parent)
+			throws SyntacticAutomataException {
 		SyntaticTreeNode node;
 		String method = "valueParameter";
 
-		entering(method);
+		LOGGER.entry();
 		node = new SyntaticTreeNode(parent, method, SyntaticSymbol.VALUE_PARAMETER);
 
 		try {
@@ -671,11 +684,11 @@ public class AutomatoSintaticoPascal {
 			try {
 				node.add(new SyntaticTreeNode(node, method, null, expect(WordSymbols.ARRAY)));
 				node.add(new SyntaticTreeNode(node, method, null, expect(WordSymbols.OF)));
-			} catch (AutomatoException eList) {
+			} catch (SyntacticAutomataException eList) {
 			}
 			// node.add(parameterType(node));
 			node.add(type(node));
-		} catch (AutomatoException eList) {
+		} catch (SyntacticAutomataException eList) {
 			node.add(new SyntaticTreeNode(node, method, SyntaticSymbol.IDENTIFIER,
 					expect(OperatorSymbols.ID)));
 			node.add(new SyntaticTreeNode(node, method, null, expect(OperatorSymbols.COLON)));
@@ -686,7 +699,7 @@ public class AutomatoSintaticoPascal {
 					expect(OperatorSymbols.ID)));
 		}
 
-		exiting(method);
+		LOGGER.exit();
 		return node;
 	}
 
@@ -695,13 +708,14 @@ public class AutomatoSintaticoPascal {
 	 * 
 	 * @param parent
 	 * @return
-	 * @throws AutomatoException
+	 * @throws SyntacticAutomataException
 	 */
-	private SyntaticTreeNode variableParameter(SyntaticTreeNode parent) throws AutomatoException {
+	private SyntaticTreeNode variableParameter(SyntaticTreeNode parent)
+			throws SyntacticAutomataException {
 		SyntaticTreeNode node;
 		String method = "variableParameter";
 
-		entering(method);
+		LOGGER.entry();
 		node = new SyntaticTreeNode(parent, method, SyntaticSymbol.VARIABLE_PARAMETER);
 
 		node.add(new SyntaticTreeNode(node, method, null, expect(WordSymbols.VAR)));
@@ -712,45 +726,47 @@ public class AutomatoSintaticoPascal {
 			try {
 				node.add(new SyntaticTreeNode(node, method, null, expect(WordSymbols.ARRAY)));
 				node.add(new SyntaticTreeNode(node, method, null, expect(WordSymbols.OF)));
-			} catch (AutomatoException eList) {
+			} catch (SyntacticAutomataException eList) {
 			}
 			// node.add(parameterType(node));
 			node.add(type(node));
-		} catch (AutomatoException eList) {
+		} catch (SyntacticAutomataException eList) {
 		}
 
-		exiting(method);
+		LOGGER.exit();
 		return node;
 	}
 
-	private SyntaticTreeNode identifierList(SyntaticTreeNode parent) throws AutomatoException {
+	private SyntaticTreeNode identifierList(SyntaticTreeNode parent)
+			throws SyntacticAutomataException {
 		SyntaticTreeNode node;
 		String method = "identifierList";
 
-		entering(method);
+		LOGGER.entry();
 		node = new SyntaticTreeNode(parent, method, SyntaticSymbol.IDENTIFIER_LIST);
 
 		node.add(new SyntaticTreeNode(node, method, SyntaticSymbol.IDENTIFIER,
 				expect(OperatorSymbols.ID)));
-		
+
 		try {
 			node.add(new SyntaticTreeNode(node, method, null, expect(OperatorSymbols.COMMA)));
 			identifierList(node);
-		} catch (AutomatoException e) {
+		} catch (SyntacticAutomataException e) {
 		}
 
-		exiting(method);
+		LOGGER.exit();
 		return node;
 	}
 
 	/* END parameter lists */
 
-	private SyntaticTreeNode hintDirective(SyntaticTreeNode parent) throws AutomatoException {
+	private SyntaticTreeNode hintDirective(SyntaticTreeNode parent)
+			throws SyntacticAutomataException {
 		SyntaticTreeNode node;
 		String method = "hintDirective";
 		Collection<WordSymbols> hints = new LinkedList<WordSymbols>();
 
-		entering(method);
+		LOGGER.entry();
 		node = new SyntaticTreeNode(parent, method, SyntaticSymbol.HINT_DIRECTIVE);
 
 		hints.add(WordSymbols.DEPRECATED);
@@ -767,24 +783,25 @@ public class AutomatoSintaticoPascal {
 					node.add(new SyntaticTreeNode(node, method, SyntaticSymbol.IDENTIFIER,
 							expect(OperatorSymbols.ID)));
 				}
-			} catch (AutomatoException e) {
+			} catch (SyntacticAutomataException e) {
 			}
-		} catch (AutomatoException e) {
+		} catch (SyntacticAutomataException e) {
 		}
 
-		exiting(method);
+		LOGGER.exit();
 		return node;
 	}
 
-	private SyntaticTreeNode expression(SyntaticTreeNode parent) throws AutomatoException {
+	private SyntaticTreeNode expression(SyntaticTreeNode parent) throws SyntacticAutomataException {
 		return expressao(parent);
 	}
 
-	private SyntaticTreeNode compoundStatement(SyntaticTreeNode parent) throws AutomatoException {
+	private SyntaticTreeNode compoundStatement(SyntaticTreeNode parent)
+			throws SyntacticAutomataException {
 		SyntaticTreeNode node;
 		String method = "compoundStatement";
 
-		entering(method);
+		LOGGER.entry();
 		node = new SyntaticTreeNode(parent, method, SyntaticSymbol.COMPOUND_STATEMENT);
 
 		node.add(new SyntaticTreeNode(node, method, null, expect(WordSymbols.BEGIN)));
@@ -792,28 +809,29 @@ public class AutomatoSintaticoPascal {
 			node.add(statement(node));
 			try {
 				node.add(new SyntaticTreeNode(node, method, null, expect(OperatorSymbols.SEMICOLON)));
-			} catch (AutomatoException e) {
+			} catch (SyntacticAutomataException e) {
 				break;
 			}
 		}
 		node.add(new SyntaticTreeNode(node, method, null, expect(WordSymbols.END)));
 
-		exiting(method);
+		LOGGER.exit();
 		return node;
 	}
 
-	private SyntaticTreeNode statement(SyntaticTreeNode parent) throws AutomatoException {
+	private SyntaticTreeNode statement(SyntaticTreeNode parent) throws SyntacticAutomataException {
 		return cmd(parent);
 	}
 
 	/* ********************************************************************************************************
 	 */
 
-	private SyntaticTreeNode tipoVariavel(SyntaticTreeNode parent) throws AutomatoException {
+	private SyntaticTreeNode tipoVariavel(SyntaticTreeNode parent)
+			throws SyntacticAutomataException {
 		SyntaticTreeNode node;
 		String method = "tipoVariavel";
 
-		entering(method);
+		LOGGER.entry();
 		node = new SyntaticTreeNode(parent, method, null);
 
 		Collection<TypeWordSymbols> tipos = new LinkedList<TypeWordSymbols>();
@@ -823,15 +841,16 @@ public class AutomatoSintaticoPascal {
 		Token lexicToken = expect(tipos);
 		node.add(new SyntaticTreeNode(node, method, null, lexicToken));
 
-		exiting(method);
+		LOGGER.exit();
 		return node;
 	}
 
-	private SyntaticTreeNode listaParametros(SyntaticTreeNode parent) throws AutomatoException {
+	private SyntaticTreeNode listaParametros(SyntaticTreeNode parent)
+			throws SyntacticAutomataException {
 		SyntaticTreeNode node;
 		String method = "listaParametros";
 
-		entering(method);
+		LOGGER.entry();
 		node = new SyntaticTreeNode(parent, method, null);
 
 		node.add(identifierList(node));
@@ -841,119 +860,120 @@ public class AutomatoSintaticoPascal {
 		node.add(tipoVariavel(node));
 		node.add(maisParametros(node));
 
-		exiting(method);
+		LOGGER.exit();
 		return node;
 	}
 
-	private SyntaticTreeNode maisParametros(SyntaticTreeNode parent) throws AutomatoException {
+	private SyntaticTreeNode maisParametros(SyntaticTreeNode parent)
+			throws SyntacticAutomataException {
 		SyntaticTreeNode node;
 		String method = "maisParametros";
 
-		entering(method);
+		LOGGER.entry();
 		node = new SyntaticTreeNode(parent, method, null);
 
 		try {
 			node.add(new SyntaticTreeNode(node, method, null, expect(OperatorSymbols.SEMICOLON)));
-		} catch (AutomatoException e) {
+		} catch (SyntacticAutomataException e) {
 			return null;
 		}
 
 		node.add(listaParametros(node));
 
-		exiting(method);
+		LOGGER.exit();
 		return node;
 	}
 
-	private SyntaticTreeNode lista_arg(SyntaticTreeNode parent) throws AutomatoException {
+	private SyntaticTreeNode lista_arg(SyntaticTreeNode parent) throws SyntacticAutomataException {
 		SyntaticTreeNode node;
 		String method = "lista_arg";
 
-		entering(method);
+		LOGGER.entry();
 		node = new SyntaticTreeNode(parent, method, null);
 
 		expect(OperatorSymbols.OPEN_PARENTHESIS);
 		node.add(argumentos(node));
 		expect(OperatorSymbols.CLOSE_PARENTHESIS);
 
-		exiting(method);
+		LOGGER.exit();
 		return node;
 	}
 
-	private SyntaticTreeNode argumentos(SyntaticTreeNode parent) throws AutomatoException {
+	private SyntaticTreeNode argumentos(SyntaticTreeNode parent) throws SyntacticAutomataException {
 		SyntaticTreeNode node;
 		String method = "argumentos";
 
-		entering(method);
+		LOGGER.entry();
 		node = new SyntaticTreeNode(parent, method, null);
 
 		expect(OperatorSymbols.ID);
 		node.add(maisIDs(node));
 
-		exiting(method);
+		LOGGER.exit();
 		return node;
 	}
 
-	private SyntaticTreeNode maisIDs(SyntaticTreeNode parent) throws AutomatoException {
+	private SyntaticTreeNode maisIDs(SyntaticTreeNode parent) throws SyntacticAutomataException {
 		SyntaticTreeNode node;
 		String method = "maisIDs";
 
-		entering(method);
+		LOGGER.entry();
 		node = new SyntaticTreeNode(parent, method, null);
 
 		try {
 			expect(OperatorSymbols.SEMICOLON);
-		} catch (AutomatoException e) {
-			exiting(method);
+		} catch (SyntacticAutomataException e) {
+			LOGGER.exit();
 			return node;
 		}
 
 		node.add(argumentos(node));
 
-		exiting(method);
+		LOGGER.exit();
 		return node;
 	}
 
-	private SyntaticTreeNode pfalsa(SyntaticTreeNode parent) throws AutomatoException {
+	private SyntaticTreeNode pfalsa(SyntaticTreeNode parent) throws SyntacticAutomataException {
 		SyntaticTreeNode node;
 		String method = "pfalsa";
 
-		entering(method);
+		LOGGER.entry();
 		node = new SyntaticTreeNode(parent, method, null);
 
 		try {
 			expect(WordSymbols.ELSE);
-		} catch (AutomatoException e) {
-			exiting(method);
+		} catch (SyntacticAutomataException e) {
+			LOGGER.exit();
 			return node;
 		}
 		node.add(cmd(node));
 
-		exiting(method);
+		LOGGER.exit();
 		return node;
 	}
 
-	private SyntaticTreeNode comandos(SyntaticTreeNode parent) throws AutomatoException {
+	private SyntaticTreeNode comandos(SyntaticTreeNode parent) throws SyntacticAutomataException {
 		SyntaticTreeNode node;
 		String method = "comandos";
 
-		entering(method);
+		LOGGER.entry();
 		node = new SyntaticTreeNode(parent, method, null);
 
 		node.add(cmd(node));
 		try {
 			expect(OperatorSymbols.SEMICOLON);
-		} catch (AutomatoException e) {
+		} catch (SyntacticAutomataException e) {
 		}
 
-		exiting(method);
+		LOGGER.exit();
 		return node;
 	}
 
-	private SyntaticTreeNode cmd(SyntaticTreeNode parent) throws AutomatoException {
+	private SyntaticTreeNode cmd(SyntaticTreeNode parent) throws SyntacticAutomataException {
 		SyntaticTreeNode node;
 		String method = "cmd";
 
-		entering(method);
+		LOGGER.entry();
 		node = new SyntaticTreeNode(parent, method, null);
 
 		Collection<Symbol> comandosPossiveis = new LinkedList<Symbol>();
@@ -978,7 +998,7 @@ public class AutomatoSintaticoPascal {
 				expect(OperatorSymbols.OPEN_PARENTHESIS.getMirror());
 				break;
 			default:
-				getLogger().severe("UNKNOWN COMMAND " + command.getName());
+				LOGGER.error("UNKNOWN COMMAND " + command.getName());
 				break;
 			}
 		} else if (symbol instanceof WordSymbols) {
@@ -1005,7 +1025,7 @@ public class AutomatoSintaticoPascal {
 				expect(WordSymbols.END);
 				break;
 			default:
-				getLogger().severe("UNKNOWN or MISPLACED WORD " + word.getName());
+				LOGGER.error("UNKNOWN or MISPLACED WORD " + word.getName());
 				break;
 			}
 		} else if (symbol instanceof OperatorSymbols) {
@@ -1015,40 +1035,40 @@ public class AutomatoSintaticoPascal {
 				try {
 					expect(OperatorSymbols.COLON_EQUAL);
 					node.add(expressao(node));
-				} catch (AutomatoException e) {
+				} catch (SyntacticAutomataException e) {
 					node.add(lista_arg(node));
 				}
 				break;
 			default:
-				getLogger().severe("UNKNOWN or MISPLACED OPERATOR " + operator.getName());
+				LOGGER.error("UNKNOWN or MISPLACED OPERATOR " + operator.getName());
 				break;
 			}
 		}
 
-		exiting(method);
+		LOGGER.exit();
 		return node;
 	}
 
-	private SyntaticTreeNode condicao(SyntaticTreeNode parent) throws AutomatoException {
+	private SyntaticTreeNode condicao(SyntaticTreeNode parent) throws SyntacticAutomataException {
 		SyntaticTreeNode node;
 		String method = "condicao";
 
-		entering(method);
+		LOGGER.entry();
 		node = new SyntaticTreeNode(parent, method, null);
 
 		node.add(expressao(node));
 		node.add(relacao(node));
 		node.add(expressao(node));
 
-		exiting(method);
+		LOGGER.exit();
 		return node;
 	}
 
-	private SyntaticTreeNode relacao(SyntaticTreeNode parent) throws AutomatoException {
+	private SyntaticTreeNode relacao(SyntaticTreeNode parent) throws SyntacticAutomataException {
 		SyntaticTreeNode node;
 		String method = "relacao";
 
-		entering(method);
+		LOGGER.entry();
 		node = new SyntaticTreeNode(parent, method, null);
 
 		Collection<Symbol> relacoesPossiveis = new LinkedList<Symbol>();
@@ -1061,85 +1081,87 @@ public class AutomatoSintaticoPascal {
 
 		expect(relacoesPossiveis);
 
-		exiting(method);
+		LOGGER.exit();
 		return node;
 	}
 
-	private SyntaticTreeNode expressao(SyntaticTreeNode parent) throws AutomatoException {
+	private SyntaticTreeNode expressao(SyntaticTreeNode parent) throws SyntacticAutomataException {
 		SyntaticTreeNode node;
 		String method = "expressao";
 
-		entering(method);
+		LOGGER.entry();
 		node = new SyntaticTreeNode(parent, method, null);
 
 		node.add(termo(node));
 		node.add(outrosTermos(node));
 
-		exiting(method);
+		LOGGER.exit();
 		return node;
 	}
 
-	private SyntaticTreeNode outrosTermos(SyntaticTreeNode parent) throws AutomatoException {
+	private SyntaticTreeNode outrosTermos(SyntaticTreeNode parent)
+			throws SyntacticAutomataException {
 		SyntaticTreeNode node;
 		String method = "outrosTermos";
 
-		entering(method);
+		LOGGER.entry();
 		node = new SyntaticTreeNode(parent, method, null);
 
 		try {
 			node.add(operadorUnario(node));
-		} catch (AutomatoException e) {
-			exiting(method);
+		} catch (SyntacticAutomataException e) {
+			LOGGER.exit();
 			return node;
 
 		}
 		node.add(termo(node));
 		node.add(outrosTermos(node));
 
-		exiting(method);
+		LOGGER.exit();
 		return node;
 	}
 
-	private SyntaticTreeNode termo(SyntaticTreeNode parent) throws AutomatoException {
+	private SyntaticTreeNode termo(SyntaticTreeNode parent) throws SyntacticAutomataException {
 		SyntaticTreeNode node;
 		String method = "termo";
 
-		entering(method);
+		LOGGER.entry();
 		node = new SyntaticTreeNode(parent, method, null);
 
 		try {
 			node.add(operadorBinario(node));
-		} catch (AutomatoException e) {
-			exiting(method);
+		} catch (SyntacticAutomataException e) {
+			LOGGER.exit();
 			return node;
 		}
 
 		node.add(fator(node));
 		node.add(maisFatores(node));
 
-		exiting(method);
+		LOGGER.exit();
 		return node;
 	}
 
-	private SyntaticTreeNode maisFatores(SyntaticTreeNode parent) throws AutomatoException {
+	private SyntaticTreeNode maisFatores(SyntaticTreeNode parent) throws SyntacticAutomataException {
 		SyntaticTreeNode node;
 		String method = "maisFatores";
 
-		entering(method);
+		LOGGER.entry();
 		node = new SyntaticTreeNode(parent, method, null);
 
 		node.add(operadorBinario(node));
 		node.add(fator(node));
 
-		exiting(method);
+		LOGGER.exit();
 		return node;
 	}
 
-	private SyntaticTreeNode operadorBinario(SyntaticTreeNode parent) throws AutomatoException {
+	private SyntaticTreeNode operadorBinario(SyntaticTreeNode parent)
+			throws SyntacticAutomataException {
 		SyntaticTreeNode node;
 		String method = "operadorBinario";
 
-		entering(method);
+		LOGGER.entry();
 		node = new SyntaticTreeNode(parent, method, null);
 
 		Collection<Symbol> operadoresPossiveis = new LinkedList<Symbol>();
@@ -1148,15 +1170,16 @@ public class AutomatoSintaticoPascal {
 
 		expect(operadoresPossiveis);
 
-		exiting(method);
+		LOGGER.exit();
 		return node;
 	}
 
-	private SyntaticTreeNode operadorUnario(SyntaticTreeNode parent) throws AutomatoException {
+	private SyntaticTreeNode operadorUnario(SyntaticTreeNode parent)
+			throws SyntacticAutomataException {
 		SyntaticTreeNode node;
 		String method = "operadorUnario";
 
-		entering(method);
+		LOGGER.entry();
 		node = new SyntaticTreeNode(parent, method, null);
 
 		Collection<Symbol> operadoresPossiveis = new LinkedList<Symbol>();
@@ -1165,15 +1188,15 @@ public class AutomatoSintaticoPascal {
 
 		expect(operadoresPossiveis);
 
-		exiting(method);
+		LOGGER.exit();
 		return node;
 	}
 
-	private SyntaticTreeNode fator(SyntaticTreeNode parent) throws AutomatoException {
+	private SyntaticTreeNode fator(SyntaticTreeNode parent) throws SyntacticAutomataException {
 		SyntaticTreeNode node;
 		String method = "fator";
 
-		entering(method);
+		LOGGER.entry();
 		node = new SyntaticTreeNode(parent, method, null);
 
 		Collection<Symbol> fatoresPossiveis = new LinkedList<Symbol>();
@@ -1192,12 +1215,12 @@ public class AutomatoSintaticoPascal {
 				expect(OperatorSymbols.OPEN_PARENTHESIS.getMirror());
 				break;
 			default:
-				getLogger().severe("UNKNOWN FACTOR " + fator.getName());
+				LOGGER.error("UNKNOWN FACTOR " + fator.getName());
 				break;
 			}
 		}
 
-		exiting(method);
+		LOGGER.exit();
 		return node;
 	}
 }

@@ -5,8 +5,8 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses({ LexicoTest.class, SintaticoTest.class })
-public class AllTests {
+@SuiteClasses({ LexicalAutomataTest.class, SyntaticTest.class })
+public class CompiladoidoTests {
 	
 	public static StringBuffer getMinimalProg() {
 		StringBuffer minimalProg;

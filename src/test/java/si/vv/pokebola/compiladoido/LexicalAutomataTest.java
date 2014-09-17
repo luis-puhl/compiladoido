@@ -13,7 +13,7 @@ import si.vv.pokebola.compiladoido.beans.Token;
 import si.vv.pokebola.compiladoido.beans.TypeWordSymbols;
 import si.vv.pokebola.compiladoido.beans.WordSymbols;
 
-public class LexicoTest {
+public class LexicalAutomataTest {
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -21,23 +21,19 @@ public class LexicoTest {
 
 	@Before
 	public void setUp() throws Exception {
-		String[] args;
-		args = new String[0];
-
-		Compiladoido compiladoido = Compiladoido.getInstance();
-		compiladoido.instanceMain(args);
+		Compiladoido.getInstance();
 	}
 
 	@Test
 	public void basicProgramEndTest() {
-		Lexico lexico;
+		LexicalAutomata lexico;
 		StringBuffer stringBuffer;
 		Token actualToken;
 		Symbol actualSimbolo;
 		Symbol expectedSimbolo;
 
-		stringBuffer = AllTests.getMinimalProg();
-		lexico = new Lexico(stringBuffer);
+		stringBuffer = CompiladoidoTests.getMinimalProg();
+		lexico = new LexicalAutomata(stringBuffer);
 
 		// program p; begin READ(x) end.
 		// program part
@@ -104,23 +100,23 @@ public class LexicoTest {
 
 	@Test(expected = NullPointerException.class)
 	public void bufferForLexicoShouldNotBeNull() {
-		Lexico lexico;
+		LexicalAutomata lexico;
 		StringBuffer stringBuffer;
 
 		stringBuffer = null;
-		lexico = new Lexico(stringBuffer);
+		lexico = new LexicalAutomata(stringBuffer);
 
 		assertEquals(WordSymbols.PROGRAM, lexico.getToken().getSymbol());
 	}
 
 	@Test
 	public void helloWorldTest() {
-		Lexico lexico;
+		LexicalAutomata lexico;
 		StringBuffer stringBuffer;
 
-		stringBuffer = AllTests.getHelloWorld();
+		stringBuffer = CompiladoidoTests.getHelloWorld();
 
-		lexico = new Lexico(stringBuffer);
+		lexico = new LexicalAutomata(stringBuffer);
 
 		assertEquals(WordSymbols.PROGRAM, lexico.getToken().getSymbol());
 		assertEquals(OperatorSymbols.ID, lexico.getToken().getSymbol());
@@ -148,19 +144,20 @@ public class LexicoTest {
 
 	@Test
 	public void wikiProgramProcedure() {
-		Lexico lexico;
+		LexicalAutomata lexico;
 		StringBuffer stringBuffer;
 
-		stringBuffer = AllTests.getWikiProgramProcedure();
+		stringBuffer = CompiladoidoTests.getWikiProgramProcedure();
 
-		lexico = new Lexico(stringBuffer);
+		lexico = new LexicalAutomata(stringBuffer);
 
 		assertEquals(WordSymbols.PROGRAM, lexico.getToken().getSymbol());
 		assertEquals(OperatorSymbols.ID, lexico.getToken().getSymbol());
 
 		assertEquals(OperatorSymbols.OPEN_PARENTHESIS, lexico.getToken()
 				.getSymbol());
-		assertEquals(OperatorSymbols.ID, lexico.getToken().getSymbol());
+		// removido porque este compilador não suporta programas parametrizados
+		// assertEquals(OperatorSymbols.ID, lexico.getToken().getSymbol());
 		assertEquals(OperatorSymbols.OPEN_PARENTHESIS.getMirror(), lexico
 				.getToken().getSymbol());
 

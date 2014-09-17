@@ -1,12 +1,13 @@
 package si.vv.pokebola.compiladoido;
 
 import java.util.Collection;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.Logger;
 
 import si.vv.pokebola.compiladoido.beans.Symbol;
 
-public class AutomatoException extends Exception {
+public class SyntacticAutomataException extends Exception {
 	/**
 	 * 
 	 */
@@ -39,11 +40,11 @@ public class AutomatoException extends Exception {
 		msg.append(")");
 	}
 
-	public AutomatoException(Logger logger, Symbol expected, boolean optional, Symbol got ) {
+	public SyntacticAutomataException(Logger logger, Symbol expected, boolean optional, Symbol got ) {
 		this.initMessage(logger);
 		this.msg.append(expected.getName());
 		if (optional) {
-			level = Level.FINE;
+			level = Level.INFO;
 			msg.append(" was not used.");
 		} else {
 			msg.append(" EXPECTED.");
@@ -55,7 +56,7 @@ public class AutomatoException extends Exception {
 		errorSource();
 	}
 
-	public AutomatoException(Logger logger, Collection<? extends Symbol> expected,
+	public SyntacticAutomataException(Logger logger, Collection<? extends Symbol> expected,
 			boolean optional, Symbol got) {
 		this.initMessage(logger);
 		for (Symbol symbol : expected) {
@@ -64,10 +65,10 @@ public class AutomatoException extends Exception {
 		}
 
 		if (optional) {
-			level = Level.FINE;
+			level = Level.INFO;
 			msg.append(" was not used.");
 		} else {
-			msg.append(" EXPECTED.");
+			msg.append(" Expected.");
 		}
 
 		msg.append("Got ");
@@ -76,15 +77,15 @@ public class AutomatoException extends Exception {
 		errorSource();
 	}
 
-	public AutomatoException(Logger logger, Symbol expected, Symbol got) {
+	public SyntacticAutomataException(Logger logger, Symbol expected, Symbol got) {
 		this(logger, expected, false, got);
 	}
 
-	public AutomatoException(Logger logger, Collection<? extends Symbol> expected, Symbol got) {
+	public SyntacticAutomataException(Logger logger, Collection<? extends Symbol> expected, Symbol got) {
 		this(logger, expected, false, got);
 	}
 
-	public AutomatoException(Logger logger) {
+	public SyntacticAutomataException(Logger logger) {
 		this.initMessage(logger);
 		msg.append("Unimplemented feature");
 		this.errorSource();

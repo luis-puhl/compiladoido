@@ -1,143 +1,1205 @@
-[si.vv.pokebola.compiladoido.Sintatico]FINER: entring program
-[si.vv.pokebola.compiladoido.Sintatico]FINER: entring program
-[si.vv.pokebola.compiladoido.Sintatico]FINER: entring programHeader
-[si.vv.pokebola.compiladoido.Sintatico]FINE: 
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring getToken
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring consume
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring LER_VAZIO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring END_TOKEN
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: exiting consume. returning 'Token [symbol=PROGRAM, texto=Program]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]INFO: exiting consume. returning 'Token [symbol=PROGRAM, texto=Program]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring getToken
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring consume
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring LER_VAZIO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring LER_VAZIO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring END_TOKEN
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: exiting consume. returning 'Token [symbol=ID, texto=HelloWorld]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]INFO: exiting consume. returning 'Token [symbol=ID, texto=HelloWorld]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring getToken
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring consume
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring LER_VAZIO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring OPERADOR
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring END_TOKEN
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: exiting consume. returning 'Token [symbol=;, texto=;]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]INFO: exiting consume. returning 'Token [symbol=;, texto=;]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring getToken
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring consume
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring LER_VAZIO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring LER_VAZIO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring END_TOKEN
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: exiting consume. returning 'Token [symbol=BEGIN, texto=Begin]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]INFO: exiting consume. returning 'Token [symbol=BEGIN, texto=Begin]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring getToken
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring consume
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring LER_VAZIO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring LER_VAZIO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring END_TOKEN
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: exiting consume. returning 'Token [symbol=ID, texto=WriteLn]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]INFO: exiting consume. returning 'Token [symbol=ID, texto=WriteLn]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring getToken
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring consume
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring LER_VAZIO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring OPERADOR
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring END_TOKEN
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: exiting consume. returning 'Token [symbol=(, texto=(]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]INFO: exiting consume. returning 'Token [symbol=(, texto=(]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring getToken
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring consume
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring LER_VAZIO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring STRING
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring STRING
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring STRING
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring STRING
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring STRING
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring STRING
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring STRING
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring STRING
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring STRING
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring STRING
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring STRING
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring STRING
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring STRING
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring END_TOKEN
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: exiting consume. returning 'Token [symbol=ID, texto='Hello world!']'
+[si.vv.pokebola.compiladoido.LexicalAutomata]INFO: exiting consume. returning 'Token [symbol=ID, texto='Hello world!']'
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring getToken
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring consume
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring LER_VAZIO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring OPERADOR
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring END_TOKEN
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: exiting consume. returning 'Token [symbol=), texto=)]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]INFO: exiting consume. returning 'Token [symbol=), texto=)]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring getToken
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring consume
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring LER_VAZIO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring LER_VAZIO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring COMENTARIO_LONGO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring END_TOKEN
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: exiting consume. returning 'Token [symbol=COMMENT, texto={no ";" is required after the last statement of a block -
+adding one adds a "null statement" to the program}]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]INFO: exiting consume. returning 'Token [symbol=COMMENT, texto={no ";" is required after the last statement of a block -
+adding one adds a "null statement" to the program}]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring getToken
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring consume
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring LER_VAZIO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring LER_VAZIO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring END_TOKEN
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: exiting consume. returning 'Token [symbol=END, texto=End]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]INFO: exiting consume. returning 'Token [symbol=END, texto=End]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring getToken
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring consume
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring LER_VAZIO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: exiting consume. returning 'Token [symbol=., texto=.]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]INFO: exiting consume. returning 'Token [symbol=., texto=.]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring getToken
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring getTexto
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring getToken
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring getToken
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring consume
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring consume
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring LER_VAZIO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring LER_VAZIO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring END_TOKEN
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring END_TOKEN
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: exiting consume. returning 'Token [symbol=PROGRAM, texto=program]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: exiting consume. returning 'Token [symbol=PROGRAM, texto=program]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]INFO: exiting consume. returning 'Token [symbol=PROGRAM, texto=program]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]INFO: exiting consume. returning 'Token [symbol=PROGRAM, texto=program]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring getToken
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring getToken
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring consume
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring consume
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring LER_VAZIO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring LER_VAZIO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring LER_VAZIO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring LER_VAZIO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring END_TOKEN
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring END_TOKEN
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: exiting consume. returning 'Token [symbol=ID, texto=Mine]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: exiting consume. returning 'Token [symbol=ID, texto=Mine]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]INFO: exiting consume. returning 'Token [symbol=ID, texto=Mine]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]INFO: exiting consume. returning 'Token [symbol=ID, texto=Mine]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring getToken
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring getToken
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring consume
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring consume
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring LER_VAZIO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring LER_VAZIO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring OPERADOR
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring OPERADOR
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring END_TOKEN
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring END_TOKEN
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: exiting consume. returning 'Token [symbol=(, texto=(]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: exiting consume. returning 'Token [symbol=(, texto=(]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]INFO: exiting consume. returning 'Token [symbol=(, texto=(]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]INFO: exiting consume. returning 'Token [symbol=(, texto=(]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring getToken
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring getToken
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring consume
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring consume
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring LER_VAZIO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring LER_VAZIO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring OPERADOR
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring OPERADOR
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring END_TOKEN
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring END_TOKEN
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: exiting consume. returning 'Token [symbol=), texto=)]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: exiting consume. returning 'Token [symbol=), texto=)]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]INFO: exiting consume. returning 'Token [symbol=), texto=)]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]INFO: exiting consume. returning 'Token [symbol=), texto=)]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring getToken
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring getToken
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring getToken
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring consume
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring consume
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring consume
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring LER_VAZIO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring LER_VAZIO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring LER_VAZIO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring LER_VAZIO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring LER_VAZIO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring LER_VAZIO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring LER_VAZIO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring LER_VAZIO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring LER_VAZIO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring END_TOKEN
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring END_TOKEN
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring END_TOKEN
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: exiting consume. returning 'Token [symbol=PROGRAM, texto=program]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: exiting consume. returning 'Token [symbol=PROGRAM, texto=program]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: exiting consume. returning 'Token [symbol=PROGRAM, texto=program]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]INFO: exiting consume. returning 'Token [symbol=PROGRAM, texto=program]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]INFO: exiting consume. returning 'Token [symbol=PROGRAM, texto=program]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]INFO: exiting consume. returning 'Token [symbol=PROGRAM, texto=program]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring getToken
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring getToken
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring getToken
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring consume
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring consume
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring consume
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring LER_VAZIO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring LER_VAZIO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring LER_VAZIO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring LER_VAZIO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring LER_VAZIO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring LER_VAZIO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring END_TOKEN
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring END_TOKEN
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring END_TOKEN
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: exiting consume. returning 'Token [symbol=ID, texto=p]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: exiting consume. returning 'Token [symbol=ID, texto=p]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: exiting consume. returning 'Token [symbol=ID, texto=p]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]INFO: exiting consume. returning 'Token [symbol=ID, texto=p]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]INFO: exiting consume. returning 'Token [symbol=ID, texto=p]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]INFO: exiting consume. returning 'Token [symbol=ID, texto=p]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring getToken
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring getToken
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring getToken
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring consume
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring consume
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring consume
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring LER_VAZIO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring LER_VAZIO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring LER_VAZIO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring OPERADOR
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring OPERADOR
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring OPERADOR
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring END_TOKEN
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring END_TOKEN
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring END_TOKEN
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: exiting consume. returning 'Token [symbol=;, texto=;]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: exiting consume. returning 'Token [symbol=;, texto=;]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: exiting consume. returning 'Token [symbol=;, texto=;]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]INFO: exiting consume. returning 'Token [symbol=;, texto=;]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]INFO: exiting consume. returning 'Token [symbol=;, texto=;]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]INFO: exiting consume. returning 'Token [symbol=;, texto=;]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring getToken
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring getToken
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring getToken
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring consume
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring consume
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring consume
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring LER_VAZIO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring LER_VAZIO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring LER_VAZIO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring LER_VAZIO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring LER_VAZIO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring LER_VAZIO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring END_TOKEN
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring END_TOKEN
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring END_TOKEN
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: exiting consume. returning 'Token [symbol=BEGIN, texto=begin]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: exiting consume. returning 'Token [symbol=BEGIN, texto=begin]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: exiting consume. returning 'Token [symbol=BEGIN, texto=begin]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]INFO: exiting consume. returning 'Token [symbol=BEGIN, texto=begin]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]INFO: exiting consume. returning 'Token [symbol=BEGIN, texto=begin]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]INFO: exiting consume. returning 'Token [symbol=BEGIN, texto=begin]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring getToken
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring getToken
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring getToken
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring consume
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring consume
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring consume
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring LER_VAZIO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring LER_VAZIO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring LER_VAZIO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring LER_VAZIO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring LER_VAZIO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring LER_VAZIO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring END_TOKEN
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring END_TOKEN
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring END_TOKEN
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: exiting consume. returning 'Token [symbol=READ, texto=READ]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: exiting consume. returning 'Token [symbol=READ, texto=READ]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: exiting consume. returning 'Token [symbol=READ, texto=READ]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]INFO: exiting consume. returning 'Token [symbol=READ, texto=READ]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]INFO: exiting consume. returning 'Token [symbol=READ, texto=READ]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]INFO: exiting consume. returning 'Token [symbol=READ, texto=READ]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring getToken
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring getToken
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring getToken
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring consume
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring consume
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring consume
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring LER_VAZIO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring LER_VAZIO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring LER_VAZIO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring OPERADOR
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring OPERADOR
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring OPERADOR
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring END_TOKEN
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring END_TOKEN
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring END_TOKEN
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: exiting consume. returning 'Token [symbol=(, texto=(]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: exiting consume. returning 'Token [symbol=(, texto=(]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: exiting consume. returning 'Token [symbol=(, texto=(]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]INFO: exiting consume. returning 'Token [symbol=(, texto=(]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]INFO: exiting consume. returning 'Token [symbol=(, texto=(]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]INFO: exiting consume. returning 'Token [symbol=(, texto=(]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring getToken
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring getToken
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring getToken
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring consume
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring consume
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring consume
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring LER_VAZIO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring LER_VAZIO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring LER_VAZIO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring END_TOKEN
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring END_TOKEN
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring END_TOKEN
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: exiting consume. returning 'Token [symbol=ID, texto=x]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: exiting consume. returning 'Token [symbol=ID, texto=x]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: exiting consume. returning 'Token [symbol=ID, texto=x]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]INFO: exiting consume. returning 'Token [symbol=ID, texto=x]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]INFO: exiting consume. returning 'Token [symbol=ID, texto=x]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]INFO: exiting consume. returning 'Token [symbol=ID, texto=x]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring getToken
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring getToken
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring getToken
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring consume
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring consume
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring consume
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring LER_VAZIO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring LER_VAZIO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring LER_VAZIO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring OPERADOR
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring OPERADOR
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring OPERADOR
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring END_TOKEN
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring END_TOKEN
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring END_TOKEN
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: exiting consume. returning 'Token [symbol=), texto=)]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: exiting consume. returning 'Token [symbol=), texto=)]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: exiting consume. returning 'Token [symbol=), texto=)]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]INFO: exiting consume. returning 'Token [symbol=), texto=)]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]INFO: exiting consume. returning 'Token [symbol=), texto=)]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]INFO: exiting consume. returning 'Token [symbol=), texto=)]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring getToken
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring getToken
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring getToken
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring consume
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring consume
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring consume
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring LER_VAZIO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring LER_VAZIO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring LER_VAZIO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring LER_VAZIO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring LER_VAZIO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring LER_VAZIO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring ID
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring END_TOKEN
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring END_TOKEN
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring END_TOKEN
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: exiting consume. returning 'Token [symbol=END, texto=end]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: exiting consume. returning 'Token [symbol=END, texto=end]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: exiting consume. returning 'Token [symbol=END, texto=end]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]INFO: exiting consume. returning 'Token [symbol=END, texto=end]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]INFO: exiting consume. returning 'Token [symbol=END, texto=end]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]INFO: exiting consume. returning 'Token [symbol=END, texto=end]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring getToken
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring getToken
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring getToken
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring consume
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring consume
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring consume
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring LER_VAZIO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring LER_VAZIO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring LER_VAZIO
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring OPERADOR
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring OPERADOR
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring OPERADOR
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring END_TOKEN
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring END_TOKEN
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring END_TOKEN
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: exiting consume. returning 'Token [symbol=., texto=.]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: exiting consume. returning 'Token [symbol=., texto=.]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: exiting consume. returning 'Token [symbol=., texto=.]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]INFO: exiting consume. returning 'Token [symbol=., texto=.]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]INFO: exiting consume. returning 'Token [symbol=., texto=.]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]INFO: exiting consume. returning 'Token [symbol=., texto=.]'
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring getToken
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring getToken
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring getToken
+[si.vv.pokebola.compiladoido.LexicalAutomata]FINER: entring getToken
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring program
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring program
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring programHeader
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
 	Token [symbol=PROGRAM, texto=program]
-[si.vv.pokebola.compiladoido.Sintatico]FINE: 
-	Token [symbol=ID, texto=Mine]
-[si.vv.pokebola.compiladoido.Sintatico]FINE: 
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=ID, texto=p]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=;, texto=;]
+[si.vv.pokebola.compiladoido.SyntacticWarper]INFO: OPEN_PARENTHESIS,  Expected.Got ;
+	 at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.programHeader(PascalSyntacticAutomata.java:166)
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: No PROGRAM PARAMETERS declaration
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: exiting programHeader
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=;, texto=;]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring usesClause
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=BEGIN, texto=begin]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: No USES CLAUSE declaration
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring block
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring declarationPart
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring variableDeclarationPart
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=BEGIN, texto=begin]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring procedureFuncionDeclarationPart
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: Geting a procedure/function
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring procedureDeclaration
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=BEGIN, texto=begin]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring functionDeclaration
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=BEGIN, texto=begin]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: exiting procedureFuncionDeclarationPart
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: exiting declarationPart
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring compoundStatement
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=BEGIN, texto=begin]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring cmd
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=READ, texto=READ]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
 	Token [symbol=(, texto=(]
-[si.vv.pokebola.compiladoido.Sintatico]FINE: 
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring identifierList
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=ID, texto=x]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
 	Token [symbol=), texto=)]
-[si.vv.pokebola.compiladoido.Sintatico]FINER: exiting programHeader
-[si.vv.pokebola.compiladoido.Sintatico]FINE: 
-	Token [symbol=;, texto=;]
-[si.vv.pokebola.compiladoido.Sintatico]FINER: entring usesClause
-[si.vv.pokebola.compiladoido.Sintatico]FINE: 
-	Token [symbol=VAR, texto=var]
-[si.vv.pokebola.compiladoido.Sintatico]FINER: No USES CLAUSE declaration
-[si.vv.pokebola.compiladoido.Sintatico]FINER: entring block
-[si.vv.pokebola.compiladoido.Sintatico]FINER: entring declarationPart
-[si.vv.pokebola.compiladoido.Sintatico]FINER: entring variableDeclarationPart
-[si.vv.pokebola.compiladoido.Sintatico]FINE: 
-	Token [symbol=VAR, texto=var]
-[si.vv.pokebola.compiladoido.Sintatico]FINER: entring variableDeclaration
-[si.vv.pokebola.compiladoido.Sintatico]FINE: 
-	Token [symbol=ID, texto=i]
-[si.vv.pokebola.compiladoido.Sintatico]FINE: 
-	Token [symbol=:, texto=:]
-[si.vv.pokebola.compiladoido.Sintatico]FINER: entring type
-[si.vv.pokebola.compiladoido.Sintatico]FINE: 
-	Token [symbol=INTEGER, texto=integer]
-[si.vv.pokebola.compiladoido.Sintatico]FINER: exiting type
-[si.vv.pokebola.compiladoido.Sintatico]FINE: 
-	Token [symbol=;, texto=;]
-[si.vv.pokebola.compiladoido.Sintatico]FINER: entring variableModifiers
-[si.vv.pokebola.compiladoido.Sintatico]FINE: 
-	Token [symbol=;, texto=;]
-[si.vv.pokebola.compiladoido.Sintatico]FINE: 
-	Token [symbol=;, texto=;]
-[si.vv.pokebola.compiladoido.Sintatico]FINE: 
-	Token [symbol=PROCEDURE, texto=procedure]
-[si.vv.pokebola.compiladoido.Sintatico]FINE: 
-	Token [symbol=PROCEDURE, texto=procedure]
-[si.vv.pokebola.compiladoido.Sintatico]FINE: 
-	Token [symbol=PROCEDURE, texto=procedure]
-[si.vv.pokebola.compiladoido.Sintatico]FINE: 
-	Token [symbol=PROCEDURE, texto=procedure]
-[si.vv.pokebola.compiladoido.Sintatico]FINER: exiting variableModifiers
-[si.vv.pokebola.compiladoido.Sintatico]FINER: entring hintDirective
-[si.vv.pokebola.compiladoido.Sintatico]FINE: 
-	Token [symbol=PROCEDURE, texto=procedure]
-[si.vv.pokebola.compiladoido.Sintatico]FINER: exiting hintDirective
-[si.vv.pokebola.compiladoido.Sintatico]FINE: 
-	Token [symbol=PROCEDURE, texto=procedure]
-[si.vv.pokebola.compiladoido.Sintatico]FINER: exiting variableDeclarationPart
-[si.vv.pokebola.compiladoido.Sintatico]FINER: entring procedureFuncionDeclarationPart
-[si.vv.pokebola.compiladoido.Sintatico]FINE: Geting a procedure/function
-[si.vv.pokebola.compiladoido.Sintatico]FINER: entring procedureDeclaration
-[si.vv.pokebola.compiladoido.Sintatico]FINE: 
-	Token [symbol=PROCEDURE, texto=procedure]
-[si.vv.pokebola.compiladoido.Sintatico]FINE: 
-	Token [symbol=ID, texto=Print]
-[si.vv.pokebola.compiladoido.Sintatico]FINER: entring formalParameterList
-[si.vv.pokebola.compiladoido.Sintatico]FINE: 
-	Token [symbol=(, texto=(]
-[si.vv.pokebola.compiladoido.Sintatico]FINER: entring parameterDeclaration
-[si.vv.pokebola.compiladoido.Sintatico]FINER: entring valueParameter
-[si.vv.pokebola.compiladoido.Sintatico]FINER: entring identifierList
-[si.vv.pokebola.compiladoido.Sintatico]FINE: 
-	Token [symbol=VAR, texto=var]
-[si.vv.pokebola.compiladoido.Sintatico]FINE: 
-	Token [symbol=VAR, texto=var]
-[si.vv.pokebola.compiladoido.Sintatico]FINER: entring variableParameter
-[si.vv.pokebola.compiladoido.Sintatico]FINE: 
-	Token [symbol=VAR, texto=var]
-[si.vv.pokebola.compiladoido.Sintatico]FINER: entring identifierList
-[si.vv.pokebola.compiladoido.Sintatico]FINE: 
-	Token [symbol=ID, texto=j]
-[si.vv.pokebola.compiladoido.Sintatico]FINE: 
-	Token [symbol=:, texto=:]
-[si.vv.pokebola.compiladoido.Sintatico]FINER: exiting identifierList
-[si.vv.pokebola.compiladoido.Sintatico]FINE: 
-	Token [symbol=:, texto=:]
-[si.vv.pokebola.compiladoido.Sintatico]FINE: 
-	Token [symbol=INTEGER, texto=integer]
-[si.vv.pokebola.compiladoido.Sintatico]FINER: entring type
-[si.vv.pokebola.compiladoido.Sintatico]FINE: 
-	Token [symbol=INTEGER, texto=integer]
-[si.vv.pokebola.compiladoido.Sintatico]FINER: exiting type
-[si.vv.pokebola.compiladoido.Sintatico]FINER: exiting variableParameter
-[si.vv.pokebola.compiladoido.Sintatico]FINER: exiting parameterDeclaration
-[si.vv.pokebola.compiladoido.Sintatico]FINE: 
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: exiting identifierList
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
 	Token [symbol=), texto=)]
-[si.vv.pokebola.compiladoido.Sintatico]FINE: 
-	Token [symbol=), texto=)]
-[si.vv.pokebola.compiladoido.Sintatico]FINER: exiting formalParameterList
-[si.vv.pokebola.compiladoido.Sintatico]FINER: entring hintDirective
-[si.vv.pokebola.compiladoido.Sintatico]FINE: 
-	Token [symbol=;, texto=;]
-[si.vv.pokebola.compiladoido.Sintatico]FINER: exiting hintDirective
-[si.vv.pokebola.compiladoido.Sintatico]FINE: 
-	Token [symbol=;, texto=;]
-[si.vv.pokebola.compiladoido.Sintatico]FINER: entring subroutineBlock
-[si.vv.pokebola.compiladoido.Sintatico]FINER: entring block
-[si.vv.pokebola.compiladoido.Sintatico]FINER: entring declarationPart
-[si.vv.pokebola.compiladoido.Sintatico]FINER: entring variableDeclarationPart
-[si.vv.pokebola.compiladoido.Sintatico]FINE: 
-	Token [symbol=BEGIN, texto=begin]
-[si.vv.pokebola.compiladoido.Sintatico]FINER: entring procedureFuncionDeclarationPart
-[si.vv.pokebola.compiladoido.Sintatico]FINE: Geting a procedure/function
-[si.vv.pokebola.compiladoido.Sintatico]FINER: entring procedureDeclaration
-[si.vv.pokebola.compiladoido.Sintatico]FINE: 
-	Token [symbol=BEGIN, texto=begin]
-[si.vv.pokebola.compiladoido.Sintatico]FINER: entring functionDeclaration
-[si.vv.pokebola.compiladoido.Sintatico]FINE: 
-	Token [symbol=BEGIN, texto=begin]
-[si.vv.pokebola.compiladoido.Sintatico]FINER: exiting procedureFuncionDeclarationPart
-[si.vv.pokebola.compiladoido.Sintatico]FINER: exiting declarationPart
-[si.vv.pokebola.compiladoido.Sintatico]FINER: entring compoundStatement
-[si.vv.pokebola.compiladoido.Sintatico]FINE: 
-	Token [symbol=BEGIN, texto=begin]
-[si.vv.pokebola.compiladoido.Sintatico]FINER: entring cmd
-[si.vv.pokebola.compiladoido.Sintatico]FINE: 
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: exiting cmd
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
 	Token [symbol=END, texto=end]
-[si.vv.pokebola.compiladoido.Sintatico]INFO: READ, WRITE, WHILE, REPEAT, IF, ID, SEMICOLON, BEGIN,  EXPECTED.Got END
-	 at si.vv.pokebola.compiladoido.AutomatoSintaticoPascal.cmd(AutomatoSintaticoPascal.java:969)
-[si.vv.pokebola.compiladoido.Sintatico]FINE: 
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
 	Token [symbol=END, texto=end]
-[si.vv.pokebola.compiladoido.Sintatico]FINER: entring functionDeclaration
-[si.vv.pokebola.compiladoido.Sintatico]FINE: 
-	Token [symbol=END, texto=end]
-[si.vv.pokebola.compiladoido.Sintatico]FINER: exiting procedureFuncionDeclarationPart
-[si.vv.pokebola.compiladoido.Sintatico]FINER: exiting declarationPart
-[si.vv.pokebola.compiladoido.Sintatico]FINER: entring compoundStatement
-[si.vv.pokebola.compiladoido.Sintatico]FINE: 
-	Token [symbol=END, texto=end]
-[si.vv.pokebola.compiladoido.Sintatico]INFO: BEGIN,  EXPECTED.Got END
-	 at si.vv.pokebola.compiladoido.AutomatoSintaticoPascal.compoundStatement(AutomatoSintaticoPascal.java:790)
-[si.vv.pokebola.compiladoido.Sintatico]SEVERE: Automato didn't run fine =( =( =(  (si.vv.pokebola.compiladoido.Sintatico parse)
-[si.vv.pokebola.compiladoido.Sintatico]FINE: SyntaticTreeNode [id=0, parent=null, lexicToken=null, syntaticSymbol=null, creatorMethodName=run, childrens=0]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: exiting compoundStatement
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: exiting block
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=., texto=.]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: exiting program
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: SyntaticTreeNode [id=0, parent=null, lexicToken=null, syntaticSymbol=null, creatorMethodName=run, childrens=1]
 
 0.run()^-1
+1.program(PROGRAM)^0 
+
+2.programHeader(PROGRAM_HEADER)^1 5.;(SEMICOLON)^1 7.block(BLOCK)^1 19..(POINT)^1 
+
+3.program(PROGRAM)^2 4.p(IDENTIFIER)^2 8.declarationPart(DECLARATION_PART)^7 13.compoundStatement(COMPOUND_STATEMENT)^7 
+
+9.variableDeclarationPart(VAR_DECLARATION_PART)^8 10.procedureFuncionDeclarationPart(PROCEDURE_FUNCTION_DECLARATION_PART)^8 14.begin(BEGIN)^13 15.cmd()^13 18.end(END)^13 
+
+16.identifierList(IDENTIFIER_LIST)^15 
+
+17.x(IDENTIFIER)^16 
+
+
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring program
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring program
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring program
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring program
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring programHeader
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring programHeader
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=PROGRAM, texto=program]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=PROGRAM, texto=program]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=ID, texto=Mine]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=ID, texto=Mine]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=(, texto=(]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=(, texto=(]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=), texto=)]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=), texto=)]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: exiting programHeader
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: exiting programHeader
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=;, texto=;]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=;, texto=;]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring usesClause
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring usesClause
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=VAR, texto=var]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=VAR, texto=var]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: No USES CLAUSE declaration
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: No USES CLAUSE declaration
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring block
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring block
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring declarationPart
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring declarationPart
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring variableDeclarationPart
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring variableDeclarationPart
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=VAR, texto=var]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=VAR, texto=var]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring variableDeclaration
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring variableDeclaration
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=ID, texto=i]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=ID, texto=i]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=:, texto=:]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=:, texto=:]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring type
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring type
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=INTEGER, texto=integer]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=INTEGER, texto=integer]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: exiting type
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: exiting type
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=;, texto=;]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=;, texto=;]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring variableModifiers
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring variableModifiers
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=;, texto=;]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=;, texto=;]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=;, texto=;]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=;, texto=;]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=PROCEDURE, texto=procedure]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=PROCEDURE, texto=procedure]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=PROCEDURE, texto=procedure]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=PROCEDURE, texto=procedure]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=PROCEDURE, texto=procedure]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=PROCEDURE, texto=procedure]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=PROCEDURE, texto=procedure]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=PROCEDURE, texto=procedure]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: exiting variableModifiers
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: exiting variableModifiers
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring hintDirective
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring hintDirective
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=PROCEDURE, texto=procedure]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=PROCEDURE, texto=procedure]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: exiting hintDirective
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: exiting hintDirective
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=PROCEDURE, texto=procedure]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=PROCEDURE, texto=procedure]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: exiting variableDeclarationPart
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: exiting variableDeclarationPart
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring procedureFuncionDeclarationPart
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring procedureFuncionDeclarationPart
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: Geting a procedure/function
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: Geting a procedure/function
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring procedureDeclaration
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring procedureDeclaration
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=PROCEDURE, texto=procedure]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=PROCEDURE, texto=procedure]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=ID, texto=Print]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=ID, texto=Print]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring formalParameterList
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring formalParameterList
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=(, texto=(]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=(, texto=(]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring parameterDeclaration
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring parameterDeclaration
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring valueParameter
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring valueParameter
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring identifierList
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring identifierList
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=VAR, texto=var]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=VAR, texto=var]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=VAR, texto=var]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=VAR, texto=var]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring variableParameter
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring variableParameter
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=VAR, texto=var]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=VAR, texto=var]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring identifierList
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring identifierList
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=ID, texto=j]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=ID, texto=j]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=:, texto=:]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=:, texto=:]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: exiting identifierList
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: exiting identifierList
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=:, texto=:]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=:, texto=:]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=INTEGER, texto=integer]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=INTEGER, texto=integer]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring type
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring type
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=INTEGER, texto=integer]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=INTEGER, texto=integer]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: exiting type
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: exiting type
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: exiting variableParameter
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: exiting variableParameter
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: exiting parameterDeclaration
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: exiting parameterDeclaration
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=), texto=)]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=), texto=)]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=), texto=)]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=), texto=)]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: exiting formalParameterList
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: exiting formalParameterList
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring hintDirective
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring hintDirective
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=;, texto=;]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=;, texto=;]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: exiting hintDirective
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: exiting hintDirective
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=;, texto=;]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=;, texto=;]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring subroutineBlock
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring subroutineBlock
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring block
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring block
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring declarationPart
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring declarationPart
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring variableDeclarationPart
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring variableDeclarationPart
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=BEGIN, texto=begin]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=BEGIN, texto=begin]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring procedureFuncionDeclarationPart
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring procedureFuncionDeclarationPart
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: Geting a procedure/function
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: Geting a procedure/function
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring procedureDeclaration
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring procedureDeclaration
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=BEGIN, texto=begin]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=BEGIN, texto=begin]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring functionDeclaration
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring functionDeclaration
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=BEGIN, texto=begin]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=BEGIN, texto=begin]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: exiting procedureFuncionDeclarationPart
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: exiting procedureFuncionDeclarationPart
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: exiting declarationPart
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: exiting declarationPart
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring compoundStatement
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring compoundStatement
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=BEGIN, texto=begin]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=BEGIN, texto=begin]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring cmd
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring cmd
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=END, texto=end]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=END, texto=end]
+[si.vv.pokebola.compiladoido.SyntacticWarper]INFO: READ, WRITE, WHILE, REPEAT, IF, ID, SEMICOLON, BEGIN,  Expected.Got END
+	 at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.cmd(PascalSyntacticAutomata.java:999)
+[si.vv.pokebola.compiladoido.SyntacticWarper]INFO: READ, WRITE, WHILE, REPEAT, IF, ID, SEMICOLON, BEGIN,  Expected.Got END
+	 at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.cmd(PascalSyntacticAutomata.java:999)
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=END, texto=end]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=END, texto=end]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring functionDeclaration
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring functionDeclaration
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=END, texto=end]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=END, texto=end]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: exiting procedureFuncionDeclarationPart
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: exiting procedureFuncionDeclarationPart
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: exiting declarationPart
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: exiting declarationPart
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring compoundStatement
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring compoundStatement
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=END, texto=end]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=END, texto=end]
+[si.vv.pokebola.compiladoido.SyntacticWarper]INFO: BEGIN,  Expected.Got END
+	 at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.compoundStatement(PascalSyntacticAutomata.java:817)
+[si.vv.pokebola.compiladoido.SyntacticWarper]INFO: BEGIN,  Expected.Got END
+	 at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.compoundStatement(PascalSyntacticAutomata.java:817)
+[si.vv.pokebola.compiladoido.SyntacticWarper]SEVERE: Automato didn't run fine =( =( =(  (si.vv.pokebola.compiladoido.SyntacticWarper parse)
+[si.vv.pokebola.compiladoido.SyntacticWarper]SEVERE: Automato didn't run fine =( =( =(  (si.vv.pokebola.compiladoido.SyntacticWarper parse)
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: SyntaticTreeNode [id=20, parent=null, lexicToken=null, syntaticSymbol=null, creatorMethodName=run, childrens=0]
+
+20.run()^-1
+
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: SyntaticTreeNode [id=20, parent=null, lexicToken=null, syntaticSymbol=null, creatorMethodName=run, childrens=0]
+
+20.run()^-1
+
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring program
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring program
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring program
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring program
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring program
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring program
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring programHeader
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring programHeader
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring programHeader
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=PROGRAM, texto=Program]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=PROGRAM, texto=Program]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=PROGRAM, texto=Program]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=ID, texto=HelloWorld]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=ID, texto=HelloWorld]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=ID, texto=HelloWorld]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=;, texto=;]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=;, texto=;]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=;, texto=;]
+[si.vv.pokebola.compiladoido.SyntacticWarper]INFO: OPEN_PARENTHESIS,  Expected.Got ;
+	 at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.programHeader(PascalSyntacticAutomata.java:166)
+[si.vv.pokebola.compiladoido.SyntacticWarper]INFO: OPEN_PARENTHESIS,  Expected.Got ;
+	 at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.programHeader(PascalSyntacticAutomata.java:166)
+[si.vv.pokebola.compiladoido.SyntacticWarper]INFO: OPEN_PARENTHESIS,  Expected.Got ;
+	 at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.programHeader(PascalSyntacticAutomata.java:166)
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: No PROGRAM PARAMETERS declaration
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: No PROGRAM PARAMETERS declaration
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: No PROGRAM PARAMETERS declaration
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: exiting programHeader
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: exiting programHeader
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: exiting programHeader
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=;, texto=;]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=;, texto=;]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=;, texto=;]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring usesClause
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring usesClause
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring usesClause
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=BEGIN, texto=Begin]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=BEGIN, texto=Begin]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=BEGIN, texto=Begin]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: No USES CLAUSE declaration
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: No USES CLAUSE declaration
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: No USES CLAUSE declaration
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring block
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring block
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring block
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring declarationPart
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring declarationPart
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring declarationPart
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring variableDeclarationPart
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring variableDeclarationPart
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring variableDeclarationPart
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=BEGIN, texto=Begin]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=BEGIN, texto=Begin]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=BEGIN, texto=Begin]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring procedureFuncionDeclarationPart
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring procedureFuncionDeclarationPart
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring procedureFuncionDeclarationPart
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: Geting a procedure/function
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: Geting a procedure/function
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: Geting a procedure/function
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring procedureDeclaration
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring procedureDeclaration
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring procedureDeclaration
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=BEGIN, texto=Begin]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=BEGIN, texto=Begin]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=BEGIN, texto=Begin]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring functionDeclaration
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring functionDeclaration
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring functionDeclaration
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=BEGIN, texto=Begin]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=BEGIN, texto=Begin]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=BEGIN, texto=Begin]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: exiting procedureFuncionDeclarationPart
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: exiting procedureFuncionDeclarationPart
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: exiting procedureFuncionDeclarationPart
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: exiting declarationPart
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: exiting declarationPart
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: exiting declarationPart
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring compoundStatement
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring compoundStatement
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring compoundStatement
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=BEGIN, texto=Begin]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=BEGIN, texto=Begin]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=BEGIN, texto=Begin]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring cmd
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring cmd
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring cmd
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=ID, texto=WriteLn]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=ID, texto=WriteLn]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=ID, texto=WriteLn]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=(, texto=(]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=(, texto=(]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=(, texto=(]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring lista_arg
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring lista_arg
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring lista_arg
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=(, texto=(]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=(, texto=(]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=(, texto=(]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring argumentos
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring argumentos
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring argumentos
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=ID, texto='Hello world!']
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=ID, texto='Hello world!']
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=ID, texto='Hello world!']
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring maisIDs
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring maisIDs
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: entring maisIDs
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=), texto=)]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=), texto=)]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=), texto=)]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: exiting maisIDs
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: exiting maisIDs
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: exiting maisIDs
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: exiting argumentos
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: exiting argumentos
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: exiting argumentos
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=), texto=)]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=), texto=)]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=), texto=)]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: exiting lista_arg
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: exiting lista_arg
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: exiting lista_arg
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: exiting cmd
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: exiting cmd
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: exiting cmd
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: Got a COMMENT
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: Got a COMMENT
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: Got a COMMENT
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=END, texto=End]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=END, texto=End]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=END, texto=End]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=END, texto=End]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=END, texto=End]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=END, texto=End]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=END, texto=End]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=END, texto=End]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=END, texto=End]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: exiting compoundStatement
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: exiting compoundStatement
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: exiting compoundStatement
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: exiting block
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: exiting block
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: exiting block
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=., texto=.]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=., texto=.]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: 
+	Token [symbol=., texto=.]
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: exiting program
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: exiting program
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINER: exiting program
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: SyntaticTreeNode [id=72, parent=null, lexicToken=null, syntaticSymbol=null, creatorMethodName=run, childrens=1]
+
+72.run()^-1
+73.program(PROGRAM)^72 
+
+74.programHeader(PROGRAM_HEADER)^73 77.;(SEMICOLON)^73 79.block(BLOCK)^73 92..(POINT)^73 
+
+75.Program(PROGRAM)^74 76.HelloWorld(IDENTIFIER)^74 80.declarationPart(DECLARATION_PART)^79 85.compoundStatement(COMPOUND_STATEMENT)^79 
+
+81.variableDeclarationPart(VAR_DECLARATION_PART)^80 82.procedureFuncionDeclarationPart(PROCEDURE_FUNCTION_DECLARATION_PART)^80 86.Begin(BEGIN)^85 87.cmd()^85 91.End(END)^85 
+
+88.lista_arg()^87 
+
+89.argumentos()^88 
+
+90.maisIDs()^89 
+
+
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: SyntaticTreeNode [id=72, parent=null, lexicToken=null, syntaticSymbol=null, creatorMethodName=run, childrens=1]
+
+72.run()^-1
+73.program(PROGRAM)^72 
+
+74.programHeader(PROGRAM_HEADER)^73 77.;(SEMICOLON)^73 79.block(BLOCK)^73 92..(POINT)^73 
+
+75.Program(PROGRAM)^74 76.HelloWorld(IDENTIFIER)^74 80.declarationPart(DECLARATION_PART)^79 85.compoundStatement(COMPOUND_STATEMENT)^79 
+
+81.variableDeclarationPart(VAR_DECLARATION_PART)^80 82.procedureFuncionDeclarationPart(PROCEDURE_FUNCTION_DECLARATION_PART)^80 86.Begin(BEGIN)^85 87.cmd()^85 91.End(END)^85 
+
+88.lista_arg()^87 
+
+89.argumentos()^88 
+
+90.maisIDs()^89 
+
+
+[si.vv.pokebola.compiladoido.SyntacticWarper]FINE: SyntaticTreeNode [id=72, parent=null, lexicToken=null, syntaticSymbol=null, creatorMethodName=run, childrens=1]
+
+72.run()^-1
+73.program(PROGRAM)^72 
+
+74.programHeader(PROGRAM_HEADER)^73 77.;(SEMICOLON)^73 79.block(BLOCK)^73 92..(POINT)^73 
+
+75.Program(PROGRAM)^74 76.HelloWorld(IDENTIFIER)^74 80.declarationPart(DECLARATION_PART)^79 85.compoundStatement(COMPOUND_STATEMENT)^79 
+
+81.variableDeclarationPart(VAR_DECLARATION_PART)^80 82.procedureFuncionDeclarationPart(PROCEDURE_FUNCTION_DECLARATION_PART)^80 86.Begin(BEGIN)^85 87.cmd()^85 91.End(END)^85 
+
+88.lista_arg()^87 
+
+89.argumentos()^88 
+
+90.maisIDs()^89 
+
 
