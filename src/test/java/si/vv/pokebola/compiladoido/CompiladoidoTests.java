@@ -40,6 +40,7 @@ public class CompiladoidoTests {
 		wikiProgramProcedure.append("begin\n");
 		wikiProgramProcedure.append("Print(i);\n");
 		wikiProgramProcedure.append("end.\n");
+		
 		return wikiProgramProcedure;
 	}
 }

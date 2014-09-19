@@ -69,6 +69,7 @@ public class SyntaticTest {
 		SyntaticTreeNode parsedTree = sintatico.parse();
 		
 		LOGGER.debug(parsedTree.printSubTree());
+		LOGGER.debug(parsedTree.printTree());
 	}
 	
 }

@@ -100,10 +100,11 @@ public class SyntaticTreeNode {
 		this.syntaticSymbol = syntaticSymbol;
 	}
 
-	public void add(SyntaticTreeNode child) {
+	public boolean add(SyntaticTreeNode child) {
 		if (child != null) {
-			this.getChildren().add(child);
+			return this.getChildren().add(child);
 		}
+		return false;
 	}
 
 	public void addAll(Collection<? extends SyntaticTreeNode> childs) {
@@ -179,4 +180,32 @@ public class SyntaticTreeNode {
 		return builder.toString();
 	}
 
+	public String printTree() {
+		StringBuilder builder = new StringBuilder();
+
+		builder.append("\n");
+		builder.append(this.toString());
+		builder.append("\n\n");
+
+		builder.append(this.name());
+		for (SyntaticTreeNode n : this.getChildren()) {
+			n.printTree(1, builder);
+		}
+
+		return builder.toString();
+	}
+
+	private void printTree(int tabLevel, StringBuilder builder) {
+		builder.append("\n");
+
+		for (int i = 0; i < tabLevel; i++) {
+			builder.append("\t");
+		}
+
+		builder.append(this.name());
+
+		for (SyntaticTreeNode n : this.getChildren()) {
+			n.printTree(tabLevel + 1, builder);
+		}
+	}
 }

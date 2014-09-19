@@ -5,6 +5,7 @@ import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -339,6 +340,10 @@ public class LexicalAutomata {
 
 	public void rollback() {
 		rollbackFlag = true;
+	}
+
+	public List<Token> getTokenList() {
+		w
 	}
 
 }

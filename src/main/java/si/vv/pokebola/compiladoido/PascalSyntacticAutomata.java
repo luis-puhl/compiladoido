@@ -3,6 +3,7 @@ package si.vv.pokebola.compiladoido;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
+import java.util.List;
 
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
@@ -29,16 +30,32 @@ public class PascalSyntacticAutomata {
 	/**
 	 * 
 	 */
-	private LexicalAutomata lexico;
+	private int tokenIndex;
+	private List<Token> lexicalTokens;
 
 	private SyntaticTreeNode root;
-	
+
 	private static Logger logger;
 
-	public PascalSyntacticAutomata(LexicalAutomata lexico) {
-		this.lexico = lexico;
-		logger = LogManager.getLogger();
+	public PascalSyntacticAutomata(List<Token> lexicalTokens) {
+		this.lexicalTokens = lexicalTokens;
+		this.tokenIndex = 0;
+		if (logger == null) {
+			logger = LogManager.getLogger();
+		}
 	}
+
+	/* token stuff */
+
+	private Token getToken() {
+		return lexicalTokens.get(tokenIndex++);
+	}
+
+	private void rollback() {
+		tokenIndex--;
+	}
+
+	/* tree stuff */
 
 	public SyntaticTreeNode getRoot() {
 		return root;
@@ -58,7 +75,7 @@ public class PascalSyntacticAutomata {
 	private Token getTokenLexico() {
 		Symbol symbol;
 		Token token;
-		token = lexico.getToken();
+		token = this.getToken();
 		symbol = token.getSymbol();
 		if (symbol instanceof OperatorSymbols && ((OperatorSymbols) symbol).isComment()) {
 			logger.info("Got a COMMENT");
@@ -80,7 +97,7 @@ public class PascalSyntacticAutomata {
 		token = this.getTokenLexico();
 		symbol = token.getSymbol();
 		if (!expected.contains(symbol)) {
-			lexico.rollback();
+			this.rollback();
 			throw new SyntacticAutomataException(logger, expected, optional, symbol);
 		}
 
@@ -420,6 +437,15 @@ public class PascalSyntacticAutomata {
 		return node;
 	}
 
+	/**
+	 * <a>http://www.freepascal.org/docs-html/ref/refse21.html#x56-630004.2</a>
+	 * 
+	 * EXPORT, EXTERMAL, ABSOLUTE are not suported.
+	 * 
+	 * @param parent
+	 * @return
+	 * @throws SyntacticAutomataException
+	 */
 	private SyntaticTreeNode variableModifiers(SyntaticTreeNode parent)
 			throws SyntacticAutomataException {
 		SyntaticTreeNode node;
@@ -428,50 +454,18 @@ public class PascalSyntacticAutomata {
 		logger.entry();
 		node = new SyntaticTreeNode(parent, method, SyntaticSymbol.VAR_MODIFIERS);
 
-		/**
-		 * mais uma vez,em FPC a ordem não importa, mas aqui sim
-		 */
+		boolean rollbackSemicolon = false;
+		SyntaticTreeNode syntaticTreeNode = null;
 		try {
-			node.add(new SyntaticTreeNode(node, method, null, expect(WordSymbols.ABSOLUTE)));
-
-			// integer expression or id, I go for id only
-			node.add(new SyntaticTreeNode(node, method, SyntaticSymbol.IDENTIFIER,
-					expect(OperatorSymbols.ID)));
-		} catch (SyntacticAutomataException e) {
-		}
-
-		try {
-			node.add(new SyntaticTreeNode(node, method, null, expect(OperatorSymbols.SEMICOLON)));
-			node.add(new SyntaticTreeNode(node, method, null, expect(WordSymbols.EXPORT)));
-		} catch (SyntacticAutomataException e) {
-		}
-
-		try {
-			node.add(new SyntaticTreeNode(node, method, null, expect(OperatorSymbols.SEMICOLON)));
+			syntaticTreeNode = new SyntaticTreeNode(node, method, null, expect(OperatorSymbols.SEMICOLON));
+			rollbackSemicolon =	node.add(syntaticTreeNode);
 			node.add(new SyntaticTreeNode(node, method, null, expect(WordSymbols.CVAR)));
 		} catch (SyntacticAutomataException e) {
-		}
-
-		try {
-			node.add(new SyntaticTreeNode(node, method, null, expect(OperatorSymbols.SEMICOLON)));
-			node.add(new SyntaticTreeNode(node, method, null, expect(WordSymbols.EXTERMAL)));
-			try {
-				node.add(new SyntaticTreeNode(node, method, null,
-						expect(OperatorSymbols.STRING_CONSTANT)));
-			} catch (SyntacticAutomataException e) {
+			// extra rollback para semicolon
+			if (rollbackSemicolon){
+				this.rollback();
+				node.getChildren().remove(syntaticTreeNode);
 			}
-			try {
-				node.add(new SyntaticTreeNode(node, method, null, expect(WordSymbols.NAME)));
-				node.add(new SyntaticTreeNode(node, method, null,
-						expect(OperatorSymbols.STRING_CONSTANT)));
-			} catch (SyntacticAutomataException e) {
-			}
-		} catch (SyntacticAutomataException e) {
-		}
-
-		try {
-			node.add(new SyntaticTreeNode(node, method, null, expect(WordSymbols.NAME)));
-		} catch (SyntacticAutomataException e) {
 		}
 
 		logger.exit();
@@ -808,9 +802,14 @@ public class PascalSyntacticAutomata {
 
 		node.add(new SyntaticTreeNode(node, method, null, expect(WordSymbols.BEGIN)));
 		while (true) {
-			node.add(statement(node));
 			try {
-				node.add(new SyntaticTreeNode(node, method, null, expect(OperatorSymbols.SEMICOLON)));
+				node.add(statement(node));
+				try {
+					node.add(new SyntaticTreeNode(node, method, null,
+							expect(OperatorSymbols.SEMICOLON)));
+				} catch (SyntacticAutomataException e) {
+					break;
+				}
 			} catch (SyntacticAutomataException e) {
 				break;
 			}
