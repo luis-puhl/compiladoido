@@ -27,35 +27,19 @@ import si.vv.pokebola.compiladoido.beans.WordSymbols;
  */
 public class PascalSyntacticAutomata {
 
-	/**
-	 * 
-	 */
-	private int tokenIndex;
-	private List<Token> lexicalTokens;
-
 	private SyntaticTreeNode root;
 
 	private static Logger logger;
+	private Level exceptionLevel = Level.TRACE;
+
+	private LexicalSyntaticConverter syntaticConverter;
 
 	public PascalSyntacticAutomata(List<Token> lexicalTokens) {
-		this.lexicalTokens = lexicalTokens;
-		this.tokenIndex = 0;
+		syntaticConverter = new LexicalSyntaticConverter(lexicalTokens);
 		if (logger == null) {
 			logger = LogManager.getLogger();
 		}
 	}
-
-	/* token stuff */
-
-	private Token getToken() {
-		return lexicalTokens.get(tokenIndex++);
-	}
-
-	private void rollback() {
-		tokenIndex--;
-	}
-
-	/* tree stuff */
 
 	public SyntaticTreeNode getRoot() {
 		return root;
@@ -70,55 +54,6 @@ public class PascalSyntacticAutomata {
 
 		root.add(program(root));
 		return root;
-	}
-
-	private Token getTokenLexico() {
-		Symbol symbol;
-		Token token;
-		token = this.getToken();
-		symbol = token.getSymbol();
-		if (symbol instanceof OperatorSymbols && ((OperatorSymbols) symbol).isComment()) {
-			logger.info("Got a COMMENT");
-			token = this.getTokenLexico();
-		}
-		logger.info("\n\t" + token.toString());
-		return token;
-	}
-
-	private void unimplemented() throws SyntacticAutomataException {
-		throw new SyntacticAutomataException(logger);
-	}
-
-	// implementacao
-	private Token expect(Collection<? extends Symbol> expected, boolean optional)
-			throws SyntacticAutomataException {
-		Symbol symbol;
-		Token token;
-		token = this.getTokenLexico();
-		symbol = token.getSymbol();
-		if (!expected.contains(symbol)) {
-			this.rollback();
-			throw new SyntacticAutomataException(logger, expected, optional, symbol);
-		}
-
-		return token;
-	}
-
-	// referencias
-	private Token expect(Collection<? extends Symbol> expected) throws SyntacticAutomataException {
-		return this.expect(expected, false);
-	}
-
-	private Token expect(Symbol expected, boolean optional) throws SyntacticAutomataException {
-		Collection<Symbol> symbols = new ArrayList<Symbol>(1);
-		symbols.add(expected);
-		return this.expect(symbols, optional);
-	}
-
-	private Token expect(Symbol expected) throws SyntacticAutomataException {
-		Collection<Symbol> symbols = new ArrayList<Symbol>(1);
-		symbols.add(expected);
-		return expect(symbols, false);
 	}
 
 	/* ***************************************************************** */
@@ -138,7 +73,7 @@ public class PascalSyntacticAutomata {
 		// PROGRAM HEADER
 		node.add(programHeader(node));
 
-		node.add(new SyntaticTreeNode(node, method, null, expect(OperatorSymbols.SEMICOLON)));
+		node.add(syntaticConverter.expectNode(node, method, null, OperatorSymbols.SEMICOLON));
 		// op USES CLAUSE
 		try {
 			node.add(usesClause(node));
@@ -150,7 +85,7 @@ public class PascalSyntacticAutomata {
 		node.add(block(node));
 
 		// PERIOD
-		node.add(new SyntaticTreeNode(node, method, null, expect(OperatorSymbols.POINT)));
+		node.add(syntaticConverter.expectNode(node, method, null, OperatorSymbols.PERIOD));
 
 		logger.exit();
 		return node;
@@ -164,18 +99,18 @@ public class PascalSyntacticAutomata {
 		logger.entry();
 		node = new SyntaticTreeNode(parent, method, SyntaticSymbol.PROGRAM_HEADER);
 
-		node.add(new SyntaticTreeNode(node, method, null, expect(WordSymbols.PROGRAM)));
+		node.add(syntaticConverter.expectNode(node, method, null, WordSymbols.PROGRAM));
 
-		node.add(new SyntaticTreeNode(node, method, SyntaticSymbol.IDENTIFIER,
-				expect(OperatorSymbols.ID)));
+		node.add(syntaticConverter.expectNode(node, method, SyntaticSymbol.IDENTIFIER,
+				OperatorSymbols.ID));
 
 		// op PROGRAM PARAMETERS
 		try {
-			node.add(new SyntaticTreeNode(node, method, null,
-					expect(OperatorSymbols.OPEN_PARENTHESIS)));
+			node.add(syntaticConverter.expectNode(node, method, null,
+					OperatorSymbols.OPEN_PARENTHESIS));
 			node.add(programParameters(node));
-			node.add(new SyntaticTreeNode(node, method, null,
-					expect(OperatorSymbols.CLOSE_PARENTHESIS)));
+			node.add(syntaticConverter.expectNode(node, method, null,
+					OperatorSymbols.CLOSE_PARENTHESIS));
 		} catch (SyntacticAutomataException e) {
 			e.log();
 			logger.info("No PROGRAM PARAMETERS declaration");
@@ -206,29 +141,29 @@ public class PascalSyntacticAutomata {
 		logger.entry();
 		node = new SyntaticTreeNode(parent, method, SyntaticSymbol.USE_CLAUSE);
 
-		node.add(new SyntaticTreeNode(node, method, null, expect(WordSymbols.USES, true)));
+		node.add(syntaticConverter.expectNode(node, method, WordSymbols.USES));
 
-		node.add(new SyntaticTreeNode(node, method, SyntaticSymbol.IDENTIFIER,
-				expect(OperatorSymbols.ID)));
+		node.add(syntaticConverter.expectNode(node, method, SyntaticSymbol.IDENTIFIER,
+				OperatorSymbols.ID));
 
 		// op STRING LITERAL
 		try {
-			node.add(new SyntaticTreeNode(node, method, null, expect(WordSymbols.IN)));
+			node.add(syntaticConverter.expectNode(node, method, null, WordSymbols.IN));
 
 			// deve ser STRING LITERAL
-			node.add(new SyntaticTreeNode(node, method, SyntaticSymbol.STRING_LITERAL,
-					expect(OperatorSymbols.ID)));
+			node.add(syntaticConverter.expectNode(node, method, SyntaticSymbol.STRING_LITERAL,
+					OperatorSymbols.ID));
 
 		} catch (SyntacticAutomataException e) {
 		}
 		// op MORE USES
 		try {
-			node.add(new SyntaticTreeNode(node, method, null, expect(OperatorSymbols.COMMA)));
+			node.add(syntaticConverter.expectNode(node, method, null, OperatorSymbols.COMMA));
 
 			node.add(usesClause(node));
 		} catch (SyntacticAutomataException e) {
 		}
-		node.add(new SyntaticTreeNode(node, method, null, expect(OperatorSymbols.SEMICOLON)));
+		node.add(syntaticConverter.expectNode(node, method, null, OperatorSymbols.SEMICOLON));
 
 		logger.exit();
 		return node;
@@ -269,36 +204,92 @@ public class PascalSyntacticAutomata {
 		/**
 		 * Em FPC, a ordem não importa, aqui importa.
 		 */
-		node.add(labelDeclaration(node));
-		node.add(constantDeclaration(node));
-		node.add(resourceStringDeclaration(node));
-		node.add(typeDeclaration(node));
-		node.add(variableDeclarationPart(node));
-		node.add(threadVarDeclaration(node));
-		node.add(procedureFuncionDeclarationPart(node));
+		try {
+			node.add(labelDeclaration(node));
+		} catch (SyntacticAutomataException e) {
+			logger.catching(exceptionLevel, e);
+		}
+		try {
+			node.add(constantDeclaration(node));
+		} catch (SyntacticAutomataException e) {
+			logger.catching(exceptionLevel, e);
+		}
+		try {
+			node.add(resourceStringDeclaration(node));
+		} catch (SyntacticAutomataException e) {
+			logger.catching(exceptionLevel, e);
+		}
+		try {
+			node.add(typeDeclaration(node));
+		} catch (SyntacticAutomataException e) {
+			logger.catching(exceptionLevel, e);
+		}
+		try {
+			node.add(variableDeclarationPart(node));
+		} catch (SyntacticAutomataException e) {
+			logger.catching(exceptionLevel, e);
+		}
+		try {
+			node.add(threadVarDeclaration(node));
+		} catch (SyntacticAutomataException e) {
+			logger.catching(exceptionLevel, e);
+		}
+		try {
+			node.add(procedureFuncionDeclarationPart(node));
+		} catch (SyntacticAutomataException e) {
+			logger.catching(exceptionLevel, e);
+		}
 
 		logger.exit();
 		return node;
 	}
 
+	/**
+	 * UNIMPLEMENTED
+	 * 
+	 * @param parent
+	 * @return
+	 * @throws SyntacticAutomataException
+	 */
 	private SyntaticTreeNode labelDeclaration(SyntaticTreeNode parent)
 			throws SyntacticAutomataException {
-		return null;
+		throw new SyntacticAutomataException(logger);
 	}
 
+	/**
+	 * UNIMPLEMENTED
+	 * 
+	 * @param parent
+	 * @return
+	 * @throws SyntacticAutomataException
+	 */
 	private SyntaticTreeNode constantDeclaration(SyntaticTreeNode parent)
 			throws SyntacticAutomataException {
-		return null;
+		throw new SyntacticAutomataException(logger);
 	}
 
+	/**
+	 * UNIMPLEMENTED
+	 * 
+	 * @param parent
+	 * @return
+	 * @throws SyntacticAutomataException
+	 */
 	private SyntaticTreeNode resourceStringDeclaration(SyntaticTreeNode parent)
 			throws SyntacticAutomataException {
-		return null;
+		throw new SyntacticAutomataException(logger);
 	}
 
+	/**
+	 * UNIMPLEMENTED
+	 * 
+	 * @param parent
+	 * @return
+	 * @throws SyntacticAutomataException
+	 */
 	private SyntaticTreeNode typeDeclaration(SyntaticTreeNode parent)
 			throws SyntacticAutomataException {
-		return null;
+		throw new SyntacticAutomataException(logger);
 	}
 
 	private SyntaticTreeNode variableDeclarationPart(SyntaticTreeNode parent)
@@ -310,7 +301,7 @@ public class PascalSyntacticAutomata {
 		node = new SyntaticTreeNode(parent, method, SyntaticSymbol.VAR_DECLARATION_PART);
 
 		try {
-			node.add(new SyntaticTreeNode(node, method, null, expect(WordSymbols.VAR)));
+			node.add(syntaticConverter.expectNode(node, method, null, WordSymbols.VAR));
 		} catch (SyntacticAutomataException e) {
 			return node;
 		}
@@ -325,9 +316,16 @@ public class PascalSyntacticAutomata {
 		}
 	}
 
+	/**
+	 * UNIMPLEMENTED
+	 * 
+	 * @param parent
+	 * @return
+	 * @throws SyntacticAutomataException
+	 */
 	private SyntaticTreeNode threadVarDeclaration(SyntaticTreeNode parent)
 			throws SyntacticAutomataException {
-		return null;
+		throw new SyntacticAutomataException(logger);
 	}
 
 	private SyntaticTreeNode procedureFuncionDeclarationPart(SyntaticTreeNode parent)
@@ -384,18 +382,18 @@ public class PascalSyntacticAutomata {
 		node = new SyntaticTreeNode(parent, method, SyntaticSymbol.VAR_DECLARATION);
 
 		// id
-		node.add(new SyntaticTreeNode(node, method, SyntaticSymbol.IDENTIFIER,
-				expect(OperatorSymbols.ID)));
+		node.add(syntaticConverter.expectNode(node, method, SyntaticSymbol.IDENTIFIER,
+				OperatorSymbols.ID));
 
 		// :
-		node.add(new SyntaticTreeNode(node, method, null, expect(OperatorSymbols.COLON)));
+		node.add(syntaticConverter.expectNode(node, method, null, OperatorSymbols.COLON));
 
 		// type
 		node.add(type(node));
 
 		// op = expression
 		try {
-			node.add(new SyntaticTreeNode(node, method, null, expect(OperatorSymbols.EQUAL)));
+			node.add(syntaticConverter.expectNode(node, method, null, OperatorSymbols.EQUAL));
 			node.add(expression(node));
 		} catch (SyntacticAutomataException e) {
 		}
@@ -410,7 +408,7 @@ public class PascalSyntacticAutomata {
 		node.add(hintDirective(node));
 
 		// ;
-		node.add(new SyntaticTreeNode(node, method, null, expect(OperatorSymbols.SEMICOLON)));
+		node.add(syntaticConverter.expectNode(node, method, null, OperatorSymbols.SEMICOLON));
 
 		logger.exit();
 		return node;
@@ -431,10 +429,22 @@ public class PascalSyntacticAutomata {
 		node = new SyntaticTreeNode(parent, method, SyntaticSymbol.TYPE);
 
 		Collection<TypeWordSymbols> types = TypeWordSymbols.INTEGER.allMap().values();
-		node.add(new SyntaticTreeNode(node, method, null, expect(types)));
+		node.add(syntaticConverter.expectNode(node, method, null, types));
 
 		logger.exit();
 		return node;
+	}
+
+	private SyntaticTreeNode constant(SyntaticTreeNode parent) throws SyntacticAutomataException {
+		String method = "constant";
+
+		logger.entry();
+
+		parent.add(syntaticConverter.expectNode(parent, method, SyntaticSymbol.CONSTANT,
+				OperatorSymbols.ID));
+
+		logger.exit();
+		return null;
 	}
 
 	/**
@@ -457,13 +467,14 @@ public class PascalSyntacticAutomata {
 		boolean rollbackSemicolon = false;
 		SyntaticTreeNode syntaticTreeNode = null;
 		try {
-			syntaticTreeNode = new SyntaticTreeNode(node, method, null, expect(OperatorSymbols.SEMICOLON));
-			rollbackSemicolon =	node.add(syntaticTreeNode);
-			node.add(new SyntaticTreeNode(node, method, null, expect(WordSymbols.CVAR)));
+			syntaticTreeNode = syntaticConverter
+					.expectNode(node, method, OperatorSymbols.SEMICOLON);
+			rollbackSemicolon = node.add(syntaticTreeNode);
+			node.add(syntaticConverter.expectNode(node, method, null, WordSymbols.CVAR));
 		} catch (SyntacticAutomataException e) {
 			// extra rollback para semicolon
-			if (rollbackSemicolon){
-				this.rollback();
+			if (rollbackSemicolon) {
+				syntaticConverter.rollback();
 				node.getChildren().remove(syntaticTreeNode);
 			}
 		}
@@ -488,9 +499,9 @@ public class PascalSyntacticAutomata {
 		node = new SyntaticTreeNode(parent, method, SyntaticSymbol.PROCEDURE_DECLARATION);
 
 		// PROCEDURE HEADER
-		node.add(new SyntaticTreeNode(node, method, null, expect(WordSymbols.PROCEDURE)));
-		node.add(new SyntaticTreeNode(node, method, SyntaticSymbol.IDENTIFIER,
-				expect(OperatorSymbols.ID)));
+		node.add(syntaticConverter.expectNode(node, method, null, WordSymbols.PROCEDURE));
+		node.add(syntaticConverter.expectNode(node, method, SyntaticSymbol.IDENTIFIER,
+				OperatorSymbols.ID));
 		node.add(formalParameterList(node));
 		try {
 			node.add(functionProcedureModifiers(node));
@@ -498,12 +509,12 @@ public class PascalSyntacticAutomata {
 		}
 		node.add(hintDirective(node));
 
-		node.add(new SyntaticTreeNode(node, method, null, expect(OperatorSymbols.SEMICOLON)));
+		node.add(syntaticConverter.expectNode(node, method, null, OperatorSymbols.SEMICOLON));
 
 		// SUBROUTINE BLOCK
 		node.add(subroutineBlock(node));
 
-		node.add(new SyntaticTreeNode(node, method, null, expect(OperatorSymbols.SEMICOLON)));
+		node.add(syntaticConverter.expectNode(node, method, null, OperatorSymbols.SEMICOLON));
 
 		logger.exit();
 		return node;
@@ -528,7 +539,7 @@ public class PascalSyntacticAutomata {
 				try {
 					node.add(asmBlock(node));
 				} catch (SyntacticAutomataException eAsmBlock) {
-					node.add(new SyntaticTreeNode(node, method, null, expect(WordSymbols.FORWARD)));
+					node.add(syntaticConverter.expectNode(node, method, null, WordSymbols.FORWARD));
 				}
 			}
 		}
@@ -539,13 +550,11 @@ public class PascalSyntacticAutomata {
 
 	private SyntaticTreeNode externalDirective(SyntaticTreeNode parent)
 			throws SyntacticAutomataException {
-		unimplemented();
-		return null;
+		throw new SyntacticAutomataException(logger);
 	}
 
 	private SyntaticTreeNode asmBlock(SyntaticTreeNode parent) throws SyntacticAutomataException {
-		unimplemented();
-		return null;
+		throw new SyntacticAutomataException(logger);
 	}
 
 	/* END procedure delcaration */
@@ -563,33 +572,33 @@ public class PascalSyntacticAutomata {
 		node = new SyntaticTreeNode(parent, method, SyntaticSymbol.FUNCTION_DECLARATION);
 
 		// FUNCTION HEADER
-		node.add(new SyntaticTreeNode(node, method, null, expect(WordSymbols.FUNCTION)));
-		node.add(new SyntaticTreeNode(node, method, SyntaticSymbol.IDENTIFIER,
-				expect(OperatorSymbols.ID)));
+		node.add(syntaticConverter.expectNode(node, method, WordSymbols.FUNCTION));
+		node.add(syntaticConverter.expectNode(node, method, SyntaticSymbol.IDENTIFIER,
+				OperatorSymbols.ID));
 		node.add(formalParameterList(node));
-		node.add(new SyntaticTreeNode(node, method, null, expect(OperatorSymbols.COLON)));
-		node.add(new SyntaticTreeNode(node, method, SyntaticSymbol.TYPE, expect(resultTypes)));
+		node.add(syntaticConverter.expectNode(node, method, OperatorSymbols.COLON));
+		node.add(syntaticConverter.expectNode(node, method, SyntaticSymbol.TYPE, resultTypes));
 		try {
 			node.add(functionProcedureModifiers(node));
 		} catch (SyntacticAutomataException e) {
 		}
 		node.add(hintDirective(node));
 
-		node.add(new SyntaticTreeNode(node, method, null, expect(OperatorSymbols.SEMICOLON)));
+		node.add(syntaticConverter.expectNode(node, method, OperatorSymbols.SEMICOLON));
 
 		// SUBROUTINE BLOCK
 		node.add(subroutineBlock(node));
 
-		node.add(new SyntaticTreeNode(node, method, null, expect(OperatorSymbols.SEMICOLON)));
+		node.add(syntaticConverter.expectNode(node, method, OperatorSymbols.SEMICOLON));
 
 		logger.exit();
 		return node;
 	}
 
 	/**
-	 * Não implementado. Veja o link para ver detalhes.
-	 * <a>http://www.freepascal.
-	 * org/docs-html/ref/refse87.html#x173-18300014.9</a>
+	 * Não implementado. Veja o link para ver detalhes. <a href=
+	 * "http://www.freepascal.org/docs-html/ref/refse21.html#x56-630004.2">
+	 * http://www.freepascal.org/docs-html/ref/refse87.html#x173-18300014.9</a>
 	 * 
 	 * @param parent
 	 * @return
@@ -602,14 +611,12 @@ public class PascalSyntacticAutomata {
 
 	private SyntaticTreeNode constructorDeclaration(SyntaticTreeNode parent)
 			throws SyntacticAutomataException {
-		unimplemented();
-		return null;
+		throw new SyntacticAutomataException(logger);
 	}
 
 	private SyntaticTreeNode destructorDeclaration(SyntaticTreeNode parent)
 			throws SyntacticAutomataException {
-		unimplemented();
-		return null;
+		throw new SyntacticAutomataException(logger);
 	}
 
 	/*
@@ -625,18 +632,18 @@ public class PascalSyntacticAutomata {
 		logger.entry();
 		node = new SyntaticTreeNode(parent, method, SyntaticSymbol.FORMAL_PARAMETER_LIST);
 
-		node.add(new SyntaticTreeNode(node, method, null, expect(OperatorSymbols.OPEN_PARENTHESIS)));
+		node.add(syntaticConverter.expectNode(node, method, OperatorSymbols.OPEN_PARENTHESIS));
 
 		node.add(parameterDeclaration(node));
 		try {
 			while (true) {
-				node.add(new SyntaticTreeNode(node, method, null, expect(OperatorSymbols.SEMICOLON)));
+				node.add(syntaticConverter.expectNode(node, method, OperatorSymbols.SEMICOLON));
 				node.add(parameterDeclaration(node));
 			}
 		} catch (SyntacticAutomataException e) {
 		}
 
-		node.add(new SyntaticTreeNode(node, method, null, expect(OperatorSymbols.CLOSE_PARENTHESIS)));
+		node.add(syntaticConverter.expectNode(node, method, OperatorSymbols.CLOSE_PARENTHESIS));
 
 		logger.exit();
 		return node;
@@ -678,21 +685,21 @@ public class PascalSyntacticAutomata {
 		try {
 			node.add(identifierList(node));
 			try {
-				node.add(new SyntaticTreeNode(node, method, null, expect(WordSymbols.ARRAY)));
-				node.add(new SyntaticTreeNode(node, method, null, expect(WordSymbols.OF)));
+				node.add(syntaticConverter.expectNode(node, method, null, WordSymbols.ARRAY));
+				node.add(syntaticConverter.expectNode(node, method, null, WordSymbols.OF));
 			} catch (SyntacticAutomataException eList) {
 			}
 			// node.add(parameterType(node));
 			node.add(type(node));
 		} catch (SyntacticAutomataException eList) {
-			node.add(new SyntaticTreeNode(node, method, SyntaticSymbol.IDENTIFIER,
-					expect(OperatorSymbols.ID)));
-			node.add(new SyntaticTreeNode(node, method, null, expect(OperatorSymbols.COLON)));
+			node.add(syntaticConverter.expectNode(node, method, SyntaticSymbol.IDENTIFIER,
+					OperatorSymbols.ID));
+			node.add(syntaticConverter.expectNode(node, method, null, OperatorSymbols.COLON));
 			// node.add(typeIdentifier(node));
 			node.add(type(node));
-			node.add(new SyntaticTreeNode(node, method, null, expect(OperatorSymbols.EQUAL)));
-			node.add(new SyntaticTreeNode(node, method, SyntaticSymbol.CONSTANT,
-					expect(OperatorSymbols.ID)));
+			node.add(syntaticConverter.expectNode(node, method, null, OperatorSymbols.EQUAL));
+			node.add(syntaticConverter.expectNode(node, method, SyntaticSymbol.CONSTANT,
+					OperatorSymbols.ID));
 		}
 
 		logger.exit();
@@ -714,14 +721,14 @@ public class PascalSyntacticAutomata {
 		logger.entry();
 		node = new SyntaticTreeNode(parent, method, SyntaticSymbol.VARIABLE_PARAMETER);
 
-		node.add(new SyntaticTreeNode(node, method, null, expect(WordSymbols.VAR)));
+		node.add(syntaticConverter.expectNode(node, method, WordSymbols.VAR));
 		node.add(identifierList(node));
 
 		try {
-			node.add(new SyntaticTreeNode(node, method, null, expect(OperatorSymbols.COLON)));
+			node.add(syntaticConverter.expectNode(node, method, OperatorSymbols.COLON));
 			try {
-				node.add(new SyntaticTreeNode(node, method, null, expect(WordSymbols.ARRAY)));
-				node.add(new SyntaticTreeNode(node, method, null, expect(WordSymbols.OF)));
+				node.add(syntaticConverter.expectNode(node, method, WordSymbols.ARRAY));
+				node.add(syntaticConverter.expectNode(node, method, WordSymbols.OF));
 			} catch (SyntacticAutomataException eList) {
 			}
 			// node.add(parameterType(node));
@@ -741,11 +748,11 @@ public class PascalSyntacticAutomata {
 		logger.entry();
 		node = new SyntaticTreeNode(parent, method, SyntaticSymbol.IDENTIFIER_LIST);
 
-		node.add(new SyntaticTreeNode(node, method, SyntaticSymbol.IDENTIFIER,
-				expect(OperatorSymbols.ID)));
+		node.add(syntaticConverter.expectNode(node, method, SyntaticSymbol.IDENTIFIER,
+				OperatorSymbols.ID));
 
 		try {
-			node.add(new SyntaticTreeNode(node, method, null, expect(OperatorSymbols.COMMA)));
+			node.add(syntaticConverter.expectNode(node, method, OperatorSymbols.COMMA));
 			identifierList(node);
 		} catch (SyntacticAutomataException e) {
 		}
@@ -771,13 +778,14 @@ public class PascalSyntacticAutomata {
 		hints.add(WordSymbols.UNIMPLEMENTED);
 
 		try {
-			Token lexicToken = expect(hints);
+			Token lexicToken = syntaticConverter.expect(hints, Thread.currentThread()
+					.getStackTrace()[0]);
 			node.add(new SyntaticTreeNode(node, method, null, lexicToken));
 
 			try {
 				if (lexicToken.getSymbol().equals(WordSymbols.DEPRECATED)) {
-					node.add(new SyntaticTreeNode(node, method, SyntaticSymbol.IDENTIFIER,
-							expect(OperatorSymbols.ID)));
+					node.add(syntaticConverter.expectNode(node, method, SyntaticSymbol.IDENTIFIER,
+							OperatorSymbols.ID));
 				}
 			} catch (SyntacticAutomataException e) {
 			}
@@ -792,6 +800,286 @@ public class PascalSyntacticAutomata {
 		return expressao(parent);
 	}
 
+	private SyntaticTreeNode statement(SyntaticTreeNode parent) throws SyntacticAutomataException {
+		SyntaticTreeNode node;
+		String method = "statement";
+
+		logger.entry();
+		node = new SyntaticTreeNode(parent, method, null);
+
+		try {
+			// label
+			// :
+			node.add(syntaticConverter.expectNode(node, method, SyntaticSymbol.LABEL,
+					OperatorSymbols.ID));
+			node.add(syntaticConverter.expectNode(node, method, null, OperatorSymbols.COLON));
+		} catch (SyntacticAutomataException e) {
+			logger.catching(exceptionLevel, e);
+		}
+
+		try {
+			// simple statement
+			node.add(simpleStatement(node));
+		} catch (SyntacticAutomataException eSimple) {
+			try {
+				// structured statement
+				node.add(structuredStatement(node));
+			} catch (SyntacticAutomataException eStruct) {
+				try {
+					// asm statement
+					node.add(asmStatement(node));
+				} catch (SyntacticAutomataException eAsm) {
+					eAsm.addSuppressed(eSimple);
+					eAsm.addSuppressed(eStruct);
+					logger.catching(exceptionLevel, eAsm);
+				}
+			}
+		}
+
+		logger.exit();
+		return node;
+	}
+
+	/**
+	 * http://www.freepascal.org/docs-html/ref/refse76.html#x143-15300013.1
+	 * 
+	 * @param parent
+	 * @return
+	 * @throws SyntacticAutomataException
+	 */
+	private SyntaticTreeNode simpleStatement(SyntaticTreeNode parent)
+			throws SyntacticAutomataException {
+		SyntaticTreeNode node;
+		String method = "simpleStatement";
+
+		logger.entry();
+		node = new SyntaticTreeNode(parent, method, null);
+
+		try {
+			// assignment statement
+			node.add(assignmentStatement(node));
+		} catch (SyntacticAutomataException eAssignment) {
+			try {
+				// procedure statement
+				node.add(procedureStatement(node));
+			} catch (SyntacticAutomataException eProcedure) {
+				try {
+					// goto statement
+					node.add(gotoStatement(node));
+				} catch (SyntacticAutomataException eGoto) {
+					eGoto.addSuppressed(eAssignment);
+					eGoto.addSuppressed(eProcedure);
+					logger.throwing(eGoto);
+					throw eGoto;
+				}
+			}
+		}
+
+		logger.exit();
+		return node;
+	}
+
+	private SyntaticTreeNode structuredStatement(SyntaticTreeNode parent)
+			throws SyntacticAutomataException {
+		SyntaticTreeNode node;
+		String method = "structuredStatement";
+
+		logger.entry();
+		node = new SyntaticTreeNode(parent, method, null);
+
+		try {
+			// compound statement
+			node.add(compoundStatement(node));
+		} catch (SyntacticAutomataException eCompound) {
+			try {
+				// conditional statement
+
+				try {
+					// case statement
+					node.add(caseStatement(node));
+				} catch (SyntacticAutomataException eCase) {
+					try {
+						// if statement
+						node.add(ifStatement(node));
+					} catch (SyntacticAutomataException eIf) {
+						eIf.addSuppressed(eCase);
+						logger.throwing(exceptionLevel, eIf);
+						throw eIf;
+					}
+				}
+
+			} catch (SyntacticAutomataException eConditional) {
+				try {
+					// repetitive statement
+
+					try {
+						// for statement
+						node.add(forStatement(node));
+					} catch (SyntacticAutomataException eFor) {
+						try {
+							// repeat statement
+							node.add(repeatStatement(node));
+						} catch (SyntacticAutomataException eRepeat) {
+							try {
+								// while statement
+								node.add(whileStatement(node));
+							} catch (SyntacticAutomataException eWhile) {
+								eWhile.addSuppressed(eFor);
+								eWhile.addSuppressed(eRepeat);
+								logger.throwing(exceptionLevel, eWhile);
+								throw eWhile;
+							}
+						}
+					}
+
+				} catch (SyntacticAutomataException eRepetitive) {
+					try {
+						// with statement
+						node.add(withStatement(node));
+					} catch (SyntacticAutomataException eWith) {
+						try {
+							// exception statement
+							node.add(exceptionStatement(node));
+						} catch (SyntacticAutomataException eException) {
+							eException.addSuppressed(eCompound);
+							eException.addSuppressed(eConditional);
+							eException.addSuppressed(eRepetitive);
+							eException.addSuppressed(eWith);
+
+							logger.throwing(eException);
+							throw eException;
+						}
+					}
+				}
+			}
+		}
+
+		logger.exit();
+		return node;
+	}
+
+	/**
+	 * UNIMPLEMENTED
+	 * 
+	 * @param parent
+	 * @return
+	 * @throws SyntacticAutomataException
+	 */
+	private SyntaticTreeNode asmStatement(SyntaticTreeNode parent)
+			throws SyntacticAutomataException {
+		throw new SyntacticAutomataException(logger);
+	}
+
+	/* simple statements */
+
+	/**
+	 * http://www.freepascal.org/docs-html/ref/refsu48.html#x144-15400013.1.1
+	 * 
+	 * @param parent
+	 * @return
+	 * @throws SyntacticAutomataException
+	 */
+	private SyntaticTreeNode assignmentStatement(SyntaticTreeNode parent)
+			throws SyntacticAutomataException {
+		SyntaticTreeNode node;
+		String method = "assignmentStatement";
+
+		logger.entry();
+		node = new SyntaticTreeNode(parent, method, null);
+
+		node.add(syntaticConverter.expectNode(node, method, OperatorSymbols.ID));
+
+		Collection<OperatorSymbols> allowedConstructs = new ArrayList<OperatorSymbols>(5);
+		allowedConstructs.add(OperatorSymbols.COLON_EQUAL);
+		allowedConstructs.add(OperatorSymbols.PLUS_EQUAL);
+		allowedConstructs.add(OperatorSymbols.MINUS_EQUAL);
+		allowedConstructs.add(OperatorSymbols.ASTERISK_EQUAL);
+		allowedConstructs.add(OperatorSymbols.SLASH_EQUAL);
+		node.add(syntaticConverter.expectNode(node, method, allowedConstructs));
+
+		node.add(expression(node));
+
+		logger.exit();
+		return node;
+	}
+
+	/**
+	 * http://www.freepascal.org/docs-html/ref/refsu49.html
+	 * 
+	 * @param parent
+	 * @return
+	 * @throws SyntacticAutomataException
+	 */
+	private SyntaticTreeNode procedureStatement(SyntaticTreeNode parent)
+			throws SyntacticAutomataException {
+		SyntaticTreeNode node;
+		String method = "procedureStatement";
+
+		logger.entry();
+		node = new SyntaticTreeNode(parent, method, null);
+
+		/*
+		 * Procedure ID Method ID qualified Method ID variable reference (var
+		 * type = procedure)
+		 */
+		node.add(syntaticConverter.expectNode(node, method, OperatorSymbols.ID));
+
+		try {
+			// actual Parameter List
+			node.add(actualParameterList(node));
+		} catch (SyntacticAutomataException e) {
+			logger.catching(exceptionLevel, e);
+		}
+
+		logger.exit();
+		return node;
+	}
+
+	/**
+	 * @param parent
+	 * @return
+	 * @throws SyntacticAutomataException
+	 */
+	private SyntaticTreeNode actualParameterList(SyntaticTreeNode parent)
+			throws SyntacticAutomataException {
+		throw new SyntacticAutomataException(logger);
+	}
+	
+	/**
+	 * http://www.freepascal.org/docs-html/ref/refsu50.html
+	 * 
+	 * @param parent
+	 * @return
+	 * @throws SyntacticAutomataException
+	 */
+	private SyntaticTreeNode gotoStatement(SyntaticTreeNode parent)
+			throws SyntacticAutomataException {
+		SyntaticTreeNode node;
+		String method = "gotoStatement";
+
+		logger.entry();
+		node = new SyntaticTreeNode(parent, method, null);
+
+		// goto
+		node.add(syntaticConverter.expectNode(node, method, WordSymbols.GOTO));
+
+		// label
+		node.add(syntaticConverter.expectNode(node, method, SyntaticSymbol.LABEL,
+				OperatorSymbols.ID));
+
+		logger.exit();
+		return node;
+	}
+
+	/* structed statements */
+
+	/**
+	 * http://www.freepascal.org/docs-html/ref/refsu51.html
+	 * 
+	 * @param parent
+	 * @return
+	 * @throws SyntacticAutomataException
+	 */
 	private SyntaticTreeNode compoundStatement(SyntaticTreeNode parent)
 			throws SyntacticAutomataException {
 		SyntaticTreeNode node;
@@ -800,13 +1088,13 @@ public class PascalSyntacticAutomata {
 		logger.entry();
 		node = new SyntaticTreeNode(parent, method, SyntaticSymbol.COMPOUND_STATEMENT);
 
-		node.add(new SyntaticTreeNode(node, method, null, expect(WordSymbols.BEGIN)));
+		node.add(syntaticConverter.expectNode(node, method, null, WordSymbols.BEGIN));
 		while (true) {
 			try {
 				node.add(statement(node));
 				try {
-					node.add(new SyntaticTreeNode(node, method, null,
-							expect(OperatorSymbols.SEMICOLON)));
+					node.add(syntaticConverter.expectNode(node, method, null,
+							OperatorSymbols.SEMICOLON));
 				} catch (SyntacticAutomataException e) {
 					break;
 				}
@@ -814,15 +1102,172 @@ public class PascalSyntacticAutomata {
 				break;
 			}
 		}
-		node.add(new SyntaticTreeNode(node, method, null, expect(WordSymbols.END)));
+		node.add(syntaticConverter.expectNode(node, method, null, WordSymbols.END));
 
 		logger.exit();
 		return node;
 	}
 
-	private SyntaticTreeNode statement(SyntaticTreeNode parent) throws SyntacticAutomataException {
-		return cmd(parent);
+	/* conditionalStatement */
+	/**
+	 * http://www.freepascal.org/docs-html/ref/refsu52.html conditionalStatement
+	 * 
+	 * @param parent
+	 * @return
+	 * @throws SyntacticAutomataException
+	 */
+	private SyntaticTreeNode caseStatement(SyntaticTreeNode parent)
+			throws SyntacticAutomataException {
+		SyntaticTreeNode node;
+		String method = "structuredStatement";
+
+		logger.entry();
+		node = new SyntaticTreeNode(parent, method, SyntaticSymbol.CASE);
+
+		// case
+		node.add(syntaticConverter.expectNode(node, method, WordSymbols.CASE));
+
+		// expression
+		node.add(expression(node));
+
+		// of
+		node.add(syntaticConverter.expectNode(node, method, WordSymbols.OF));
+
+		boolean flag;
+		do {
+			flag = false;
+
+			// case
+			node.add(constant(node));
+			try {
+				node.add(syntaticConverter.expectNode(node, method, OperatorSymbols.PERIOD_PERIOD));
+				node.add(constant(node));
+			} catch (SyntacticAutomataException e) {
+			}
+			node.add(syntaticConverter.expectNode(node, method, OperatorSymbols.COLON));
+			node.add(statement(node));
+
+			// ;
+			try {
+				node.add(syntaticConverter.expectNode(node, method, OperatorSymbols.SEMICOLON));
+			} catch (SyntacticAutomataException e) {
+				flag = true;
+			}
+		} while (flag);
+
+		// else part
+		try {
+			Collection<Symbol> elseSynonyms = new ArrayList<Symbol>(2);
+			elseSynonyms.add(WordSymbols.ELSE);
+			elseSynonyms.add(WordSymbols.OTHERWISE);
+
+			// else
+			node.add(syntaticConverter.expectNode(node, method, elseSynonyms));
+
+			// statementlist
+			node.add(statement(node));
+		} catch (SyntacticAutomataException e) {
+		}
+
+		// ;
+		try {
+			node.add(syntaticConverter.expectNode(node, method, OperatorSymbols.SEMICOLON));
+		} catch (SyntacticAutomataException e) {
+		}
+
+		// end
+		node.add(syntaticConverter.expectNode(node, method, WordSymbols.END));
+
+		node.add(syntaticConverter.expectNode(node, method, OperatorSymbols.COLON));
+
+		node.add(syntaticConverter.expectNode(node, method, WordSymbols.CASE));
+
+		logger.exit();
+		return node;
 	}
+
+	/**
+	 * 
+	 * conditionalStatement
+	 * 
+	 * @param parent
+	 * @return
+	 * @throws SyntacticAutomataException
+	 */
+	private SyntaticTreeNode ifStatement(SyntaticTreeNode parent) throws SyntacticAutomataException {
+		throw new SyntacticAutomataException(logger);
+	}
+
+	/* end conditionalStatement */
+
+	/* repetitive repetitiveSatatement */
+
+	/**
+	 * 
+	 * repetitiveSatatement
+	 * 
+	 * @param parent
+	 * @return
+	 * @throws SyntacticAutomataException
+	 */
+	private SyntaticTreeNode forStatement(SyntaticTreeNode parent)
+			throws SyntacticAutomataException {
+		throw new SyntacticAutomataException(logger);
+	}
+
+	/**
+	 * 
+	 * repetitiveSatatement
+	 * 
+	 * @param parent
+	 * @return
+	 * @throws SyntacticAutomataException
+	 */
+	private SyntaticTreeNode repeatStatement(SyntaticTreeNode parent)
+			throws SyntacticAutomataException {
+		throw new SyntacticAutomataException(logger);
+	}
+
+	/**
+	 * 
+	 * repetitiveSatatement
+	 * 
+	 * @param parent
+	 * @return
+	 * @throws SyntacticAutomataException
+	 */
+	private SyntaticTreeNode whileStatement(SyntaticTreeNode parent)
+			throws SyntacticAutomataException {
+		throw new SyntacticAutomataException(logger);
+	}
+
+	/* end repetitiveSatatement */
+
+	/**
+	 * UNIMPLEMENTED
+	 * 
+	 * @param parent
+	 * @return
+	 * @throws SyntacticAutomataException
+	 */
+	private SyntaticTreeNode withStatement(SyntaticTreeNode parent)
+			throws SyntacticAutomataException {
+		throw new SyntacticAutomataException(logger);
+	}
+
+	/**
+	 * UNIMPLEMENTED
+	 * 
+	 * @param parent
+	 * @return
+	 * @throws SyntacticAutomataException
+	 */
+	private SyntaticTreeNode exceptionStatement(SyntaticTreeNode parent)
+			throws SyntacticAutomataException {
+		throw new SyntacticAutomataException(logger);
+	}
+
+	/* END structed statements */
 
 	/* ********************************************************************************************************
 	 */
@@ -840,7 +1285,7 @@ public class PascalSyntacticAutomata {
 		tipos.add(TypeWordSymbols.INTEGER);
 
 		Token lexicToken = expect(tipos);
-		node.add(new SyntaticTreeNode(node, method, null, lexicToken));
+		node.add(syntaticConverter.expectNode(node, method, null, lexicToken));
 
 		logger.exit();
 		return node;
@@ -856,7 +1301,7 @@ public class PascalSyntacticAutomata {
 
 		node.add(identifierList(node));
 
-		node.add(new SyntaticTreeNode(node, method, null, expect(OperatorSymbols.COLON)));
+		node.add(syntaticConverter.expectNode(node, method, null, OperatorSymbols.COLON));
 
 		node.add(tipoVariavel(node));
 		node.add(maisParametros(node));
@@ -874,7 +1319,8 @@ public class PascalSyntacticAutomata {
 		node = new SyntaticTreeNode(parent, method, null);
 
 		try {
-			node.add(new SyntaticTreeNode(node, method, null, expect(OperatorSymbols.SEMICOLON)));
+			node.add(syntaticConverter.expectNode(node, method, null, null,
+					OperatorSymbols.SEMICOLON));
 		} catch (SyntacticAutomataException e) {
 			return null;
 		}
@@ -964,86 +1410,6 @@ public class PascalSyntacticAutomata {
 		try {
 			expect(OperatorSymbols.SEMICOLON);
 		} catch (SyntacticAutomataException e) {
-		}
-
-		logger.exit();
-		return node;
-	}
-
-	private SyntaticTreeNode cmd(SyntaticTreeNode parent) throws SyntacticAutomataException {
-		SyntaticTreeNode node;
-		String method = "cmd";
-
-		logger.entry();
-		node = new SyntaticTreeNode(parent, method, null);
-
-		Collection<Symbol> comandosPossiveis = new LinkedList<Symbol>();
-		comandosPossiveis.add(CommandWordSymbols.READ);
-		comandosPossiveis.add(CommandWordSymbols.WRITE);
-		comandosPossiveis.add(WordSymbols.WHILE);
-		comandosPossiveis.add(WordSymbols.REPEAT);
-		comandosPossiveis.add(WordSymbols.IF);
-		comandosPossiveis.add(OperatorSymbols.ID);
-		comandosPossiveis.add(OperatorSymbols.SEMICOLON);
-		comandosPossiveis.add(WordSymbols.BEGIN);
-
-		Token token = expect(comandosPossiveis);
-		Symbol symbol = token.getSymbol();
-		if (symbol instanceof CommandWordSymbols) {
-			CommandWordSymbols command = (CommandWordSymbols) symbol;
-			switch (command) {
-			case READ:
-			case WRITE:
-				expect(OperatorSymbols.OPEN_PARENTHESIS);
-				node.add(identifierList(node));
-				expect(OperatorSymbols.OPEN_PARENTHESIS.getMirror());
-				break;
-			default:
-				logger.error("UNKNOWN COMMAND " + command.getName());
-				break;
-			}
-		} else if (symbol instanceof WordSymbols) {
-			WordSymbols word = (WordSymbols) symbol;
-			switch (word) {
-			case WHILE:
-				node.add(condicao(node));
-				expect(WordSymbols.DO);
-				node.add(cmd(node));
-				break;
-			case REPEAT:
-				node.add(cmd(node));
-				expect(WordSymbols.UNTIL);
-				node.add(condicao(node));
-				break;
-			case IF:
-				node.add(condicao(node));
-				expect(WordSymbols.THEN);
-				node.add(cmd(node));
-				node.add(pfalsa(node));
-				break;
-			case BEGIN:
-				node.add(comandos(node));
-				expect(WordSymbols.END);
-				break;
-			default:
-				logger.error("UNKNOWN or MISPLACED WORD " + word.getName());
-				break;
-			}
-		} else if (symbol instanceof OperatorSymbols) {
-			OperatorSymbols operator = (OperatorSymbols) symbol;
-			switch (operator) {
-			case ID:
-				try {
-					expect(OperatorSymbols.COLON_EQUAL);
-					node.add(expressao(node));
-				} catch (SyntacticAutomataException e) {
-					node.add(lista_arg(node));
-				}
-				break;
-			default:
-				logger.error("UNKNOWN or MISPLACED OPERATOR " + operator.getName());
-				break;
-			}
 		}
 
 		logger.exit();

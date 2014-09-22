@@ -21,9 +21,9 @@ public class SyntacticWarper {
 	}
 	
 	public SyntaticTreeNode parse(){
-		lexico.getTokenList();
+		List<Token> tokenList = lexico.getTokenList();
 		
-		PascalSyntacticAutomata automato = new PascalSyntacticAutomata();
+		PascalSyntacticAutomata automato = new PascalSyntacticAutomata(tokenList);
 		try {
 			treeRoot = automato.run();
 		} catch (SyntacticAutomataException e){

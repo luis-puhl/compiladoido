@@ -68,7 +68,7 @@ public enum OperatorSymbols implements Symbol {
 			return "]";
 		}
 	},
-	POINT {
+	PERIOD {
 		@Override
 		public String toString() {
 			return ".";
@@ -252,7 +252,7 @@ public enum OperatorSymbols implements Symbol {
 			return "-=";
 		}
 	},
-	STAR_EQUAL {
+	ASTERISK_EQUAL {
 		@Override
 		public String toString() {
 			return "*=";
@@ -262,6 +262,15 @@ public enum OperatorSymbols implements Symbol {
 		@Override
 		public String toString() {
 			return "/=";
+		}
+	},
+	/**
+	 * is '..'
+	 */
+	PERIOD_PERIOD {
+		@Override
+		public String toString() {
+			return "..";
 		}
 	},
 	OPEN_PARENTHESIS_STAR {

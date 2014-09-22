@@ -3,7 +3,6 @@ package si.vv.pokebola.compiladoido.beans;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Queue;
 
 public class SyntaticTreeNode {
 
@@ -146,38 +145,6 @@ public class SyntaticTreeNode {
 		}
 
 		return id + "." + tokenName + "(" + syntaticName + ")" + "^" + parentId;
-	}
-
-	public String printSubTree() {
-		StringBuilder builder = new StringBuilder();
-		Queue<SyntaticTreeNode> printQueue, waitQueue;
-
-		printQueue = new LinkedList<SyntaticTreeNode>();
-		waitQueue = new LinkedList<SyntaticTreeNode>();
-
-		builder.append(this.toString());
-		builder.append("\n\n");
-
-		builder.append(this.name());
-		builder.append("\n");
-
-		if (getChildren().isEmpty()) {
-			return builder.toString();
-		}
-		printQueue.addAll(getChildren());
-
-		do {
-			while (!printQueue.isEmpty()) {
-				SyntaticTreeNode printNode = printQueue.remove();
-				builder.append(printNode.name()).append(" ");
-				waitQueue.addAll(printNode.getChildren());
-			}
-			builder.append("\n\n");
-			printQueue.addAll(waitQueue);
-			waitQueue.clear();
-		} while (!printQueue.isEmpty());
-
-		return builder.toString();
 	}
 
 	public String printTree() {

@@ -31,7 +31,7 @@ public class SyntaticTest {
 		
 		SyntaticTreeNode parsedTree = sintatico.parse();
 		
-		LOGGER.debug(parsedTree.printSubTree());
+		LOGGER.debug(parsedTree.printTree());
 	}
 
 	@Test
@@ -47,7 +47,7 @@ public class SyntaticTest {
 		
 		SyntaticTreeNode parsedTree = sintatico.parse();
 		
-		LOGGER.debug(parsedTree.printSubTree());
+		LOGGER.debug(parsedTree.printTree());
 	}
 	
 	@Test
@@ -56,11 +56,6 @@ public class SyntaticTest {
 		StringBuffer stringBuffer;
 		SyntacticWarper sintatico;
 		
-		try {
-			setUp();
-		} catch (Exception e) {
-		}
-		
 		stringBuffer = CompiladoidoTests.getWikiProgramProcedure();
 		lexico = new LexicalAutomata(stringBuffer);
 		
@@ -68,7 +63,6 @@ public class SyntaticTest {
 		
 		SyntaticTreeNode parsedTree = sintatico.parse();
 		
-		LOGGER.debug(parsedTree.printSubTree());
 		LOGGER.debug(parsedTree.printTree());
 	}
 	

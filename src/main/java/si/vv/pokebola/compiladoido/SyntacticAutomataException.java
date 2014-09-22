@@ -21,78 +21,51 @@ public class SyntacticAutomataException extends Exception {
 	private Level level;
 	private StringBuilder msg;
 
-	private void initMessage(Logger logger) {
-		this.logger = logger;
-		this.level = Level.INFO;
-		this.msg = new StringBuilder();
-	}
-
-	private void errorSource() {
-		StackTraceElement cause = this.getStackTrace()[2];
-		msg.append("\n\t at ");
-		msg.append(cause.getClassName());
-		msg.append(".");
-		msg.append(cause.getMethodName());
-		msg.append("(");
-		msg.append(cause.getFileName());
-		msg.append(":");
-		msg.append(cause.getLineNumber());
-		msg.append(")");
-	}
-
-	public SyntacticAutomataException(Logger logger, Symbol expected, boolean optional, Symbol got ) {
-		this.initMessage(logger);
-		this.msg.append(expected.getName());
-		if (optional) {
-			level = Level.INFO;
-			msg.append(" was not used.");
-		} else {
-			msg.append(" EXPECTED.");
-		}
-
-		msg.append("Got ");
-		msg.append(got.toString());
-
-		errorSource();
-	}
+	private StackTraceElement caller;
 
 	public SyntacticAutomataException(Logger logger, Collection<? extends Symbol> expected,
-			boolean optional, Symbol got) {
-		this.initMessage(logger);
+			Symbol got, StackTraceElement caller) {
+		this.initMessage(logger, caller);
 		for (Symbol symbol : expected) {
 			msg.append(symbol.getName());
 			msg.append(", ");
 		}
 
-		if (optional) {
-			level = Level.INFO;
-			msg.append(" was not used.");
-		} else {
-			msg.append(" Expected.");
-		}
-
+		msg.append(" Expected.");
 		msg.append("Got ");
 		msg.append(got.toString());
 
-		errorSource();
+		msg.append(errorSource());
 	}
 
-	public SyntacticAutomataException(Logger logger, Symbol expected, Symbol got) {
-		this(logger, expected, false, got);
-	}
-
-	public SyntacticAutomataException(Logger logger, Collection<? extends Symbol> expected, Symbol got) {
-		this(logger, expected, false, got);
-	}
-
+	/**
+	 * ONLY represents a UNIMPLEMENTED FEATURE
+	 * 
+	 * @param logger
+	 */
 	public SyntacticAutomataException(Logger logger) {
-		this.initMessage(logger);
+		this.initMessage(logger, null);
 		msg.append("Unimplemented feature");
-		this.errorSource();
+		msg.append(errorSource());
 	}
 
 	public void log() {
 		logger.log(level, msg.toString());
+	}
+
+	private void initMessage(Logger logger, StackTraceElement caller) {
+		this.logger = logger;
+		this.caller = caller;
+		this.level = Level.INFO;
+		this.msg = new StringBuilder();
+	}
+
+	private String errorSource() {
+		if (caller == null){
+			return "";
+		}
+		return "\n\t at " + caller.getClassName() + "." + caller.getMethodName() + "("
+				+ caller.getFileName() + ":" + caller.getLineNumber() + ")";
 	}
 
 }

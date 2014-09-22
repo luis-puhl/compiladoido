@@ -93,7 +93,7 @@ public class LexicalAutomataTest {
 		// . part
 		actualToken = lexico.getToken();
 		actualSimbolo = actualToken.getSymbol();
-		expectedSimbolo = OperatorSymbols.POINT;
+		expectedSimbolo = OperatorSymbols.PERIOD;
 		assertEquals(expectedSimbolo, actualSimbolo);
 
 	}
@@ -136,7 +136,7 @@ public class LexicalAutomataTest {
 
 		assertEquals(WordSymbols.END, lexico.getToken().getSymbol());
 
-		assertEquals(OperatorSymbols.POINT, lexico.getToken().getSymbol());
+		assertEquals(OperatorSymbols.PERIOD, lexico.getToken().getSymbol());
 
 		assertEquals(null, lexico.getToken());
 
@@ -201,7 +201,7 @@ public class LexicalAutomataTest {
 
 		assertEquals(WordSymbols.END, lexico.getToken().getSymbol());
 
-		assertEquals(OperatorSymbols.POINT, lexico.getToken().getSymbol());
+		assertEquals(OperatorSymbols.PERIOD, lexico.getToken().getSymbol());
 
 		assertEquals(null, lexico.getToken());
 
