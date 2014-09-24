@@ -109,4 +109,11 @@ public class LexicalSyntaticConverter {
 		return new SyntaticTreeNode(node, caller.getMethodName(), syntaticSymbol, expect);
 	}
 
+	public SyntaticTreeNode expectNode(SyntaticTreeNode node, Collection<Symbol> expects,
+			SyntaticSymbol syntaticSymbol) throws SyntacticAutomataException {
+		StackTraceElement caller = Thread.currentThread().getStackTrace()[1];
+		Token expect = expect(expects, caller);
+		return new SyntaticTreeNode(node, caller.getMethodName(), syntaticSymbol, expect);
+	}
+
 }

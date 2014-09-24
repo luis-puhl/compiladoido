@@ -13,6 +13,7 @@ public enum SyntaticSymbol implements Symbol {
 	VAR_REFERENCE,
 	UNSIGNED_NUMBER,
 	UNSIGNED_CONSTANT,
+	METHOD_IDENTIFIER,
 	
 	/* BLOCKS */
 	PROGRAM, 

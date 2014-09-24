@@ -71,7 +71,8 @@ public enum WordSymbols implements Symbol {
 	NAME, 
 	FORWARD,
 	OTHERWISE, 
-	IS;
+	IS,
+	AS;
 	
 	private static Map<String, WordSymbols> map = null;
 

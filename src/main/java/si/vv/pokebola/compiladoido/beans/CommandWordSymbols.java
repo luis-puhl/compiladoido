@@ -1,5 +1,7 @@
 package si.vv.pokebola.compiladoido.beans;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -41,6 +43,15 @@ public enum CommandWordSymbols implements Symbol {
 	
 	public int toInt() {
 		return super.ordinal();
+	}
+
+	public static Collection<? extends Symbol> getMethods() {
+		Collection<Symbol> methods = new ArrayList<Symbol>();
+		
+		methods.add(READ);
+		methods.add(WRITE);
+		
+		return methods;
 	}
 	
 }

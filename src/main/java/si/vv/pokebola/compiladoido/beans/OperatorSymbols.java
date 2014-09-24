@@ -1,5 +1,7 @@
 package si.vv.pokebola.compiladoido.beans;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -389,6 +391,48 @@ public enum OperatorSymbols implements Symbol {
 	
 	public boolean isComment(){
 		return false;
+	}
+
+	
+	public Collection<Symbol> getSimpleExpressionOperators(){
+		Collection<Symbol> simpleOps = new ArrayList<>();
+		
+		simpleOps.add(PLUS);
+		simpleOps.add(MINUS);
+		simpleOps.add(WordSymbols.OR);
+		simpleOps.add(WordSymbols.XOR);
+		
+		return simpleOps;
+	}
+	
+	public Collection<Symbol> getAditionOperators(){
+		Collection<Symbol> addingOps = new ArrayList<>();
+		
+		addingOps.add(ASTERISK);
+		addingOps.add(LT_EQUAL);
+		addingOps.add(GT_EQUAL);
+		addingOps.add(GT);
+		addingOps.add(EQUAL);
+		addingOps.add(NOT_EQUAL);
+		addingOps.add(WordSymbols.IN);
+		addingOps.add(WordSymbols.IS);
+		
+		return addingOps;
+	}
+	
+	public Collection<Symbol> getMultiplicationOperators(){
+		Collection<Symbol> multOps = new ArrayList<>();
+		
+		multOps.add(ASTERISK);
+		multOps.add(SLASH);
+		multOps.add(WordSymbols.DIV);
+		multOps.add(WordSymbols.MOD);
+		multOps.add(WordSymbols.AND);
+		multOps.add(WordSymbols.SHL);
+		multOps.add(WordSymbols.SHR);
+		multOps.add(WordSymbols.AS);
+		
+		return multOps;
 	}
 	
 }

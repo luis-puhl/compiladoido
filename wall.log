@@ -61,3 +61,513 @@
 				57.;(SEMICOLON)^51
 				59.end(END)^51
 		60..(POINT)^1
+*)
+
+0.run()^-1
+	1.<init>(PROGRAM)^0
+		2.<init>(PROGRAM_HEADER)^1
+			3.program(PROGRAM)^2
+			4.p(IDENTIFIER)^2
+		5.;(SEMICOLON)^1
+		7.<init>(BLOCK)^1
+			8.<init>(DECLARATION_PART)^7
+				9.<init>(VAR_DECLARATION_PART)^8
+				10.<init>(PROCEDURE_FUNCTION_DECLARATION_PART)^8
+			13.<init>(COMPOUND_STATEMENT)^7
+				14.begin(BEGIN)^13
+				15.<init>()^13
+					16.<init>()^15
+						18.<init>(FUNCTION_CALL)^16
+							19.READ(METHOD_IDENTIFIER)^18
+							20.<init>()^18
+								21.((OPEN_PARENTHESIS)^20
+								22.<init>(EXPRESSION)^20
+									23.<init>(SIMPLE_EXPRESSION)^22
+										24.<init>(TERM)^23
+											25.<init>(FACTOR)^24
+												26.x(VAR_REFERENCE)^25
+								27.)(CLOSE_PARENTHESIS)^20
+				28.end(END)^13
+		29..(PERIOD)^1
+20:28:03.468 DEBUG si.vv.pokebola.compiladoido.Compiladoido 101 <init> - Logger created
+20:28:03.471 INFO  si.vv.pokebola.compiladoido.SyntaticTest 18 setUp - Testing SyntacticWarper
+20:28:03.496 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 69 program - entry
+20:28:03.497 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 97 programHeader - entry
+20:28:03.498 INFO  si.vv.pokebola.compiladoido.LexicalSyntaticConverter 51 getTokenLexico - 
+	Token [symbol=PROGRAM, texto=Program]
+20:28:03.499 INFO  si.vv.pokebola.compiladoido.LexicalSyntaticConverter 51 getTokenLexico - 
+	Token [symbol=ID, texto=HelloWorld]
+20:28:03.499 INFO  si.vv.pokebola.compiladoido.LexicalSyntaticConverter 51 getTokenLexico - 
+	Token [symbol=;, texto=;]
+20:28:03.499 INFO  si.vv.pokebola.compiladoido.SyntacticAutomataException 53 log - OPEN_PARENTHESIS,  Expected.Got ;
+	 at si.vv.pokebola.compiladoido.LexicalSyntaticConverter.expectNode(LexicalSyntaticConverter.java:72)
+20:28:03.500 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 111 programHeader - No PROGRAM PARAMETERS declaration
+20:28:03.500 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 114 programHeader - exit
+20:28:03.500 INFO  si.vv.pokebola.compiladoido.LexicalSyntaticConverter 51 getTokenLexico - 
+	Token [symbol=;, texto=;]
+20:28:03.501 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 135 usesClause - entry
+20:28:03.501 INFO  si.vv.pokebola.compiladoido.LexicalSyntaticConverter 51 getTokenLexico - 
+	Token [symbol=BEGIN, texto=Begin]
+20:28:03.502 WARN  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 80 program - catching si.vv.pokebola.compiladoido.SyntacticAutomataException
+	at si.vv.pokebola.compiladoido.LexicalSyntaticConverter.expect(LexicalSyntaticConverter.java:64) ~[classes/:?]
+	at si.vv.pokebola.compiladoido.LexicalSyntaticConverter.expectNode(LexicalSyntaticConverter.java:99) ~[classes/:?]
+	at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.usesClause(PascalSyntacticAutomata.java:138) ~[classes/:?]
+	at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.program(PascalSyntacticAutomata.java:78) [classes/:?]
+	at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.run(PascalSyntacticAutomata.java:55) [classes/:?]
+	at si.vv.pokebola.compiladoido.SyntacticWarper.parse(SyntacticWarper.java:28) [classes/:?]
+	at si.vv.pokebola.compiladoido.SyntaticTest.testParseHelloWorld(SyntaticTest.java:48) [test-classes/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_20]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_20]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_20]
+	at java.lang.reflect.Method.invoke(Method.java:483) ~[?:1.8.0_20]
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47) [junit-4.11.jar:?]
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12) [junit-4.11.jar:?]
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44) [junit-4.11.jar:?]
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17) [junit-4.11.jar:?]
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:271) [junit-4.11.jar:?]
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:70) [junit-4.11.jar:?]
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:309) [junit-4.11.jar:?]
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:50) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:675) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192) [.cp/:?]
+
+20:28:03.509 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 81 program - No USES CLAUSE declaration
+20:28:03.509 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 174 block - entry
+20:28:03.510 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 191 declarationPart - entry
+20:28:03.510 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 200 declarationPart - catching si.vv.pokebola.compiladoido.SyntacticAutomataException
+	at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.labelDeclaration(PascalSyntacticAutomata.java:246) ~[classes/:?]
+	at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.declarationPart(PascalSyntacticAutomata.java:198) [classes/:?]
+	at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.block(PascalSyntacticAutomata.java:178) [classes/:?]
+	at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.program(PascalSyntacticAutomata.java:84) [classes/:?]
+	at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.run(PascalSyntacticAutomata.java:55) [classes/:?]
+	at si.vv.pokebola.compiladoido.SyntacticWarper.parse(SyntacticWarper.java:28) [classes/:?]
+	at si.vv.pokebola.compiladoido.SyntaticTest.testParseHelloWorld(SyntaticTest.java:48) [test-classes/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_20]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_20]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_20]
+	at java.lang.reflect.Method.invoke(Method.java:483) ~[?:1.8.0_20]
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47) [junit-4.11.jar:?]
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12) [junit-4.11.jar:?]
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44) [junit-4.11.jar:?]
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17) [junit-4.11.jar:?]
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:271) [junit-4.11.jar:?]
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:70) [junit-4.11.jar:?]
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:309) [junit-4.11.jar:?]
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:50) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:675) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192) [.cp/:?]
+
+20:28:03.511 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 205 declarationPart - catching si.vv.pokebola.compiladoido.SyntacticAutomataException
+	at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.constantDeclaration(PascalSyntacticAutomata.java:258) ~[classes/:?]
+	at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.declarationPart(PascalSyntacticAutomata.java:203) [classes/:?]
+	at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.block(PascalSyntacticAutomata.java:178) [classes/:?]
+	at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.program(PascalSyntacticAutomata.java:84) [classes/:?]
+	at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.run(PascalSyntacticAutomata.java:55) [classes/:?]
+	at si.vv.pokebola.compiladoido.SyntacticWarper.parse(SyntacticWarper.java:28) [classes/:?]
+	at si.vv.pokebola.compiladoido.SyntaticTest.testParseHelloWorld(SyntaticTest.java:48) [test-classes/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_20]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_20]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_20]
+	at java.lang.reflect.Method.invoke(Method.java:483) ~[?:1.8.0_20]
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47) [junit-4.11.jar:?]
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12) [junit-4.11.jar:?]
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44) [junit-4.11.jar:?]
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17) [junit-4.11.jar:?]
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:271) [junit-4.11.jar:?]
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:70) [junit-4.11.jar:?]
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:309) [junit-4.11.jar:?]
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:50) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:675) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192) [.cp/:?]
+
+20:28:03.513 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 210 declarationPart - catching si.vv.pokebola.compiladoido.SyntacticAutomataException
+	at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.resourceStringDeclaration(PascalSyntacticAutomata.java:270) ~[classes/:?]
+	at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.declarationPart(PascalSyntacticAutomata.java:208) [classes/:?]
+	at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.block(PascalSyntacticAutomata.java:178) [classes/:?]
+	at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.program(PascalSyntacticAutomata.java:84) [classes/:?]
+	at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.run(PascalSyntacticAutomata.java:55) [classes/:?]
+	at si.vv.pokebola.compiladoido.SyntacticWarper.parse(SyntacticWarper.java:28) [classes/:?]
+	at si.vv.pokebola.compiladoido.SyntaticTest.testParseHelloWorld(SyntaticTest.java:48) [test-classes/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_20]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_20]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_20]
+	at java.lang.reflect.Method.invoke(Method.java:483) ~[?:1.8.0_20]
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47) [junit-4.11.jar:?]
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12) [junit-4.11.jar:?]
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44) [junit-4.11.jar:?]
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17) [junit-4.11.jar:?]
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:271) [junit-4.11.jar:?]
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:70) [junit-4.11.jar:?]
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:309) [junit-4.11.jar:?]
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:50) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:675) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192) [.cp/:?]
+
+20:28:03.514 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 215 declarationPart - catching si.vv.pokebola.compiladoido.SyntacticAutomataException
+	at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.typeDeclaration(PascalSyntacticAutomata.java:282) ~[classes/:?]
+	at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.declarationPart(PascalSyntacticAutomata.java:213) [classes/:?]
+	at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.block(PascalSyntacticAutomata.java:178) [classes/:?]
+	at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.program(PascalSyntacticAutomata.java:84) [classes/:?]
+	at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.run(PascalSyntacticAutomata.java:55) [classes/:?]
+	at si.vv.pokebola.compiladoido.SyntacticWarper.parse(SyntacticWarper.java:28) [classes/:?]
+	at si.vv.pokebola.compiladoido.SyntaticTest.testParseHelloWorld(SyntaticTest.java:48) [test-classes/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_20]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_20]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_20]
+	at java.lang.reflect.Method.invoke(Method.java:483) ~[?:1.8.0_20]
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47) [junit-4.11.jar:?]
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12) [junit-4.11.jar:?]
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44) [junit-4.11.jar:?]
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17) [junit-4.11.jar:?]
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:271) [junit-4.11.jar:?]
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:70) [junit-4.11.jar:?]
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:309) [junit-4.11.jar:?]
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:50) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:675) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192) [.cp/:?]
+
+20:28:03.515 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 289 variableDeclarationPart - entry
+20:28:03.516 INFO  si.vv.pokebola.compiladoido.LexicalSyntaticConverter 51 getTokenLexico - 
+	Token [symbol=BEGIN, texto=Begin]
+20:28:03.516 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 225 declarationPart - catching si.vv.pokebola.compiladoido.SyntacticAutomataException
+	at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.threadVarDeclaration(PascalSyntacticAutomata.java:317) ~[classes/:?]
+	at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.declarationPart(PascalSyntacticAutomata.java:223) [classes/:?]
+	at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.block(PascalSyntacticAutomata.java:178) [classes/:?]
+	at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.program(PascalSyntacticAutomata.java:84) [classes/:?]
+	at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.run(PascalSyntacticAutomata.java:55) [classes/:?]
+	at si.vv.pokebola.compiladoido.SyntacticWarper.parse(SyntacticWarper.java:28) [classes/:?]
+	at si.vv.pokebola.compiladoido.SyntaticTest.testParseHelloWorld(SyntaticTest.java:48) [test-classes/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_20]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_20]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_20]
+	at java.lang.reflect.Method.invoke(Method.java:483) ~[?:1.8.0_20]
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47) [junit-4.11.jar:?]
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12) [junit-4.11.jar:?]
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44) [junit-4.11.jar:?]
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17) [junit-4.11.jar:?]
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:271) [junit-4.11.jar:?]
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:70) [junit-4.11.jar:?]
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:309) [junit-4.11.jar:?]
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:50) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:675) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192) [.cp/:?]
+
+20:28:03.517 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 325 procedureFuncionDeclarationPart - entry
+20:28:03.518 INFO  si.vv.pokebola.compiladoido.PascalSyntacticAutomata 329 procedureFuncionDeclarationPart - Geting a procedure/function
+20:28:03.518 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 477 procedureDeclaration - entry
+20:28:03.518 INFO  si.vv.pokebola.compiladoido.LexicalSyntaticConverter 51 getTokenLexico - 
+	Token [symbol=BEGIN, texto=Begin]
+20:28:03.519 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 547 functionDeclaration - entry
+20:28:03.519 INFO  si.vv.pokebola.compiladoido.LexicalSyntaticConverter 51 getTokenLexico - 
+	Token [symbol=BEGIN, texto=Begin]
+20:28:03.519 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 352 procedureFuncionDeclarationPart - exit
+20:28:03.520 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 233 declarationPart - exit
+20:28:03.520 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 1430 compoundStatement - entry
+20:28:03.520 INFO  si.vv.pokebola.compiladoido.LexicalSyntaticConverter 51 getTokenLexico - 
+	Token [symbol=BEGIN, texto=Begin]
+20:28:03.521 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 1100 statement - entry
+20:28:03.521 INFO  si.vv.pokebola.compiladoido.LexicalSyntaticConverter 51 getTokenLexico - 
+	Token [symbol=ID, texto=WriteLn]
+20:28:03.521 INFO  si.vv.pokebola.compiladoido.LexicalSyntaticConverter 51 getTokenLexico - 
+	Token [symbol=(, texto=(]
+20:28:03.522 DEBUG si.vv.pokebola.compiladoido.PascalSyntacticAutomata 1109 statement - No label for statment
+20:28:03.522 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 1110 statement - catching si.vv.pokebola.compiladoido.SyntacticAutomataException
+	at si.vv.pokebola.compiladoido.LexicalSyntaticConverter.expect(LexicalSyntaticConverter.java:64) ~[classes/:?]
+	at si.vv.pokebola.compiladoido.LexicalSyntaticConverter.expectNode(LexicalSyntaticConverter.java:75) ~[classes/:?]
+	at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.statement(PascalSyntacticAutomata.java:1107) [classes/:?]
+	at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.compoundStatement(PascalSyntacticAutomata.java:1436) [classes/:?]
+	at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.block(PascalSyntacticAutomata.java:181) [classes/:?]
+	at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.program(PascalSyntacticAutomata.java:84) [classes/:?]
+	at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.run(PascalSyntacticAutomata.java:55) [classes/:?]
+	at si.vv.pokebola.compiladoido.SyntacticWarper.parse(SyntacticWarper.java:28) [classes/:?]
+	at si.vv.pokebola.compiladoido.SyntaticTest.testParseHelloWorld(SyntaticTest.java:48) [test-classes/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_20]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_20]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_20]
+	at java.lang.reflect.Method.invoke(Method.java:483) ~[?:1.8.0_20]
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47) [junit-4.11.jar:?]
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12) [junit-4.11.jar:?]
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44) [junit-4.11.jar:?]
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17) [junit-4.11.jar:?]
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:271) [junit-4.11.jar:?]
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:70) [junit-4.11.jar:?]
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:309) [junit-4.11.jar:?]
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:50) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:675) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192) [.cp/:?]
+
+20:28:03.523 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 1147 simpleStatement - entry
+20:28:03.523 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 1302 assignmentStatement - entry
+20:28:03.524 INFO  si.vv.pokebola.compiladoido.LexicalSyntaticConverter 51 getTokenLexico - 
+	Token [symbol=(, texto=(]
+20:28:03.524 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 1332 procedureStatement - entry
+20:28:03.525 INFO  si.vv.pokebola.compiladoido.LexicalSyntaticConverter 51 getTokenLexico - 
+	Token [symbol=(, texto=(]
+20:28:03.525 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 1404 gotoStatement - entry
+20:28:03.525 INFO  si.vv.pokebola.compiladoido.LexicalSyntaticConverter 51 getTokenLexico - 
+	Token [symbol=(, texto=(]
+20:28:03.526 ERROR si.vv.pokebola.compiladoido.PascalSyntacticAutomata 1164 simpleStatement - throwing si.vv.pokebola.compiladoido.SyntacticAutomataException
+	at si.vv.pokebola.compiladoido.LexicalSyntaticConverter.expect(LexicalSyntaticConverter.java:64) ~[classes/:?]
+	at si.vv.pokebola.compiladoido.LexicalSyntaticConverter.expectNode(LexicalSyntaticConverter.java:99) ~[classes/:?]
+	at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.gotoStatement(PascalSyntacticAutomata.java:1408) ~[classes/:?]
+	at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.simpleStatement(PascalSyntacticAutomata.java:1161) [classes/:?]
+	at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.statement(PascalSyntacticAutomata.java:1115) [classes/:?]
+	at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.compoundStatement(PascalSyntacticAutomata.java:1436) [classes/:?]
+	at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.block(PascalSyntacticAutomata.java:181) [classes/:?]
+	at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.program(PascalSyntacticAutomata.java:84) [classes/:?]
+	at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.run(PascalSyntacticAutomata.java:55) [classes/:?]
+	at si.vv.pokebola.compiladoido.SyntacticWarper.parse(SyntacticWarper.java:28) [classes/:?]
+	at si.vv.pokebola.compiladoido.SyntaticTest.testParseHelloWorld(SyntaticTest.java:48) [test-classes/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_20]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_20]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_20]
+	at java.lang.reflect.Method.invoke(Method.java:483) ~[?:1.8.0_20]
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47) [junit-4.11.jar:?]
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12) [junit-4.11.jar:?]
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44) [junit-4.11.jar:?]
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17) [junit-4.11.jar:?]
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:271) [junit-4.11.jar:?]
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:70) [junit-4.11.jar:?]
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:309) [junit-4.11.jar:?]
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:50) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:675) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192) [.cp/:?]
+
+20:28:03.528 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 1178 structuredStatement - entry
+20:28:03.529 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 1430 compoundStatement - entry
+20:28:03.529 INFO  si.vv.pokebola.compiladoido.LexicalSyntaticConverter 51 getTokenLexico - 
+	Token [symbol=(, texto=(]
+20:28:03.529 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 1252 conditionalStatement - entry
+20:28:03.530 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 1464 caseStatement - entry
+20:28:03.530 INFO  si.vv.pokebola.compiladoido.LexicalSyntaticConverter 51 getTokenLexico - 
+	Token [symbol=(, texto=(]
+20:28:03.530 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 1264 conditionalStatement - throwing si.vv.pokebola.compiladoido.SyntacticAutomataException
+	at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.ifStatement(PascalSyntacticAutomata.java:1538) ~[classes/:?]
+	at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.conditionalStatement(PascalSyntacticAutomata.java:1261) [classes/:?]
+	at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.structuredStatement(PascalSyntacticAutomata.java:1187) [classes/:?]
+	at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.statement(PascalSyntacticAutomata.java:1119) [classes/:?]
+	at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.compoundStatement(PascalSyntacticAutomata.java:1436) [classes/:?]
+	at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.block(PascalSyntacticAutomata.java:181) [classes/:?]
+	at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.program(PascalSyntacticAutomata.java:84) [classes/:?]
+	at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.run(PascalSyntacticAutomata.java:55) [classes/:?]
+	at si.vv.pokebola.compiladoido.SyntacticWarper.parse(SyntacticWarper.java:28) [classes/:?]
+	at si.vv.pokebola.compiladoido.SyntaticTest.testParseHelloWorld(SyntaticTest.java:48) [test-classes/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_20]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_20]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_20]
+	at java.lang.reflect.Method.invoke(Method.java:483) ~[?:1.8.0_20]
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47) [junit-4.11.jar:?]
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12) [junit-4.11.jar:?]
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44) [junit-4.11.jar:?]
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17) [junit-4.11.jar:?]
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:271) [junit-4.11.jar:?]
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:70) [junit-4.11.jar:?]
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:309) [junit-4.11.jar:?]
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:50) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:675) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192) [.cp/:?]
+
+20:28:03.532 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 1221 repetitiveStatement - entry
+20:28:03.533 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 1238 repetitiveStatement - throwing si.vv.pokebola.compiladoido.SyntacticAutomataException
+	at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.whileStatement(PascalSyntacticAutomata.java:1581) ~[classes/:?]
+	at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.repetitiveStatement(PascalSyntacticAutomata.java:1234) [classes/:?]
+	at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.structuredStatement(PascalSyntacticAutomata.java:1192) [classes/:?]
+	at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.statement(PascalSyntacticAutomata.java:1119) [classes/:?]
+	at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.compoundStatement(PascalSyntacticAutomata.java:1436) [classes/:?]
+	at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.block(PascalSyntacticAutomata.java:181) [classes/:?]
+	at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.program(PascalSyntacticAutomata.java:84) [classes/:?]
+	at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.run(PascalSyntacticAutomata.java:55) [classes/:?]
+	at si.vv.pokebola.compiladoido.SyntacticWarper.parse(SyntacticWarper.java:28) [classes/:?]
+	at si.vv.pokebola.compiladoido.SyntaticTest.testParseHelloWorld(SyntaticTest.java:48) [test-classes/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_20]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_20]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_20]
+	at java.lang.reflect.Method.invoke(Method.java:483) ~[?:1.8.0_20]
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47) [junit-4.11.jar:?]
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12) [junit-4.11.jar:?]
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44) [junit-4.11.jar:?]
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17) [junit-4.11.jar:?]
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:271) [junit-4.11.jar:?]
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:70) [junit-4.11.jar:?]
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:309) [junit-4.11.jar:?]
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:50) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:675) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192) [.cp/:?]
+
+20:28:03.535 ERROR si.vv.pokebola.compiladoido.PascalSyntacticAutomata 1205 structuredStatement - throwing si.vv.pokebola.compiladoido.SyntacticAutomataException
+	at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.exceptionStatement(PascalSyntacticAutomata.java:1607) ~[classes/:?]
+	at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.structuredStatement(PascalSyntacticAutomata.java:1202) [classes/:?]
+	at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.statement(PascalSyntacticAutomata.java:1119) [classes/:?]
+	at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.compoundStatement(PascalSyntacticAutomata.java:1436) [classes/:?]
+	at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.block(PascalSyntacticAutomata.java:181) [classes/:?]
+	at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.program(PascalSyntacticAutomata.java:84) [classes/:?]
+	at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.run(PascalSyntacticAutomata.java:55) [classes/:?]
+	at si.vv.pokebola.compiladoido.SyntacticWarper.parse(SyntacticWarper.java:28) [classes/:?]
+	at si.vv.pokebola.compiladoido.SyntaticTest.testParseHelloWorld(SyntaticTest.java:48) [test-classes/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_20]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_20]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_20]
+	at java.lang.reflect.Method.invoke(Method.java:483) ~[?:1.8.0_20]
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47) [junit-4.11.jar:?]
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12) [junit-4.11.jar:?]
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44) [junit-4.11.jar:?]
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17) [junit-4.11.jar:?]
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:271) [junit-4.11.jar:?]
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:70) [junit-4.11.jar:?]
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:309) [junit-4.11.jar:?]
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:50) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:675) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192) [.cp/:?]
+
+20:28:03.540 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 1127 statement - catching si.vv.pokebola.compiladoido.SyntacticAutomataException
+	at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.asmStatement(PascalSyntacticAutomata.java:1286) ~[classes/:?]
+	at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.statement(PascalSyntacticAutomata.java:1124) [classes/:?]
+	at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.compoundStatement(PascalSyntacticAutomata.java:1436) [classes/:?]
+	at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.block(PascalSyntacticAutomata.java:181) [classes/:?]
+	at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.program(PascalSyntacticAutomata.java:84) [classes/:?]
+	at si.vv.pokebola.compiladoido.PascalSyntacticAutomata.run(PascalSyntacticAutomata.java:55) [classes/:?]
+	at si.vv.pokebola.compiladoido.SyntacticWarper.parse(SyntacticWarper.java:28) [classes/:?]
+	at si.vv.pokebola.compiladoido.SyntaticTest.testParseHelloWorld(SyntaticTest.java:48) [test-classes/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_20]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_20]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_20]
+	at java.lang.reflect.Method.invoke(Method.java:483) ~[?:1.8.0_20]
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47) [junit-4.11.jar:?]
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12) [junit-4.11.jar:?]
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44) [junit-4.11.jar:?]
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17) [junit-4.11.jar:?]
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:271) [junit-4.11.jar:?]
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:70) [junit-4.11.jar:?]
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:309) [junit-4.11.jar:?]
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:50) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:675) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192) [.cp/:?]
+
+20:28:03.543 TRACE si.vv.pokebola.compiladoido.PascalSyntacticAutomata 1132 statement - exit
+20:28:03.552 INFO  si.vv.pokebola.compiladoido.LexicalSyntaticConverter 51 getTokenLexico - 
+	Token [symbol=(, texto=(]
+20:28:03.552 INFO  si.vv.pokebola.compiladoido.LexicalSyntaticConverter 51 getTokenLexico - 
+	Token [symbol=(, texto=(]
+20:28:03.559 INFO  si.vv.pokebola.compiladoido.SyntacticAutomataException 53 log - END,  Expected.Got (
+	 at si.vv.pokebola.compiladoido.LexicalSyntaticConverter.expectNode(LexicalSyntaticConverter.java:72)
+20:28:03.562 FATAL si.vv.pokebola.compiladoido.SyntacticWarper 31 parse - Automato didn't run fine =( =( =( 
