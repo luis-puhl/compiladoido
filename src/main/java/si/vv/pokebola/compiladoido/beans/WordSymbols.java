@@ -70,7 +70,8 @@ public enum WordSymbols implements Symbol {
 	CVAR, 
 	NAME, 
 	FORWARD,
-	OTHERWISE;
+	OTHERWISE, 
+	IS;
 	
 	private static Map<String, WordSymbols> map = null;
 

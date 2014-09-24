@@ -9,7 +9,10 @@ public enum SyntaticSymbol implements Symbol {
 	CONSTANT,
 	TYPE,
 	STRING_LITERAL,
-	LABEL,
+	LABEL,	
+	VAR_REFERENCE,
+	UNSIGNED_NUMBER,
+	UNSIGNED_CONSTANT,
 	
 	/* BLOCKS */
 	PROGRAM, 
@@ -32,7 +35,14 @@ public enum SyntaticSymbol implements Symbol {
 	VALUE_PARAMETER,
 	VARIABLE_PARAMETER, 
 	IDENTIFIER_LIST,
-	CASE 
+	CASE, 
+	EXPRESSION, 
+	SIMPLE_EXPRESSION, 
+	TERM,
+	FACTOR, 
+	FUNCTION_CALL,
+	VALUE_TYPECAST, 
+	ADDRESS_FACTOR, 
 	;
 
 	public Map<String, ? extends Symbol> allMap() {

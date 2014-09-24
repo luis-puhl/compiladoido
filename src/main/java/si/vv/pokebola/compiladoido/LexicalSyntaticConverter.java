@@ -14,19 +14,19 @@ import si.vv.pokebola.compiladoido.beans.SyntaticTreeNode;
 import si.vv.pokebola.compiladoido.beans.Token;
 
 public class LexicalSyntaticConverter {
-	
+
 	private int tokenIndex;
 	private List<Token> lexicalTokens;
-	
+
 	private static Logger logger;
-	
+
 	public LexicalSyntaticConverter(List<Token> lexicalTokens) {
 		this.lexicalTokens = lexicalTokens;
 		if (logger == null) {
 			logger = LogManager.getLogger();
 		}
 	}
-	
+
 	/* token stuff */
 
 	private Token getToken() {
@@ -38,7 +38,7 @@ public class LexicalSyntaticConverter {
 	}
 
 	/* tree stuff */
-	
+
 	private Token getTokenLexico() {
 		Symbol symbol;
 		Token token;
@@ -51,10 +51,10 @@ public class LexicalSyntaticConverter {
 		logger.info("\n\t" + token.toString());
 		return token;
 	}
-	
+
 	// implementacao
-	public Token expect(Collection<? extends Symbol> expected,
-			StackTraceElement caller) throws SyntacticAutomataException {
+	public Token expect(Collection<? extends Symbol> expected, StackTraceElement caller)
+			throws SyntacticAutomataException {
 		Symbol symbol;
 		Token token;
 		token = this.getTokenLexico();
@@ -67,13 +67,13 @@ public class LexicalSyntaticConverter {
 		return token;
 	}
 
-	public SyntaticTreeNode expectNode(SyntaticTreeNode node, String method,
+	public SyntaticTreeNode expectNode(SyntaticTreeNode node,
 			SyntaticSymbol syntaticSymbol, Symbol expected) throws SyntacticAutomataException {
 		StackTraceElement caller = Thread.currentThread().getStackTrace()[1];
 		Collection<Symbol> expects = new ArrayList<Symbol>(1);
 		expects.add(expected);
 		Token expect = expect(expects, caller);
-		return new SyntaticTreeNode(node, method, syntaticSymbol, expect);
+		return new SyntaticTreeNode(node, caller.getMethodName(), syntaticSymbol, expect);
 	}
 
 	public SyntaticTreeNode expectNode(SyntaticTreeNode node, String method,
@@ -84,20 +84,29 @@ public class LexicalSyntaticConverter {
 		return new SyntaticTreeNode(node, method, syntaticSymbol, expect);
 	}
 
-	public SyntaticTreeNode expectNode(SyntaticTreeNode node, String method,
+	public SyntaticTreeNode expectNode(SyntaticTreeNode node,
 			Collection<? extends Symbol> expected) throws SyntacticAutomataException {
 		StackTraceElement caller = Thread.currentThread().getStackTrace()[1];
 		Token expect = expect(expected, caller);
-		return new SyntaticTreeNode(node, method, null, expect);
+		return new SyntaticTreeNode(node, caller.getMethodName(), null, expect);
 	}
 
-	public SyntaticTreeNode expectNode(SyntaticTreeNode node, String method, Symbol expected)
+	public SyntaticTreeNode expectNode(SyntaticTreeNode node, Symbol expected)
 			throws SyntacticAutomataException {
 		StackTraceElement caller = Thread.currentThread().getStackTrace()[1];
 		Collection<Symbol> expects = new ArrayList<Symbol>(1);
 		expects.add(expected);
 		Token expect = expect(expects, caller);
-		return new SyntaticTreeNode(node, method, null, expect);
+		return new SyntaticTreeNode(node, caller.getMethodName(), null, expect);
+	}
+
+	public SyntaticTreeNode expectNode(SyntaticTreeNode node, Symbol expected,
+			SyntaticSymbol syntaticSymbol) throws SyntacticAutomataException {
+		StackTraceElement caller = Thread.currentThread().getStackTrace()[1];
+		Collection<Symbol> expects = new ArrayList<Symbol>(1);
+		expects.add(expected);
+		Token expect = expect(expects, caller);
+		return new SyntaticTreeNode(node, caller.getMethodName(), syntaticSymbol, expect);
 	}
 
 }

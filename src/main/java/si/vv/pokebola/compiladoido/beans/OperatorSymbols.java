@@ -26,7 +26,7 @@ public enum OperatorSymbols implements Symbol {
 			return "*";
 		}
 	},
-	FOWARD_SLASH {
+	SLASH {
 		@Override
 		public String toString() {
 			return "/";
@@ -74,6 +74,9 @@ public enum OperatorSymbols implements Symbol {
 			return ".";
 		}
 	},
+	/**
+	 * is ","
+	 */
 	COMMA {
 		@Override
 		public String toString() {
@@ -214,6 +217,9 @@ public enum OperatorSymbols implements Symbol {
 			return ">>";
 		}
 	},
+	/**
+	 * Is "<>"
+	 */
 	NOT_EQUAL {
 		@Override
 		public String toString() {

@@ -27,9 +27,14 @@ public class SyntaticTreeNode {
 		this.syntaticSymbol = syntaticSymbol;
 	}
 
-	public SyntaticTreeNode(SyntaticTreeNode parent, String creatorMethodName,
-			SyntaticSymbol syntaticSymbol) {
-		this(parent, creatorMethodName, syntaticSymbol, null);
+	public SyntaticTreeNode(SyntaticTreeNode parent, SyntaticSymbol syntaticSymbol, Token lexicToken) {
+		this(parent, Thread.currentThread().getStackTrace()[1].getMethodName(), syntaticSymbol,
+				lexicToken);
+	}
+
+	public SyntaticTreeNode(SyntaticTreeNode parent, SyntaticSymbol syntaticSymbol) {
+		this(parent, Thread.currentThread().getStackTrace()[1].getMethodName(), syntaticSymbol,
+				null);
 	}
 
 	public int getId() {
