@@ -1068,7 +1068,7 @@ public class PascalSyntacticAutomata {
 
 		logger.exit();
 		return node;
-	}
+	}	
 
 	/**
 	 * http://www.freepascal.org/docs-html/ref/refse74.html
@@ -1104,10 +1104,15 @@ public class PascalSyntacticAutomata {
 			// label
 			// :
 			node.add(converter.expectNode(node, SyntaticSymbol.LABEL, OperatorSymbols.ID));
-			node.add(converter.expectNode(node, null, OperatorSymbols.COLON));
+			
+			try {
+				node.add(converter.expectNode(node, null, OperatorSymbols.COLON));
+			} catch (SyntacticAutomataException e) {
+				// extra rollback for ID
+				converter.rollback();
+			}
 		} catch (SyntacticAutomataException e) {
-			logger.debug("No label for statment");
-			logger.catching(exceptionLevel, e);
+			logger.debug("No label statment, CATCH ", e);
 		}
 
 		try {
@@ -1310,9 +1315,16 @@ public class PascalSyntacticAutomata {
 		allowedConstructs.add(OperatorSymbols.MINUS_EQUAL);
 		allowedConstructs.add(OperatorSymbols.ASTERISK_EQUAL);
 		allowedConstructs.add(OperatorSymbols.SLASH_EQUAL);
-		node.add(converter.expectNode(node, allowedConstructs));
 
-		node.add(expression(node));
+		try {
+			node.add(converter.expectNode(node, allowedConstructs));
+
+			node.add(expression(node));
+		} catch (SyntacticAutomataException e) {
+			// extra rollback for ID
+			converter.rollback();
+			throw e;
+		}
 
 		logger.exit();
 		return node;
@@ -1333,8 +1345,8 @@ public class PascalSyntacticAutomata {
 		node = new SyntaticTreeNode(parent, SyntaticSymbol.FUNCTION_CALL);
 
 		/*
-		 * Procedure ID,  Method ID, qualified Method ID, or variable reference (var
-		 * type = procedure)
+		 * Procedure ID, Method ID, qualified Method ID, or variable reference
+		 * (var type = procedure)
 		 */
 		Collection<Symbol> methods = new ArrayList<Symbol>();
 		methods.add(OperatorSymbols.ID);

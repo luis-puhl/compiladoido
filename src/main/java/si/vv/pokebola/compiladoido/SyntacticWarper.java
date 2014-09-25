@@ -29,6 +29,7 @@ public class SyntacticWarper {
 		} catch (SyntacticAutomataException e){
 			e.log();
 			LOGGER.fatal("Automato didn't run fine =( =( =( ");
+			LOGGER.catching(e);
 			throw new RuntimeException(e);
 		}
 		
