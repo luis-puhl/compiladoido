@@ -1103,13 +1103,15 @@ public class PascalSyntacticAutomata {
 		try {
 			// label
 			// :
-			node.add(converter.expectNode(node, SyntaticSymbol.LABEL, OperatorSymbols.ID));
+			SyntaticTreeNode label = converter.expectNode(node, SyntaticSymbol.LABEL, OperatorSymbols.ID);
+			node.add(label);
 			
 			try {
 				node.add(converter.expectNode(node, null, OperatorSymbols.COLON));
 			} catch (SyntacticAutomataException e) {
 				// extra rollback for ID
 				converter.rollback();
+				node.getChildren().remove(label);
 			}
 		} catch (SyntacticAutomataException e) {
 			logger.debug("No label statment, CATCH ", e);

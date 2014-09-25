@@ -20,7 +20,7 @@ public class SyntaticTreeNode {
 
 	public SyntaticTreeNode(SyntaticTreeNode parent, String creatorMethodName,
 			SyntaticSymbol syntaticSymbol, Token lexicToken) {
-		id = modCount++;
+		this.id = modCount++;
 		this.lexicToken = lexicToken;
 		this.creatorMethodName = creatorMethodName;
 		this.parent = parent;
@@ -28,12 +28,12 @@ public class SyntaticTreeNode {
 	}
 
 	public SyntaticTreeNode(SyntaticTreeNode parent, SyntaticSymbol syntaticSymbol, Token lexicToken) {
-		this(parent, Thread.currentThread().getStackTrace()[1].getMethodName(), syntaticSymbol,
+		this(parent, Thread.currentThread().getStackTrace()[2].getMethodName(), syntaticSymbol,
 				lexicToken);
 	}
 
 	public SyntaticTreeNode(SyntaticTreeNode parent, SyntaticSymbol syntaticSymbol) {
-		this(parent, Thread.currentThread().getStackTrace()[1].getMethodName(), syntaticSymbol,
+		this(parent, Thread.currentThread().getStackTrace()[2].getMethodName(), syntaticSymbol,
 				null);
 	}
 
@@ -178,6 +178,43 @@ public class SyntaticTreeNode {
 
 		for (SyntaticTreeNode n : this.getChildren()) {
 			n.printTree(tabLevel + 1, builder);
+		}
+	}
+	
+	private String tokenName(){
+		String r = creatorMethodName;
+		
+		if (this.getLexicToken() != null){
+			r = this.getLexicToken().getTexto();
+		} else if (this.getSyntaticSymbol() != null){
+			r = this.getSyntaticSymbol().name();
+		}
+		
+		return r;
+	}
+	
+	public String printTreeTextToken() {
+		StringBuilder builder = new StringBuilder();
+
+		builder.append(this.tokenName());
+		for (SyntaticTreeNode n : this.getChildren()) {
+			n.printTreeTextToken(1, builder);
+		}
+
+		return builder.toString();
+	}
+
+	private void printTreeTextToken(int tabLevel, StringBuilder builder) {
+		builder.append("\n");
+
+		for (int i = 0; i < tabLevel; i++) {
+			builder.append("\t");
+		}
+
+		builder.append(this.tokenName());
+
+		for (SyntaticTreeNode n : this.getChildren()) {
+			n.printTreeTextToken(tabLevel + 1, builder);
 		}
 	}
 }
