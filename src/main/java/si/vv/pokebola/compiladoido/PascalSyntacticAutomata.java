@@ -1,5 +1,7 @@
 package si.vv.pokebola.compiladoido;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
@@ -19,8 +21,9 @@ import si.vv.pokebola.compiladoido.beans.TypeWordSymbols;
 import si.vv.pokebola.compiladoido.beans.WordSymbols;
 
 /**
- * Pushdown automaton warper.
+ * Pushdown automaton.
  * 
+ * Implemented as recursive functions calls.
  * 
  * @author luispuhl
  *
@@ -34,11 +37,14 @@ public class PascalSyntacticAutomata {
 
 	private LexicalSyntaticConverter converter;
 
+	private PascalSemanticActions semantic;
+
 	public PascalSyntacticAutomata(List<Token> lexicalTokens) {
-		converter = new LexicalSyntaticConverter(lexicalTokens);
+		this.converter = new LexicalSyntaticConverter(lexicalTokens);
 		if (logger == null) {
 			logger = LogManager.getLogger();
 		}
+		this.semantic = new PascalSemanticActions();
 	}
 
 	public SyntaticTreeNode getRoot() {
@@ -54,6 +60,29 @@ public class PascalSyntacticAutomata {
 
 		root.add(program(root));
 		return root;
+	}
+
+	private void semanticAction(SyntaticTreeNode node) {
+		StackTraceElement caller;
+		Method method;
+
+		caller = Thread.currentThread().getStackTrace()[2];
+
+		try {
+			logger.info(caller.getMethodName());
+			method = semantic.getClass().getMethod(caller.getMethodName(), SyntaticTreeNode.class);
+			method.invoke(semantic, node);
+		} catch (NoSuchMethodException | SecurityException e) {
+			// Get method
+			e.printStackTrace();
+			logger.warn("Cant get such method from semantic: " + caller.getMethodName());
+		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+			// run Method
+			logger.error("Cant run method : " + semantic.getClass().getCanonicalName() + " "
+					+ caller.getMethodName());
+			logger.warn("Cant run method : " + caller.getMethodName(), e);
+		}
+
 	}
 
 	/* ***************************************************************** */
@@ -85,7 +114,8 @@ public class PascalSyntacticAutomata {
 
 		// PERIOD
 		node.add(converter.expectNode(node, null, OperatorSymbols.PERIOD));
-
+		
+		semanticAction(node);
 		logger.exit();
 		return node;
 	}
@@ -111,6 +141,7 @@ public class PascalSyntacticAutomata {
 			logger.info("No PROGRAM PARAMETERS declaration");
 		}
 
+		semanticAction(node);
 		logger.exit();
 		return node;
 	}
@@ -157,6 +188,7 @@ public class PascalSyntacticAutomata {
 		}
 		node.add(converter.expectNode(node, null, OperatorSymbols.SEMICOLON));
 
+		semanticAction(node);
 		logger.exit();
 		return node;
 	}
@@ -180,6 +212,7 @@ public class PascalSyntacticAutomata {
 		// STATEMENT PART
 		node.add(compoundStatement(node));
 
+		semanticAction(node);
 		logger.exit();
 		return node;
 	}
@@ -230,6 +263,7 @@ public class PascalSyntacticAutomata {
 			logger.catching(exceptionLevel, e);
 		}
 
+		semanticAction(node);
 		logger.exit();
 		return node;
 	}
@@ -299,7 +333,8 @@ public class PascalSyntacticAutomata {
 			try {
 				node.add(variableDeclaration(node));
 			} catch (SyntacticAutomataException e) {
-				logger.exit();
+				semanticAction(node);
+		logger.exit();
 				return node;
 			}
 		}
@@ -349,6 +384,7 @@ public class PascalSyntacticAutomata {
 			}
 		}
 
+		semanticAction(node);
 		logger.exit();
 		return node;
 	}
@@ -395,6 +431,7 @@ public class PascalSyntacticAutomata {
 		// ;
 		node.add(converter.expectNode(node, null, OperatorSymbols.SEMICOLON));
 
+		semanticAction(node);
 		logger.exit();
 		return node;
 	}
@@ -413,8 +450,9 @@ public class PascalSyntacticAutomata {
 		node = new SyntaticTreeNode(parent, SyntaticSymbol.TYPE);
 
 		Collection<TypeWordSymbols> types = TypeWordSymbols.INTEGER.allMap().values();
-		node.add(converter.expectNode(node, types));
+		node.add(converter.expectNode(node, types, SyntaticSymbol.TYPE));
 
+		semanticAction(node);
 		logger.exit();
 		return node;
 	}
@@ -425,6 +463,7 @@ public class PascalSyntacticAutomata {
 
 		parent.add(converter.expectNode(parent, SyntaticSymbol.CONSTANT, OperatorSymbols.ID));
 
+		semanticAction(parent);
 		logger.exit();
 		return null;
 	}
@@ -459,6 +498,7 @@ public class PascalSyntacticAutomata {
 			}
 		}
 
+		semanticAction(node);
 		logger.exit();
 		return node;
 	}
@@ -494,6 +534,7 @@ public class PascalSyntacticAutomata {
 
 		node.add(converter.expectNode(node, null, OperatorSymbols.SEMICOLON));
 
+		semanticAction(node);
 		logger.exit();
 		return node;
 	}
@@ -521,6 +562,7 @@ public class PascalSyntacticAutomata {
 			}
 		}
 
+		semanticAction(node);
 		logger.exit();
 		return node;
 	}
@@ -569,6 +611,7 @@ public class PascalSyntacticAutomata {
 
 		node.add(converter.expectNode(node, OperatorSymbols.SEMICOLON));
 
+		semanticAction(node);
 		logger.exit();
 		return node;
 	}
@@ -622,6 +665,7 @@ public class PascalSyntacticAutomata {
 
 		node.add(converter.expectNode(node, OperatorSymbols.CLOSE_PARENTHESIS));
 
+		semanticAction(node);
 		logger.exit();
 		return node;
 	}
@@ -639,6 +683,7 @@ public class PascalSyntacticAutomata {
 			node.add(variableParameter(node));
 		}
 
+		semanticAction(node);
 		logger.exit();
 		return node;
 	}
@@ -675,6 +720,7 @@ public class PascalSyntacticAutomata {
 			node.add(converter.expectNode(node, SyntaticSymbol.CONSTANT, OperatorSymbols.ID));
 		}
 
+		semanticAction(node);
 		logger.exit();
 		return node;
 	}
@@ -708,6 +754,7 @@ public class PascalSyntacticAutomata {
 		} catch (SyntacticAutomataException eList) {
 		}
 
+		semanticAction(node);
 		logger.exit();
 		return node;
 	}
@@ -727,6 +774,7 @@ public class PascalSyntacticAutomata {
 		} catch (SyntacticAutomataException e) {
 		}
 
+		semanticAction(node);
 		logger.exit();
 		return node;
 	}
@@ -761,6 +809,7 @@ public class PascalSyntacticAutomata {
 		} catch (SyntacticAutomataException e) {
 		}
 
+		semanticAction(node);
 		logger.exit();
 		return node;
 	}
@@ -803,6 +852,7 @@ public class PascalSyntacticAutomata {
 			logger.catching(e);
 		}
 
+		semanticAction(node);
 		logger.exit();
 		return node;
 	}
@@ -844,6 +894,7 @@ public class PascalSyntacticAutomata {
 			}
 		} while (flag);
 
+		semanticAction(node);
 		logger.exit();
 		return node;
 	}
@@ -887,6 +938,7 @@ public class PascalSyntacticAutomata {
 			}
 		} while (flag);
 
+		semanticAction(node);
 		logger.exit();
 		return node;
 	}
@@ -965,6 +1017,7 @@ public class PascalSyntacticAutomata {
 			}
 		}
 
+		semanticAction(node);
 		logger.exit();
 		return node;
 	}
@@ -1011,6 +1064,7 @@ public class PascalSyntacticAutomata {
 			}
 		}
 
+		semanticAction(node);
 		logger.exit();
 		return node;
 	}
@@ -1039,6 +1093,7 @@ public class PascalSyntacticAutomata {
 			logger.catching(exceptionLevel, e);
 		}
 
+		semanticAction(node);
 		logger.exit();
 		return node;
 	}
@@ -1066,9 +1121,10 @@ public class PascalSyntacticAutomata {
 		// )
 		node.add(converter.expectNode(node, OperatorSymbols.CLOSE_PARENTHESIS));
 
+		semanticAction(node);
 		logger.exit();
 		return node;
-	}	
+	}
 
 	/**
 	 * http://www.freepascal.org/docs-html/ref/refse74.html
@@ -1090,6 +1146,7 @@ public class PascalSyntacticAutomata {
 		// var ID, procedure ID, function ID or qualified method ID
 		node.add(converter.expectNode(node, OperatorSymbols.ID));
 
+		semanticAction(node);
 		logger.exit();
 		return node;
 	}
@@ -1103,9 +1160,10 @@ public class PascalSyntacticAutomata {
 		try {
 			// label
 			// :
-			SyntaticTreeNode label = converter.expectNode(node, SyntaticSymbol.LABEL, OperatorSymbols.ID);
+			SyntaticTreeNode label = converter.expectNode(node, SyntaticSymbol.LABEL,
+					OperatorSymbols.ID);
 			node.add(label);
-			
+
 			try {
 				node.add(converter.expectNode(node, null, OperatorSymbols.COLON));
 			} catch (SyntacticAutomataException e) {
@@ -1136,6 +1194,7 @@ public class PascalSyntacticAutomata {
 			}
 		}
 
+		semanticAction(node);
 		logger.exit();
 		return node;
 	}
@@ -1174,6 +1233,7 @@ public class PascalSyntacticAutomata {
 			}
 		}
 
+		semanticAction(node);
 		logger.exit();
 		return node;
 	}
@@ -1217,6 +1277,7 @@ public class PascalSyntacticAutomata {
 			}
 		}
 
+		semanticAction(node);
 		logger.exit();
 		return node;
 	}
@@ -1248,6 +1309,7 @@ public class PascalSyntacticAutomata {
 			}
 		}
 
+		semanticAction(node);
 		logger.exit();
 		return node;
 	}
@@ -1273,6 +1335,7 @@ public class PascalSyntacticAutomata {
 			}
 		}
 
+		semanticAction(node);
 		logger.exit();
 		return node;
 	}
@@ -1328,6 +1391,7 @@ public class PascalSyntacticAutomata {
 			throw e;
 		}
 
+		semanticAction(node);
 		logger.exit();
 		return node;
 	}
@@ -1362,6 +1426,7 @@ public class PascalSyntacticAutomata {
 			logger.catching(exceptionLevel, e);
 		}
 
+		semanticAction(node);
 		logger.exit();
 		return node;
 	}
@@ -1400,6 +1465,7 @@ public class PascalSyntacticAutomata {
 		// )
 		node.add(converter.expectNode(node, OperatorSymbols.CLOSE_PARENTHESIS));
 
+		semanticAction(node);
 		logger.exit();
 		return node;
 	}
@@ -1424,6 +1490,7 @@ public class PascalSyntacticAutomata {
 		// label
 		node.add(converter.expectNode(node, SyntaticSymbol.LABEL, OperatorSymbols.ID));
 
+		semanticAction(node);
 		logger.exit();
 		return node;
 	}
@@ -1459,6 +1526,7 @@ public class PascalSyntacticAutomata {
 		}
 		node.add(converter.expectNode(node, null, WordSymbols.END));
 
+		semanticAction(node);
 		logger.exit();
 		return node;
 	}
@@ -1536,6 +1604,7 @@ public class PascalSyntacticAutomata {
 
 		node.add(converter.expectNode(node, WordSymbols.CASE));
 
+		semanticAction(node);
 		logger.exit();
 		return node;
 	}

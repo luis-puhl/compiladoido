@@ -12,11 +12,14 @@ public class SyntaticTreeNode {
 	private SyntaticTreeNode parent;
 	private List<SyntaticTreeNode> children;
 
-	// payload
+	// syntatic data
 	private int id;
 	private Token lexicToken;
 	private SyntaticSymbol syntaticSymbol;
 	private String creatorMethodName;
+	
+	// semantic data
+	private Collection<SemanticToken> context; 
 
 	public SyntaticTreeNode(SyntaticTreeNode parent, String creatorMethodName,
 			SyntaticSymbol syntaticSymbol, Token lexicToken) {
@@ -49,16 +52,8 @@ public class SyntaticTreeNode {
 		}
 	}
 
-	public SyntaticTreeNode getChild(SyntaticTreeNode parent, int index) {
-		return getChildren().get(index);
-	}
-
-	public int getChildCount(SyntaticTreeNode parent) {
-		return getChildren().size();
-	}
-
 	public boolean isLeaf(SyntaticTreeNode node) {
-		return this.getChildren().contains(node);
+		return !this.getChildren().isEmpty();
 	}
 
 	public Token getLexicToken() {
@@ -104,6 +99,41 @@ public class SyntaticTreeNode {
 		this.syntaticSymbol = syntaticSymbol;
 	}
 
+	public Collection<SemanticToken> getContext() {
+		if (context == null){
+			context = new LinkedList<>();
+		}
+		return context;
+	}
+
+	public void setContext(Collection<SemanticToken> context) {
+		this.context = context;
+	}
+	
+	public void addContextToken(SemanticToken semanticToken) {
+		this.getContext().add(semanticToken);
+	}
+	
+	public Collection<SyntaticTreeNode> getChild(SyntaticSymbol symbol) {
+		Collection<SyntaticTreeNode> ret = new LinkedList<SyntaticTreeNode>();
+		for (SyntaticTreeNode node : this.getChildren()) {
+			if (symbol.equals(node.getSyntaticSymbol())){
+				ret.add(node);
+			}
+		}
+		return ret;
+	}
+	
+	public SyntaticTreeNode getFirstChild(SyntaticSymbol symbol) {
+		Collection<SyntaticTreeNode> ret = new LinkedList<SyntaticTreeNode>();
+		for (SyntaticTreeNode node : this.getChildren()) {
+			if (symbol.equals(node.getSyntaticSymbol())){
+				ret.add(node);
+			}
+		}
+		return ret.iterator().next();
+	}
+
 	public boolean add(SyntaticTreeNode child) {
 		if (child != null) {
 			return this.getChildren().add(child);
@@ -141,6 +171,8 @@ public class SyntaticTreeNode {
 
 		if (syntaticSymbol != null) {
 			syntaticName = syntaticSymbol.name();
+			syntaticName += " " + this.getContext().toString();
+			
 		} else if (lexicToken != null && lexicToken.getSymbol() != null) {
 			syntaticName = lexicToken.getSymbol().getName();
 		}
@@ -217,4 +249,5 @@ public class SyntaticTreeNode {
 			n.printTreeTextToken(tabLevel + 1, builder);
 		}
 	}
+	
 }
