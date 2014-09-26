@@ -29,9 +29,9 @@ public class CompiladoidoTests {
 			inputScanner = new Scanner(path, StandardCharsets.UTF_8.name());
 
 			fileStringBuffer = new StringBuffer();
-			while (inputScanner.hasNext()) {
-				fileStringBuffer.append(inputScanner.next());
-				fileStringBuffer.append(" ");
+			while (inputScanner.hasNextLine()) {
+				fileStringBuffer.append(inputScanner.nextLine());
+				fileStringBuffer.append("\n");
 			}
 
 			inputScanner.close();
@@ -62,6 +62,14 @@ public class CompiladoidoTests {
 		return getFileExample("helloWorld.pas");
 	}
 
+	public static String getHelloWorldLex() {
+		return getFileExample("helloWorld.pas.lex").toString();
+	}
+	
+	public static String getHelloWorldSint() {
+		return getFileExample("helloWorld.pas.sint").toString();
+	}
+
 	/*
 	 * 
 	 */
@@ -70,4 +78,13 @@ public class CompiladoidoTests {
 		return getFileExample("wikiProcedure.pas");
 	}
 
+	public static String getWikiProgramProcedureLex() {
+		return getFileExample("wikiProcedure.pas.lex").toString();
+	}
+	
+	public static String getWikiProgramProcedureSem() {
+		return getFileExample("wikiProcedure.pas.sem").toString();
+	}
+
+	
 }

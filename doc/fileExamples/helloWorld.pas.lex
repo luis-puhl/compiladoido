@@ -1,0 +1,2 @@
+[Token [symbol=PROGRAM, texto=Program], Token [symbol=ID, texto=helloWorld], Token [symbol=;, texto=;], Token [symbol=BEGIN, texto=Begin], Token [symbol=ID, texto=WriteLn], Token [symbol=(, texto=(], Token [symbol=ID, texto='Hello world!'], Token [symbol=), texto=)], Token [symbol=COMMENT, texto={no \";\" is required after the last statement of a block -
+	adding one adds a \"null statement\" to the program}], Token [symbol=END, texto=End], Token [symbol=., texto=.], null]

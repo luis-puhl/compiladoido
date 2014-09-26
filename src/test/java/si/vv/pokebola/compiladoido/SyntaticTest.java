@@ -49,38 +49,13 @@ public class SyntaticTest {
 
 		SyntaticTreeNode parsedTree = sintatico.parse();
 		
-		logger.debug(parsedTree.printTreeTextToken());
-
-		String expected = ""
-				 + "run"
-				 + "\n	PROGRAM"
-				 + "\n		PROGRAM_HEADER"
-				 + "\n			Program"
-				 + "\n			HelloWorld"
-				 + "\n		;"
-				 + "\n		BLOCK"
-				 + "\n			DECLARATION_PART"
-				 + "\n				VAR_DECLARATION_PART"
-				 + "\n				PROCEDURE_FUNCTION_DECLARATION_PART"
-				 + "\n			COMPOUND_STATEMENT"
-				 + "\n				Begin"
-				 + "\n				statement"
-				 + "\n					simpleStatement"
-				 + "\n						FUNCTION_CALL"
-				 + "\n							WriteLn"
-				 + "\n							actualParameterList"
-				 + "\n								("
-				 + "\n								EXPRESSION"
-				 + "\n									SIMPLE_EXPRESSION"
-				 + "\n										TERM"
-				 + "\n											FACTOR"
-				 + "\n												'Hello world!'"
-				 + "\n								)"
-				 + "\n				End"
-				 + "\n		."
-				 ;
+		String result = parsedTree.printTreeTextToken();
 		
-		assertEquals(expected, parsedTree.printTreeTextToken());
+		logger.debug("Parse HelloWorld got:\n" + result);
+
+		String expected = CompiladoidoTests.getHelloWorldSint();
+		
+		assertEquals(expected.trim(), result.trim());
 	}
 
 	@Test
@@ -96,22 +71,6 @@ public class SyntaticTest {
 
 		SyntaticTreeNode parsedTree = sintatico.parse();
 		
-		logger.debug(parsedTree.printTreeTextToken());
-	}
-	
-	@Test
-	public void testVarDeclarations() {
-		LexicalAutomata lexico;
-		StringBuffer stringBuffer;
-		SyntacticWarper sintatico;
-
-		stringBuffer = CompiladoidoTests.getVarDeclarations();
-		lexico = new LexicalAutomata(stringBuffer);
-
-		sintatico = new SyntacticWarper(lexico);
-
-		SyntaticTreeNode parsedTree = sintatico.parse();
-
 		logger.debug(parsedTree.printTreeTextToken());
 	}
 

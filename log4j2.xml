@@ -28,7 +28,7 @@
 	<Loggers>
 		<!-- Class specific -->
 		<Logger name="si.vv.pokebola.compiladoido.LexicalAutomata"
-			level="WARN" additivity="false">
+			level="ALL" additivity="false">
 			<AppenderRef ref="ErrorFile" />
 		</Logger>
 

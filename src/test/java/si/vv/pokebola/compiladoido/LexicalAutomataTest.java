@@ -2,30 +2,29 @@ package si.vv.pokebola.compiladoido;
 
 import static org.junit.Assert.assertEquals;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
-import si.vv.pokebola.compiladoido.beans.CommandWordSymbols;
 import si.vv.pokebola.compiladoido.beans.OperatorSymbols;
 import si.vv.pokebola.compiladoido.beans.Symbol;
 import si.vv.pokebola.compiladoido.beans.Token;
-import si.vv.pokebola.compiladoido.beans.TypeWordSymbols;
 import si.vv.pokebola.compiladoido.beans.WordSymbols;
 
 public class LexicalAutomataTest {
 
-	@BeforeClass
-	public static void setUpBeforeClass() throws Exception {
-	}
+	private Logger logger;
 
 	@Before
 	public void setUp() throws Exception {
 		Compiladoido.getInstance();
+		logger = LogManager.getLogger();
+		logger.info("Testing LexicalAutomata");
 	}
 
 	@Test
-	public void basicProgramEndTest() {
+	public void minimalProg() {
 		LexicalAutomata lexico;
 		StringBuffer stringBuffer;
 		Token actualToken;
@@ -35,7 +34,9 @@ public class LexicalAutomataTest {
 		stringBuffer = CompiladoidoTests.getMinimalProg();
 		lexico = new LexicalAutomata(stringBuffer);
 
-		// program p; begin READ(x) end.
+		/*
+		 * program minimalProg; begin end.
+		 */
 		// program part
 		actualToken = lexico.getToken();
 		actualSimbolo = actualToken.getSymbol();
@@ -60,30 +61,6 @@ public class LexicalAutomataTest {
 		expectedSimbolo = WordSymbols.BEGIN;
 		assertEquals(expectedSimbolo, actualSimbolo);
 
-		// READ part
-		actualToken = lexico.getToken();
-		actualSimbolo = actualToken.getSymbol();
-		expectedSimbolo = CommandWordSymbols.READ;
-		assertEquals(expectedSimbolo, actualSimbolo);
-
-		// ( part
-		actualToken = lexico.getToken();
-		actualSimbolo = actualToken.getSymbol();
-		expectedSimbolo = OperatorSymbols.OPEN_PARENTHESIS;
-		assertEquals(expectedSimbolo, actualSimbolo);
-
-		// x part
-		actualToken = lexico.getToken();
-		actualSimbolo = actualToken.getSymbol();
-		expectedSimbolo = OperatorSymbols.ID;
-		assertEquals(expectedSimbolo, actualSimbolo);
-
-		// ) part
-		actualToken = lexico.getToken();
-		actualSimbolo = actualToken.getSymbol();
-		expectedSimbolo = OperatorSymbols.CLOSE_PARENTHESIS;
-		assertEquals(expectedSimbolo, actualSimbolo);
-				
 		// end part
 		actualToken = lexico.getToken();
 		actualSimbolo = actualToken.getSymbol();
@@ -118,28 +95,13 @@ public class LexicalAutomataTest {
 
 		lexico = new LexicalAutomata(stringBuffer);
 
-		assertEquals(WordSymbols.PROGRAM, lexico.getToken().getSymbol());
-		assertEquals(OperatorSymbols.ID, lexico.getToken().getSymbol());
+		String result = lexico.getTokenList().toString();
 
-		assertEquals(OperatorSymbols.SEMICOLON, lexico.getToken().getSymbol());
+		logger.debug("Lexico for helloWorld got:\n" + result);
 
-		assertEquals(WordSymbols.BEGIN, lexico.getToken().getSymbol());
+		String expected = CompiladoidoTests.getHelloWorldLex();
 
-		assertEquals(OperatorSymbols.ID, lexico.getToken().getSymbol());
-		assertEquals(OperatorSymbols.OPEN_PARENTHESIS, lexico.getToken()
-				.getSymbol());
-		assertEquals(OperatorSymbols.ID, lexico.getToken().getSymbol());
-		assertEquals(OperatorSymbols.OPEN_PARENTHESIS.getMirror(), lexico
-				.getToken().getSymbol());
-
-		assertEquals(OperatorSymbols.COMMENT, lexico.getToken().getSymbol());
-
-		assertEquals(WordSymbols.END, lexico.getToken().getSymbol());
-
-		assertEquals(OperatorSymbols.PERIOD, lexico.getToken().getSymbol());
-
-		assertEquals(null, lexico.getToken());
-
+		assertEquals(expected.trim(), result.trim());
 	}
 
 	@Test
@@ -151,60 +113,13 @@ public class LexicalAutomataTest {
 
 		lexico = new LexicalAutomata(stringBuffer);
 
-		assertEquals(WordSymbols.PROGRAM, lexico.getToken().getSymbol());
-		assertEquals(OperatorSymbols.ID, lexico.getToken().getSymbol());
+		String result = lexico.getTokenList().toString();
 
-		assertEquals(OperatorSymbols.OPEN_PARENTHESIS, lexico.getToken()
-				.getSymbol());
-		// removido porque este compilador não suporta programas parametrizados
-		// assertEquals(OperatorSymbols.ID, lexico.getToken().getSymbol());
-		assertEquals(OperatorSymbols.OPEN_PARENTHESIS.getMirror(), lexico
-				.getToken().getSymbol());
+		logger.debug("Lexico for wikiProcedure got:\n" + result);
 
-		assertEquals(OperatorSymbols.SEMICOLON, lexico.getToken().getSymbol());
+		String expected = CompiladoidoTests.getWikiProgramProcedureLex();
 
-		assertEquals(WordSymbols.VAR, lexico.getToken().getSymbol());
-		assertEquals(OperatorSymbols.ID, lexico.getToken().getSymbol());
-		assertEquals(OperatorSymbols.COLON, lexico.getToken().getSymbol());
-		assertEquals(TypeWordSymbols.INTEGER, lexico.getToken().getSymbol());
-
-		assertEquals(OperatorSymbols.SEMICOLON, lexico.getToken().getSymbol());
-
-		assertEquals(WordSymbols.PROCEDURE, lexico.getToken().getSymbol());
-		assertEquals(OperatorSymbols.ID, lexico.getToken().getSymbol());
-		assertEquals(OperatorSymbols.OPEN_PARENTHESIS, lexico.getToken()
-				.getSymbol());
-		assertEquals(WordSymbols.VAR, lexico.getToken().getSymbol());
-		assertEquals(OperatorSymbols.ID, lexico.getToken().getSymbol());
-		assertEquals(OperatorSymbols.COLON, lexico.getToken().getSymbol());
-		assertEquals(TypeWordSymbols.INTEGER, lexico.getToken().getSymbol());
-		assertEquals(OperatorSymbols.OPEN_PARENTHESIS.getMirror(), lexico
-				.getToken().getSymbol());
-
-		assertEquals(OperatorSymbols.SEMICOLON, lexico.getToken().getSymbol());
-
-		assertEquals(WordSymbols.BEGIN, lexico.getToken().getSymbol());
-		assertEquals(WordSymbols.END, lexico.getToken().getSymbol());
-
-		assertEquals(OperatorSymbols.SEMICOLON, lexico.getToken().getSymbol());
-
-		assertEquals(WordSymbols.BEGIN, lexico.getToken().getSymbol());
-
-		assertEquals(OperatorSymbols.ID, lexico.getToken().getSymbol());
-		assertEquals(OperatorSymbols.OPEN_PARENTHESIS, lexico.getToken()
-				.getSymbol());
-		assertEquals(OperatorSymbols.ID, lexico.getToken().getSymbol());
-		assertEquals(OperatorSymbols.OPEN_PARENTHESIS.getMirror(), lexico
-				.getToken().getSymbol());
-
-		assertEquals(OperatorSymbols.SEMICOLON, lexico.getToken().getSymbol());
-
-		assertEquals(WordSymbols.END, lexico.getToken().getSymbol());
-
-		assertEquals(OperatorSymbols.PERIOD, lexico.getToken().getSymbol());
-
-		assertEquals(null, lexico.getToken());
-
+		assertEquals(expected.trim(), result.trim());
 	}
 
 }

@@ -1,0 +1,26 @@
+run
+	PROGRAM
+		PROGRAM_HEADER
+			Program
+			helloWorld
+		;
+		BLOCK
+			DECLARATION_PART
+				VAR_DECLARATION_PART
+				PROCEDURE_FUNCTION_DECLARATION_PART
+			COMPOUND_STATEMENT
+				Begin
+				statement
+					simpleStatement
+						FUNCTION_CALL
+							WriteLn
+							actualParameterList
+								(
+								EXPRESSION
+									SIMPLE_EXPRESSION
+										TERM
+											FACTOR
+												'Hello world!'
+								)
+				End
+		.
