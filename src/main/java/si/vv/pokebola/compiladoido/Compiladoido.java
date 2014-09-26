@@ -66,10 +66,12 @@ public class Compiladoido {
 
 				Matcher matcher = pattern.matcher(propString);
 				while (matcher.find()) {
-					// Extract the text between the two title elements
 					String keyString = matcher.group(1);
 
 					propString = (String) System.getProperties().get(keyString.trim());
+					if (propString == null){
+						continue;
+					}
 
 					propString = prop.getValue().toString()
 							.replaceAll("\\$\\{" + keyString + "\\}", propString);

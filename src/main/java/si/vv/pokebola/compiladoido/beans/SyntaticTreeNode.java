@@ -141,6 +141,22 @@ public class SyntaticTreeNode {
 		return false;
 	}
 
+	public SyntaticTreeNode getParent(SyntaticSymbol symbol) {
+		if (this.getParent() == this){
+			return null;
+		}
+		
+		SyntaticTreeNode parent = this.getParent();
+		while(parent != null && !symbol.equals(parent.getSyntaticSymbol())) {
+			parent = parent.getParent();
+		}
+		return parent;
+	}
+	
+	/*
+	 * 
+	 */
+	
 	public void addAll(Collection<? extends SyntaticTreeNode> childs) {
 		if (childs != null && !childs.isEmpty()) {
 			this.getChildren().addAll(childs);

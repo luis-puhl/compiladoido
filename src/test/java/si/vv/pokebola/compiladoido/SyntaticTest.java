@@ -32,8 +32,7 @@ public class SyntaticTest {
 		sintatico = new SyntacticWarper(lexico);
 
 		SyntaticTreeNode parsedTree = sintatico.parse();
-
-		logger.debug(parsedTree.printTree());
+		
 		logger.debug(parsedTree.printTreeTextToken());
 	}
 
@@ -49,8 +48,7 @@ public class SyntaticTest {
 		sintatico = new SyntacticWarper(lexico);
 
 		SyntaticTreeNode parsedTree = sintatico.parse();
-
-		logger.debug(parsedTree.printTree());
+		
 		logger.debug(parsedTree.printTreeTextToken());
 
 		String expected = ""
@@ -97,8 +95,23 @@ public class SyntaticTest {
 		sintatico = new SyntacticWarper(lexico);
 
 		SyntaticTreeNode parsedTree = sintatico.parse();
+		
+		logger.debug(parsedTree.printTreeTextToken());
+	}
+	
+	@Test
+	public void testVarDeclarations() {
+		LexicalAutomata lexico;
+		StringBuffer stringBuffer;
+		SyntacticWarper sintatico;
 
-		logger.debug(parsedTree.printTree());
+		stringBuffer = CompiladoidoTests.getVarDeclarations();
+		lexico = new LexicalAutomata(stringBuffer);
+
+		sintatico = new SyntacticWarper(lexico);
+
+		SyntaticTreeNode parsedTree = sintatico.parse();
+
 		logger.debug(parsedTree.printTreeTextToken());
 	}
 

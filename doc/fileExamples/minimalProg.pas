@@ -1,0 +1,3 @@
+ program minimalProg; 
+ begin
+ end. 

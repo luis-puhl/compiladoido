@@ -1,46 +1,73 @@
 package si.vv.pokebola.compiladoido;
 
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Scanner;
+
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses({ LexicalAutomataTest.class, SyntaticTest.class })
+@SuiteClasses({ LexicalAutomataTest.class, SyntaticTest.class, PascalSemanticActionsTest.class })
 public class CompiladoidoTests {
-	
-	public static StringBuffer getMinimalProg() {
-		StringBuffer minimalProg;
-		minimalProg = new StringBuffer("  program p; begin READ(x) end. ");
-		return minimalProg;
+
+	private static final String TEST_TEST_EXAMPLES_DIR = "test.testExamplesDir";
+
+	private static StringBuffer getFileExample(String fileName) {
+		String exampleDir;
+		Scanner inputScanner;
+		StringBuffer fileStringBuffer = null;
+
+		exampleDir = Compiladoido.getInstance().getProperties().getProperty(TEST_TEST_EXAMPLES_DIR);
+		fileName = exampleDir + fileName;
+
+		Path path = Paths.get(fileName);
+		try {
+			inputScanner = new Scanner(path, StandardCharsets.UTF_8.name());
+
+			fileStringBuffer = new StringBuffer();
+			while (inputScanner.hasNext()) {
+				fileStringBuffer.append(inputScanner.next());
+				fileStringBuffer.append(" ");
+			}
+
+			inputScanner.close();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+
+		return fileStringBuffer;
 	}
 
+	/*
+	 * 
+	 */
+
+	public static StringBuffer getMinimalProg() {
+		return getFileExample("minimalProg.pas");
+	}
+
+	public static String getMinimalSintaticTree() {
+		return getFileExample("minimalProg.pas.sint").toString();
+	}
+
+	/*
+	 * 
+	 */
+
 	public static StringBuffer getHelloWorld() {
-		StringBuffer helloWord;
-		helloWord = new StringBuffer();
-		helloWord.append("Program HelloWorld;\n");
-		helloWord.append("Begin\n");
-		helloWord.append("WriteLn('Hello world!')\n");
-		helloWord.append("{no \";\" is required after the last statement of a block -\n");
-		helloWord.append("adding one adds a \"null statement\" to the program}\n");
-		helloWord.append("End.");
-		return helloWord;
+		return getFileExample("helloWorld.pas");
 	}
-	
+
+	/*
+	 * 
+	 */
+
 	public static StringBuffer getWikiProgramProcedure() {
-		StringBuffer wikiProgramProcedure;
-		wikiProgramProcedure = new StringBuffer();
-		wikiProgramProcedure.append("program Mine();\n");
-		wikiProgramProcedure.append("\n");
-		wikiProgramProcedure.append("var i : integer;\n");
-		wikiProgramProcedure.append("		 \n");
-		wikiProgramProcedure.append("procedure Print(var j : integer);\n");
-		wikiProgramProcedure.append("begin\n");
-		wikiProgramProcedure.append("end;\n");
-		wikiProgramProcedure.append("		 \n");
-		wikiProgramProcedure.append("begin\n");
-		wikiProgramProcedure.append("Print(i);\n");
-		wikiProgramProcedure.append("end.\n");
-		
-		return wikiProgramProcedure;
+		return getFileExample("wikiProcedure.pas");
 	}
+
 }

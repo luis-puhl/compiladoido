@@ -230,37 +230,84 @@ public class PascalSyntacticAutomata {
 		try {
 			node.add(labelDeclaration(node));
 		} catch (SyntacticAutomataException e) {
-			logger.catching(exceptionLevel, e);
+			logger.debug("No Label declaration");
+			// logger.catching(exceptionLevel, e);
 		}
 		try {
 			node.add(constantDeclaration(node));
 		} catch (SyntacticAutomataException e) {
-			logger.catching(exceptionLevel, e);
+			logger.debug("No Constant declaration");
+			// logger.catching(exceptionLevel, e);
 		}
 		try {
 			node.add(resourceStringDeclaration(node));
 		} catch (SyntacticAutomataException e) {
-			logger.catching(exceptionLevel, e);
+			logger.debug("No Resource String declaration");
+			// logger.catching(exceptionLevel, e);
 		}
 		try {
 			node.add(typeDeclaration(node));
 		} catch (SyntacticAutomataException e) {
-			logger.catching(exceptionLevel, e);
+			logger.debug("No Constant declaration");
+			// logger.catching(exceptionLevel, e);
 		}
 		try {
 			node.add(variableDeclarationPart(node));
 		} catch (SyntacticAutomataException e) {
-			logger.catching(exceptionLevel, e);
+			logger.debug("No Variable declaration");
+			// logger.catching(exceptionLevel, e);
 		}
 		try {
 			node.add(threadVarDeclaration(node));
 		} catch (SyntacticAutomataException e) {
-			logger.catching(exceptionLevel, e);
+			logger.debug("No Thread declaration");
+			// logger.catching(exceptionLevel, e);
 		}
 		try {
 			node.add(procedureFuncionDeclarationPart(node));
 		} catch (SyntacticAutomataException e) {
-			logger.catching(exceptionLevel, e);
+			logger.debug("No Procedure/Function declaration");
+			// logger.catching(exceptionLevel, e);
+		}
+
+		semanticAction(node);
+		logger.exit();
+		return node;
+	}
+	
+	private SyntaticTreeNode subroutineDeclarationPart(SyntaticTreeNode parent)
+			throws SyntacticAutomataException {
+		SyntaticTreeNode node;
+
+		logger.entry();
+		node = new SyntaticTreeNode(parent, SyntaticSymbol.DECLARATION_PART);
+
+		/**
+		 * Em FPC, a ordem não importa, aqui importa.
+		 */
+		try {
+			node.add(labelDeclaration(node));
+		} catch (SyntacticAutomataException e) {
+			logger.debug("No Label declaration");
+			// logger.catching(exceptionLevel, e);
+		}
+		try {
+			node.add(constantDeclaration(node));
+		} catch (SyntacticAutomataException e) {
+			logger.debug("No Constant declaration");
+			// logger.catching(exceptionLevel, e);
+		}
+		try {
+			node.add(resourceStringDeclaration(node));
+		} catch (SyntacticAutomataException e) {
+			logger.debug("No Resource String declaration");
+			// logger.catching(exceptionLevel, e);
+		}
+		try {
+			node.add(variableDeclarationPart(node));
+		} catch (SyntacticAutomataException e) {
+			logger.debug("No Variable declaration");
+			// logger.catching(exceptionLevel, e);
 		}
 
 		semanticAction(node);
@@ -530,6 +577,7 @@ public class PascalSyntacticAutomata {
 		node.add(converter.expectNode(node, null, OperatorSymbols.SEMICOLON));
 
 		// SUBROUTINE BLOCK
+		node.add(block(node));
 		node.add(subroutineBlock(node));
 
 		node.add(converter.expectNode(node, null, OperatorSymbols.SEMICOLON));
@@ -544,8 +592,12 @@ public class PascalSyntacticAutomata {
 		SyntaticTreeNode node;
 
 		logger.entry();
-		node = new SyntaticTreeNode(parent, SyntaticSymbol.SUBROTINE_BLOCK);
+		node = new SyntaticTreeNode(parent, SyntaticSymbol.BLOCK);
 
+		// DECLARATION PART
+		node.add(subroutineDeclarationPart(node));
+
+		// STATEMENT PART
 		try {
 			node.add(compoundStatement(node));
 		} catch (SyntacticAutomataException eBlock) {

@@ -1,7 +1,5 @@
 package si.vv.pokebola.compiladoido;
 
-import java.util.Collection;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -62,53 +60,6 @@ public class PascalSemanticActions {
 	public void block(SyntaticTreeNode blockNode) {
 		logger.entry();
 
-		Collection<SyntaticTreeNode> delcarationPartNodes;
-		
-		delcarationPartNodes = blockNode.getChild(SyntaticSymbol.DECLARATION_PART);
-		logger.debug("Parsing " + delcarationPartNodes.size() + " DECLARATION_PARTs");	
-		
-		for (SyntaticTreeNode declarationPartNode : delcarationPartNodes) {
-			logger.debug("Parsing declarationPartNode \n\t" + declarationPartNode);
-			
-			for (SyntaticTreeNode part : declarationPartNode.getChildren()) {
-				logger.debug("Parsing part \n\t" + part);
-			
-				switch (part.getSyntaticSymbol()) {
-				case VAR_DECLARATION_PART:
-					for (SyntaticTreeNode varDeclared : part.getChild(SyntaticSymbol.VAR_DECLARATION)) {
-						SemanticToken semanticToken;
-						TypeWordSymbols type;
-						String name;
-						
-						Token lexicToken;
-						
-						try {
-							SyntaticTreeNode typeNode = varDeclared.getFirstChild(SyntaticSymbol.TYPE);
-							
-							lexicToken = typeNode.getFirstChild(SyntaticSymbol.TYPE).getLexicToken();
-							type = (TypeWordSymbols) lexicToken.getSymbol();
-							
-							lexicToken = varDeclared.getFirstChild(SyntaticSymbol.IDENTIFIER).getLexicToken();
-							name = lexicToken.getTexto();
-						} catch(Exception e) {
-							logger.catching(e);
-							break;
-						}
-						
-						semanticToken = new SemanticToken(name, 
-								SyntaticSymbol.VAR_DECLARATION, 
-								type,
-								-1);
-						
-						blockNode.addContextToken(semanticToken);
-					}
-					break;
-				default:
-					break;
-				}
-			}
-		}
-
 		logger.exit();
 	}
 
@@ -140,6 +91,31 @@ public class PascalSemanticActions {
 	public void variableDeclaration(SyntaticTreeNode root) {
 		logger.entry();
 
+		SemanticToken semanticToken;
+		TypeWordSymbols type;
+		String name;
+		
+		Token lexicToken;
+		
+		try {
+			SyntaticTreeNode typeNode = root.getFirstChild(SyntaticSymbol.TYPE);
+			
+			lexicToken = typeNode.getFirstChild(SyntaticSymbol.TYPE).getLexicToken();
+			type = (TypeWordSymbols) lexicToken.getSymbol();
+			
+			lexicToken = root.getFirstChild(SyntaticSymbol.IDENTIFIER).getLexicToken();
+			name = lexicToken.getTexto();
+			
+			semanticToken = new SemanticToken(name, 
+					SyntaticSymbol.VAR_DECLARATION, 
+					type,
+					-1);
+			
+			root.getParent(SyntaticSymbol.BLOCK).addContextToken(semanticToken);
+		} catch(Exception e) {
+			logger.catching(e);
+		}
+				
 		logger.exit();
 	}
 
