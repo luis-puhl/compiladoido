@@ -74,15 +74,19 @@ public class CompiladoidoTests {
 	 * 
 	 */
 
-	public static StringBuffer getWikiProgramProcedure() {
+	public static StringBuffer getWikiProcedure() {
 		return getFileExample("wikiProcedure.pas");
 	}
 
-	public static String getWikiProgramProcedureLex() {
+	public static String getWikiProcedureLex() {
 		return getFileExample("wikiProcedure.pas.lex").toString();
 	}
 	
-	public static String getWikiProgramProcedureSem() {
+	public static String getWikiProcedureSint() {
+		return getFileExample("wikiProcedure.pas.sint").toString();
+	}
+	
+	public static String getWikiProcedureSem() {
 		return getFileExample("wikiProcedure.pas.sem").toString();
 	}
 

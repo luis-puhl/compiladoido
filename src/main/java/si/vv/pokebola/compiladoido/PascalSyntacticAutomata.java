@@ -106,7 +106,7 @@ public class PascalSyntacticAutomata {
 		try {
 			node.add(usesClause(node));
 		} catch (SyntacticAutomataException e) {
-			logger.catching(Level.WARN, e);
+			// logger.catching(exceptionLevel, e);
 			logger.info("No USES CLAUSE declaration");
 		}
 		// BLOCK
@@ -156,8 +156,7 @@ public class PascalSyntacticAutomata {
 	 */
 	private SyntaticTreeNode programParameters(SyntaticTreeNode parent)
 			throws SyntacticAutomataException {
-		// return indentifierList(parent);
-		return null;
+		return identifierList(parent);
 	}
 
 	private SyntaticTreeNode usesClause(SyntaticTreeNode parent) throws SyntacticAutomataException {
@@ -577,7 +576,6 @@ public class PascalSyntacticAutomata {
 		node.add(converter.expectNode(node, null, OperatorSymbols.SEMICOLON));
 
 		// SUBROUTINE BLOCK
-		node.add(block(node));
 		node.add(subroutineBlock(node));
 
 		node.add(converter.expectNode(node, null, OperatorSymbols.SEMICOLON));

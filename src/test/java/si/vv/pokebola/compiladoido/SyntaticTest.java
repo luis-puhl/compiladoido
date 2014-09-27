@@ -64,14 +64,20 @@ public class SyntaticTest {
 		StringBuffer stringBuffer;
 		SyntacticWarper sintatico;
 
-		stringBuffer = CompiladoidoTests.getWikiProgramProcedure();
+		stringBuffer = CompiladoidoTests.getWikiProcedure();
 		lexico = new LexicalAutomata(stringBuffer);
 
 		sintatico = new SyntacticWarper(lexico);
 
 		SyntaticTreeNode parsedTree = sintatico.parse();
 		
-		logger.debug(parsedTree.printTreeTextToken());
+		String result = parsedTree.printTreeTextToken();
+		
+		logger.debug("Parse wikiProcedure got:\n" + result);
+
+		String expected = CompiladoidoTests.getWikiProcedureSint();
+		
+		assertEquals(expected.trim(), result.trim());
 	}
 
 }

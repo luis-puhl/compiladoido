@@ -5,6 +5,8 @@
 
 	<Properties>
 		<Property name="filename">${sys:log4j.copileErrorsFile}</Property>
+		<Property name="synt_filename">${sys:log4j.syntacticErrorsFile}</Property>
+		<Property name="sem_filename">${sys:log4j.semanticErrorsFile}</Property>
 	</Properties>
 
 	<Appenders>
@@ -23,6 +25,15 @@
 			<PatternLayout
 				pattern="%d{HH:mm:ss.SSS} %-5level %class{36} %L %M - %msg%xEx%n" />
 		</File>
+		<File name="SemErrorFile" fileName="${sem_filename}">
+			<PatternLayout
+				pattern="%d{HH:mm:ss.SSS} %-5level %class{36} %L %M - %msg%xEx%n" />
+		</File>
+		<File name="SyntErrorFile" fileName="${synt_filename}">
+			<PatternLayout
+				pattern="%d{HH:mm:ss.SSS} %-5level %class{36} %L %M - %msg%xEx%n" />
+		</File>
+		
 	</Appenders>
 
 	<Loggers>
@@ -30,6 +41,20 @@
 		<Logger name="si.vv.pokebola.compiladoido.LexicalAutomata"
 			level="ALL" additivity="false">
 			<AppenderRef ref="ErrorFile" />
+		</Logger>
+		
+		<Logger name="si.vv.pokebola.compiladoido.PascalSyntacticAutomata"
+			level="ALL" additivity="false">
+			<AppenderRef ref="SyntErrorFile" />
+		</Logger>
+		<Logger name="si.vv.pokebola.compiladoido.LexicalSyntaticConverter"
+			level="ALL" additivity="false">
+			<AppenderRef ref="SyntErrorFile" />
+		</Logger>
+		
+		<Logger name="si.vv.pokebola.compiladoido.PascalSemanticActions"
+			level="ALL" additivity="false">
+			<AppenderRef ref="SemErrorFile" />
 		</Logger>
 
 		<!-- Project specific -->

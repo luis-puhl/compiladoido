@@ -163,6 +163,10 @@ public class SyntaticTreeNode {
 		}
 	}
 
+	/*
+	 * To String convertions
+	 */
+	
 	@Override
 	public String toString() {
 		String parentName = null;
@@ -200,6 +204,49 @@ public class SyntaticTreeNode {
 		return id + "." + tokenName + "(" + syntaticName + ")" + "^" + parentId;
 	}
 
+	public String nameSemantic() {
+		String syntaticName = "";
+		String tokenName = creatorMethodName;
+
+		if (syntaticSymbol != null) {
+			syntaticName = syntaticSymbol.name();
+			syntaticName += " " + this.getContext().toString();
+			
+		} else if (lexicToken != null && lexicToken.getSymbol() != null) {
+			syntaticName = lexicToken.getSymbol().getName();
+		}
+
+		if (lexicToken != null && lexicToken.getTexto() != null) {
+			tokenName = lexicToken.getTexto();
+		}
+
+		return tokenName + "(" + syntaticName + ")";
+	}
+	
+	private String tokenName(){
+		String r = creatorMethodName;
+		
+		if (this.getLexicToken() != null){
+			r = this.getLexicToken().getTexto();
+		} else if (this.getSyntaticSymbol() != null){
+			r = this.getSyntaticSymbol().name();
+		}
+		
+		return r;
+	}
+	
+	
+	/*
+	 * Tree to string convertions
+	 */
+	
+	/**
+	 * More details
+	 * 
+	 * Warps all relevant data
+	 * 
+	 * @return
+	 */
 	public String printTree() {
 		StringBuilder builder = new StringBuilder();
 
@@ -229,18 +276,49 @@ public class SyntaticTreeNode {
 		}
 	}
 	
-	private String tokenName(){
-		String r = creatorMethodName;
-		
-		if (this.getLexicToken() != null){
-			r = this.getLexicToken().getTexto();
-		} else if (this.getSyntaticSymbol() != null){
-			r = this.getSyntaticSymbol().name();
+	
+	/**
+	 * Semantic details
+	 * 
+	 * Removes only IDs
+	 * 
+	 * @return
+	 */
+	public String printTreeSemantic() {
+		StringBuilder builder = new StringBuilder();
+
+		builder.append("\n");
+
+		builder.append(this.nameSemantic());
+		builder.append("\n");
+		for (SyntaticTreeNode n : this.getChildren()) {
+			n.printTreeSemantic(1, builder);
 		}
-		
-		return r;
+
+		return builder.toString();
+	}
+
+	private void printTreeSemantic(int tabLevel, StringBuilder builder) {
+		for (int i = 0; i < tabLevel; i++) {
+			builder.append("\t");
+		}
+
+		builder.append(this.nameSemantic());
+		builder.append("\n");
+
+		for (SyntaticTreeNode n : this.getChildren()) {
+			n.printTreeSemantic(tabLevel + 1, builder);
+		}
 	}
 	
+	
+	/**
+	 * Token structure details
+	 * 
+	 * Removes all data except a single node word id.
+	 * 
+	 * @return
+	 */
 	public String printTreeTextToken() {
 		StringBuilder builder = new StringBuilder();
 

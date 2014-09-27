@@ -21,23 +21,23 @@ public class PascalSemanticActionsTest {
 	}
 	
 	@Test
-	public void testParseWikiProgramProcedure() {
+	public void testSemWikiProgramProcedure() {
 		LexicalAutomata lexico;
 		StringBuffer stringBuffer;
 		SyntacticWarper sintatico;
 
-		stringBuffer = CompiladoidoTests.getWikiProgramProcedure();
+		stringBuffer = CompiladoidoTests.getWikiProcedure();
 		lexico = new LexicalAutomata(stringBuffer);
 
 		sintatico = new SyntacticWarper(lexico);
 
 		SyntaticTreeNode parsedTree = sintatico.parse();
 		
-		String result = parsedTree.printTreeTextToken();
+		String result = parsedTree.printTreeSemantic();
 		
-		logger.debug("testParseWikiProgramProcedure got:\n" + result);
+		logger.debug("test Semantic WikiProcedure got:\n" + result);
 		
-		String expected = CompiladoidoTests.getWikiProgramProcedureSem();
+		String expected = CompiladoidoTests.getWikiProcedureSem();
 		
 		assertEquals(expected, result);
 	}

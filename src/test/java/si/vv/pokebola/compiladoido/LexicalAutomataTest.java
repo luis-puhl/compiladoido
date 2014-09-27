@@ -109,7 +109,7 @@ public class LexicalAutomataTest {
 		LexicalAutomata lexico;
 		StringBuffer stringBuffer;
 
-		stringBuffer = CompiladoidoTests.getWikiProgramProcedure();
+		stringBuffer = CompiladoidoTests.getWikiProcedure();
 
 		lexico = new LexicalAutomata(stringBuffer);
 
@@ -117,7 +117,7 @@ public class LexicalAutomataTest {
 
 		logger.debug("Lexico for wikiProcedure got:\n" + result);
 
-		String expected = CompiladoidoTests.getWikiProgramProcedureLex();
+		String expected = CompiladoidoTests.getWikiProcedureLex();
 
 		assertEquals(expected.trim(), result.trim());
 	}
