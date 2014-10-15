@@ -21,7 +21,9 @@ import si.vv.pokebola.compiladoido.beans.TypeWordSymbols;
 import si.vv.pokebola.compiladoido.beans.WordSymbols;
 
 /**
- * Finite state Automata
+ * Finite state Automata.
+ * 
+ * Reads a buffer, finds its LexicalTokens and 
  * @author luispuhl
  *
  */
@@ -279,6 +281,8 @@ public class LexicalAutomata {
 				break;
 			}
 		}
+		
+		/* classifica o token */
 		
 		String texto = ret.toString();
 		

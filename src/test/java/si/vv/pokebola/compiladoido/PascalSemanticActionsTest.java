@@ -39,6 +39,8 @@ public class PascalSemanticActionsTest {
 		
 		String expected = CompiladoidoTests.getWikiProcedureSem();
 		
+		logger.debug("test Semantic WikiProcedure expect:\n" + expected);
+		
 		assertEquals(expected, result);
 	}
 }

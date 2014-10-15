@@ -73,6 +73,10 @@ public class LexicalAutomataTest {
 		expectedSimbolo = OperatorSymbols.PERIOD;
 		assertEquals(expectedSimbolo, actualSimbolo);
 
+		stringBuffer = CompiladoidoTests.getMinimalProg();
+		lexico = new LexicalAutomata(stringBuffer);
+		logger.debug("Lexico for MinimalProg got:\n" + lexico.getTokenList() + "\n\n");
+		
 	}
 
 	@Test(expected = NullPointerException.class)
