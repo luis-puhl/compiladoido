@@ -1,6 +1,8 @@
 compiladoido
 ============
 
+[![Build Status](https://travis-ci.org/luis-puhl/compiladoido.svg?branch=master)](https://travis-ci.org/luis-puhl/compiladoido)
+
 Pascal to MEPA compiler as final project for 2014 Compilers class at [UNESP](http://www.fc.unesp.br/) (Bauru - Brasil).
 
 Building
